@@ -1,0 +1,148 @@
+@import "tailwindcss";
+
+/* Figma design tokens — names are case-sensitive */
+:root {
+  --Black: #000000;
+  --White: #ffffff;
+
+  --color-primary-main: #000000;
+  --color-neutral-0: #ffffff;
+  --color-neutral-50: #fafafa;
+  --color-neutral-100: #f4f4f5;
+  --color-neutral-200: #e4e4e7;
+  --color-neutral-300: #d4d4d8;
+  --color-neutral-400: #a1a1aa;
+  --color-neutral-500: #71717a;
+  --color-neutral-600: #52525b;
+  --color-neutral-700: #3f3f46;
+  --color-neutral-900: #18181b;
+
+  --Hero-Min-Height: 810px;
+  --Hero-Padding-Top: 40px;
+  --Hero-Padding-X: 112px;
+  --Hero-Padding-Bottom: 80px;
+  --Section-Max-Width: 1440px;
+  --Section-Height: 810px;
+  --Content-Max-Width: 1200px;
+}
+
+@theme inline {
+  --color-Black: var(--Black);
+  --color-White: var(--White);
+
+  --color-color-primary-main: var(--color-primary-main);
+  --color-color-neutral-0: var(--color-neutral-0);
+  --color-color-neutral-50: var(--color-neutral-50);
+  --color-color-neutral-100: var(--color-neutral-100);
+  --color-color-neutral-200: var(--color-neutral-200);
+  --color-color-neutral-300: var(--color-neutral-300);
+  --color-color-neutral-400: var(--color-neutral-400);
+  --color-color-neutral-500: var(--color-neutral-500);
+  --color-color-neutral-600: var(--color-neutral-600);
+  --color-color-neutral-700: var(--color-neutral-700);
+  --color-color-neutral-900: var(--color-neutral-900);
+
+  --font-dm-sans: var(--font-dm-sans), system-ui, sans-serif;
+  --font-dm-mono: var(--font-dm-mono), ui-monospace, monospace;
+  --font-urbanist: var(--font-urbanist), system-ui, sans-serif;
+  --font-ibm-plex: var(--font-ibm-plex), system-ui, sans-serif;
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-primary-main);
+  color: var(--color-neutral-50);
+  font-family: var(--font-dm-sans), system-ui, sans-serif;
+}
+
+.hero-shell,
+.section-shell {
+  width: 100%;
+  max-width: var(--Section-Max-Width);
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+
+.content-shell {
+  width: 100%;
+  max-width: var(--Content-Max-Width);
+  margin-inline: auto;
+}
+
+@media (min-width: 640px) {
+  .hero-shell,
+  .section-shell {
+    padding-inline: 48px;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-shell,
+  .section-shell {
+    padding-inline: 64px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-shell,
+  .section-shell {
+    padding-inline: 80px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .hero-shell,
+  .section-shell {
+    padding-inline: var(--Hero-Padding-X);
+  }
+}
+
+.what-we-do-cards {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-neutral-500) transparent;
+}
+
+.what-we-do-cards::-webkit-scrollbar {
+  width: 4px;
+}
+
+.what-we-do-cards::-webkit-scrollbar-thumb {
+  background: var(--color-neutral-500);
+  border-radius: 4px;
+}
+
+/* Dark sections: semi-transparent so fixed hero discs show through while scrolling */
+.section-hero-surface {
+  position: relative;
+  z-index: 10;
+  background-color: rgb(0 0 0 / 0.52);
+}
+
+.section-dark-surface {
+  position: relative;
+  z-index: 10;
+  background-color: rgb(0 0 0 / 0.84);
+}
+
+.products-track {
+  scrollbar-width: none;
+}
+
+.products-track::-webkit-scrollbar {
+  display: none;
+}

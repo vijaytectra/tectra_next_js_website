@@ -12,6 +12,7 @@ const SERVICES = [
     description: "Software solutions built for scalability and growth.",
     uppercaseOnHover: true,
     icon: serviceIcons.software,
+    href: "/services/software-solutions",
   },
   {
     title: "DIGITAL MARKETING",
@@ -19,6 +20,7 @@ const SERVICES = [
       "Growth-focused marketing strategies built for reach and engagement.",
     uppercaseOnHover: false,
     icon: serviceIcons.marketing,
+    href: "/services/digital-marketing",
   },
   {
     title: "BRANDING",
@@ -26,6 +28,7 @@ const SERVICES = [
       "Distinct brand identities crafted for recognition and trust.",
     uppercaseOnHover: false,
     icon: serviceIcons.branding,
+    href: "/services/branding",
   },
   {
     title: "EXPERIENCE DESIGNING",
@@ -33,6 +36,7 @@ const SERVICES = [
       "Intuitive digital experiences designed for usability and impact.",
     uppercaseOnHover: false,
     icon: serviceIcons.experience,
+    href: "/services/experience-designing",
   },
 ] as const;
 
@@ -96,7 +100,7 @@ export default function OurServices() {
               </div>
               <div className="relative h-12 w-full sm:w-auto">
                 <OutlineButton
-                  href="#services"
+                  href={service.href}
                   variant="light"
                   className="absolute inset-0 w-full transition-opacity duration-300 group-hover:pointer-events-none group-hover:opacity-0 sm:w-auto"
                   circleOffset={{ left: "-43px", top: "55px" }}
@@ -104,7 +108,7 @@ export default function OurServices() {
                   Explore Services
                 </OutlineButton>
                 <OutlineButton
-                  href="#services"
+                  href={service.href}
                   variant="dark"
                   className="absolute inset-0 w-full opacity-0 transition-opacity duration-300 group-hover:opacity-100 sm:w-auto"
                   circleOffset={{ left: "-43px", top: "55px" }}

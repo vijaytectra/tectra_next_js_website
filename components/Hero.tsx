@@ -79,7 +79,7 @@ const ctaArrowVariants = {
 export default function Hero() {
   return (
     <section
-      className="section-hero-surface relative flex min-h-[var(--Hero-Min-Height)] h-dvh max-h-dvh w-full flex-col overflow-hidden"
+      className="section-hero-surface relative flex m h-dvh max-h-dvh w-full flex-col overflow-hidden"
       aria-labelledby="hero-heading"
     >
       <div

@@ -5,24 +5,29 @@ import Image from "next/image";
 
 type FloatingActionProps = {
   className?: string;
+  disableFloat?: boolean;
 };
 
-export default function FloatingAction({ className = "" }: FloatingActionProps) {
+export default function FloatingAction({
+  className = "",
+  disableFloat = false,
+}: FloatingActionProps) {
   const shouldReduceMotion = useReducedMotion();
+  const isStatic = shouldReduceMotion || disableFloat;
 
   return (
     <motion.button
       type="button"
       aria-label="Open assistant"
-      className={`relative flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-2xl ${className}`}
+      className={`relative flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-2xl border-[0.179px] border-[#ffffff]/50 bg-[#18181E] ${className}`}
       initial={{ opacity: 0, scale: 0.9 }}
       animate={
-        shouldReduceMotion
+        isStatic
           ? { opacity: 1, scale: 1, y: 0 }
           : { opacity: 1, scale: 1, y: [0, -5, 0] }
       }
       transition={
-        shouldReduceMotion
+        isStatic
           ? { delay: 0.55, duration: 0.45 }
           : {
               opacity: { delay: 0.55, duration: 0.45 },
@@ -31,26 +36,33 @@ export default function FloatingAction({ className = "" }: FloatingActionProps) 
             }
       }
       whileHover={
-        shouldReduceMotion
+        disableFloat
           ? undefined
-          : { scale: 1.08, y: -4, rotate: 2, transition: { type: "spring", stiffness: 380, damping: 18 } }
+          : shouldReduceMotion
+          ? undefined
+          : {
+              scale: 1.08,
+              y: -4,
+              rotate: 2,
+              transition: { type: "spring", stiffness: 380, damping: 18 },
+            }
       }
       whileTap={{ scale: 0.94 }}
     >
       <Image
         src="/logo/bg_chatbot.svg"
         alt=""
-        width={64}
-        height={64}
+        width={56}
+        height={56}
         unoptimized
-        className="absolute inset-0 h-16 w-16 rounded-2xl"
+        className="absolute inset-0 h-14 w-14 rounded-2xl"
         aria-hidden
       />
       <motion.span
         className="relative z-10 flex items-center justify-center"
-        animate={shouldReduceMotion ? undefined : { rotate: [0, 8, -8, 0], scale: [1, 1.05, 1, 1.05, 1] }}
+        animate={isStatic ? undefined : { rotate: [0, 8, -8, 0], scale: [1, 1.05, 1, 1.05, 1] }}
         transition={
-          shouldReduceMotion
+          isStatic
             ? undefined
             : { duration: 5, repeat: Infinity, ease: "easeInOut" }
         }
@@ -58,10 +70,10 @@ export default function FloatingAction({ className = "" }: FloatingActionProps) 
         <Image
           src="/logo/chatbot_sparkle.svg"
           alt=""
-          width={32}
-          height={32}
+          width={28}
+          height={28}
           unoptimized
-          className="h-8 w-8"
+          className="h-7 w-7"
           aria-hidden
         />
       </motion.span>

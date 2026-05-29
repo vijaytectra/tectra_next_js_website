@@ -39,7 +39,7 @@ export default function ClientWorks() {
   return (
     <section
       id="projects"
-      className="w-full overflow-hidden bg-color-neutral-0 py-16 sm:py-20"
+      className="section-light-surface w-full overflow-hidden py-16 sm:py-20"
       aria-labelledby="client-works-heading"
     >
       <div className="section-shell flex flex-col gap-12 lg:gap-16">

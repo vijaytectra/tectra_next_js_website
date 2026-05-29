@@ -18,7 +18,7 @@ export default function Careers() {
   return (
     <section
       id="careers"
-      className="w-full overflow-hidden bg-color-neutral-0 py-16 sm:py-24"
+      className="section-light-surface w-full overflow-hidden py-16 sm:py-24"
       aria-labelledby="careers-heading"
     >
       <div className="section-shell">
@@ -66,7 +66,7 @@ export default function Careers() {
                   ))}
                 </div>
                 <div
-                  className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-r from-transparent to-color-neutral-0 sm:w-24"
+                  className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-r from-transparent to-color-neutral-50 sm:w-24"
                   aria-hidden
                 />
               </div>

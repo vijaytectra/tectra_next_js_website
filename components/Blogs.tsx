@@ -38,7 +38,7 @@ export default function Blogs() {
   return (
     <section
       id="blogs"
-      className="w-full overflow-hidden bg-color-neutral-50 py-16 sm:py-24"
+      className="section-light-surface w-full overflow-hidden py-16 sm:py-24"
       aria-labelledby="blogs-heading"
     >
       <div className="section-shell flex flex-col gap-12 lg:gap-16">
@@ -65,7 +65,7 @@ export default function Blogs() {
           {BLOGS.map((blog, index) => (
             <motion.article
               key={blog.title}
-              className="flex flex-col gap-3 overflow-hidden bg-White"
+              className="flex flex-col gap-3 overflow-hidden bg-color-neutral-0"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

@@ -1,82 +1,92 @@
 "use client";
 
-import {
-  motion,
-  useReducedMotion,
-  useScroll,
-  useSpring,
-  useTransform,
-} from "framer-motion";
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 
-const HERO_IMAGE_WIDTH = 1672;
-const HERO_IMAGE_HEIGHT = 941;
+const HERO_VIDEO_SRC = "/videos/hero-coins-loop.mp4";
+const HERO_VIDEO_POSTER = "/logo/bg_image_hero.png";
 
 export default function HeroScrollBackground() {
-  const shouldReduceMotion = useReducedMotion();
-  const { scrollY } = useScroll();
+  const parallaxRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoReady, setVideoReady] = useState(false);
 
-  const parallaxY = useTransform(scrollY, (value) => value * 0.22);
-  const smoothY = useSpring(parallaxY, {
-    stiffness: 90,
-    damping: 28,
-    mass: 0.4,
-  });
+  useEffect(() => {
+    const element = parallaxRef.current;
+    const video = videoRef.current;
+    if (!element || !video) return;
 
-  const driftX = useTransform(scrollY, [0, 4000], [0, 48]);
-  const scale = useTransform(scrollY, [0, 2500], [1, 1.06]);
-  const smoothScale = useSpring(scale, { stiffness: 80, damping: 24 });
+    const motionMedia = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    const playVideo = () => {
+      video.muted = true;
+      void video.play().catch(() => {
+        setVideoReady(false);
+      });
+    };
+
+    const updateParallax = () => {
+      if (motionMedia.matches) {
+        element.style.setProperty("--parallax-x", "0px");
+        element.style.setProperty("--parallax-y", "0px");
+        element.style.setProperty("--parallax-scale", "1");
+        return;
+      }
+
+      const scroll = window.scrollY;
+      element.style.setProperty("--parallax-x", `${scroll * 0.012}px`);
+      element.style.setProperty("--parallax-y", `${scroll * 0.22}px`);
+      element.style.setProperty("--parallax-scale", `${1 + scroll * 0.000024}`);
+    };
+
+    playVideo();
+    updateParallax();
+
+    video.addEventListener("loadeddata", playVideo);
+    window.addEventListener("scroll", updateParallax, { passive: true });
+
+    return () => {
+      video.removeEventListener("loadeddata", playVideo);
+      window.removeEventListener("scroll", updateParallax);
+    };
+  }, []);
 
   return (
     <div
-      className="pointer-events-none fixed inset-0 z-0 overflow-hidden"
+      className="pointer-events-none fixed inset-0 z-0 overflow-hidden bg-black"
       aria-hidden
     >
-      <div className="absolute inset-0 bg-color-primary-main" />
-
-      <motion.div
-        className="absolute left-1/2 top-[42%] flex w-[clamp(260px,58vw,960px)] -translate-x-1/2 -translate-y-1/2 items-center justify-center"
-        style={
-          shouldReduceMotion
-            ? undefined
-            : {
-                y: smoothY,
-                x: driftX,
-                scale: smoothScale,
-              }
-        }
-      >
-        <motion.div
-          className="relative w-full"
-          style={{ aspectRatio: `${HERO_IMAGE_WIDTH} / ${HERO_IMAGE_HEIGHT}` }}
-          animate={
-            shouldReduceMotion
-              ? { y: 0, x: 0, rotate: 0, scale: 1 }
-              : {
-                  y: [0, -18, -8, -22, 0],
-                  x: [0, 10, -6, 5, 0],
-                  rotate: [0, 1, -0.6, 0.5, 0],
-                  scale: [1, 1.02, 1.012, 1.025, 1],
-                }
-          }
-          transition={{
-            duration: 16,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        >
+      <div ref={parallaxRef} className="hero-bg-video-layer">
+        <div className="hero-bg-video-frame">
           <Image
-            src="/logo/bg_image_hero.png"
+            src={HERO_VIDEO_POSTER}
             alt=""
             fill
             priority
-            className="object-contain object-center"
+            className={`object-contain object-center transition-opacity duration-500 ${
+              videoReady ? "opacity-0" : "opacity-100"
+            }`}
             sizes="100vw"
           />
-        </motion.div>
-      </motion.div>
 
-      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40" />
+          <video
+            ref={videoRef}
+            className="hero-bg-video"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            onLoadedData={() => {
+              setVideoReady(true);
+              void videoRef.current?.play().catch(() => setVideoReady(false));
+            }}
+            onError={() => setVideoReady(false)}
+          >
+            <source src={HERO_VIDEO_SRC} type="video/mp4" />
+          </video>
+        </div>
+      </div>
     </div>
   );
 }

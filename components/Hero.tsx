@@ -82,15 +82,10 @@ export default function Hero() {
       className="section-hero-surface relative flex min-h-[var(--Hero-Min-Height)] h-dvh max-h-dvh w-full flex-col overflow-hidden"
       aria-labelledby="hero-heading"
     >
-      <div
-        aria-hidden
-        className="pointer-events-none absolute left-1/2 top-[177px] z-[1] h-[537px] w-[min(955px,90vw)] -translate-x-1/2 bg-black/50"
-      />
-
       <div className="hero-shell relative z-10 flex h-full min-h-0 w-full flex-col justify-between pt-6 pb-8 md:pt-[var(--Hero-Padding-Top)] md:pb-[var(--Hero-Padding-Bottom)]">
         <Navbar className="shrink-0" />
 
-        <div className="relative z-20 flex w-full shrink-0 items-end justify-between gap-4">
+        <div className="relative z-20 mb-16 flex w-full shrink-0 items-end justify-between gap-4 sm:mb-20 md:mb-28 lg:mb-36">
           <div className="w-full max-w-3xl shrink-0">
             <motion.p
               className="font-dm-mono text-base font-normal leading-5 tracking-[3.2px] text-color-neutral-300"

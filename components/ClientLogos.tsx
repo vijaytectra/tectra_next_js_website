@@ -25,13 +25,13 @@ export default function ClientLogos() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-2 border-color-neutral-700 sm:grid-cols-3 lg:grid-cols-4">
+        <div className="grid grid-cols-2 border-white/5 sm:grid-cols-3 lg:grid-cols-4">
           {Array.from({ length: CLIENT_LOGO_COUNT }, (_, index) => {
             const logoIndex = index + 1;
             return (
               <motion.div
                 key={logoIndex}
-                className="flex h-36 items-center justify-center border border-color-neutral-700 p-4 sm:h-48"
+                className="flex h-36 items-center justify-center border border-white/5 p-4 sm:h-48"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}

@@ -72,7 +72,7 @@ export default function Footer() {
   return (
     <footer
       id="contact"
-      className="section-dark-surface w-full overflow-hidden"
+      className="section-footer-surface w-full overflow-hidden"
       aria-labelledby="footer-cta-heading"
     >
       <div className="section-shell w-full py-5 sm:py-6 lg:py-7">

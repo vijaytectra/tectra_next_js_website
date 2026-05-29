@@ -44,7 +44,7 @@ export default function OurServices() {
   return (
     <section
       id="services"
-      className="w-full overflow-hidden bg-color-neutral-50 py-16 sm:py-24"
+      className="section-light-surface w-full overflow-hidden py-16 sm:py-24"
       aria-labelledby="services-heading"
     >
       <div className="section-shell flex flex-col gap-12 lg:gap-16">

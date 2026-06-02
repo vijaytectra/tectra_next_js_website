@@ -32,6 +32,7 @@ export default function AboutVision() {
                 Our Vision
               </h2>
             </div>
+          <div className="hidden lg:block">
             <OutlineButton
               href="#about"
               variant="dark-muted"
@@ -39,6 +40,7 @@ export default function AboutVision() {
             >
               About us
             </OutlineButton>
+          </div>
           </div>
           <p className="flex-1 font-dm-sans text-lg font-normal leading-[1.6] text-color-neutral-400 sm:text-xl sm:leading-[1.7] lg:text-[24px] lg:leading-[36px]">
              Tectra began with a vision to turn possibilities into meaningful digital experiences through innovation, precision, and purpose.
@@ -80,6 +82,17 @@ export default function AboutVision() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Mobile-only bottom button */}
+        <div className="flex justify-center sm:justify-end lg:hidden">
+          <OutlineButton
+            href="#about"
+            variant="dark-muted"
+            circleOffset={{ left: "-69px", top: "55px" }}
+          >
+            About us
+          </OutlineButton>
         </div>
       </div>
     </section>

@@ -53,13 +53,15 @@ export default function ClientWorks() {
               We create digital solutions that drive growth.
             </h2>
           </div>
-          <OutlineButton
-            href="#projects"
-            variant="light"
-            circleOffset={{ left: "-41px", top: "55px" }}
-          >
-            View All Projects
-          </OutlineButton>
+          <div className="hidden lg:block">
+            <OutlineButton
+              href="#projects"
+              variant="light"
+              circleOffset={{ left: "-41px", top: "55px" }}
+            >
+              View All Projects
+            </OutlineButton>
+          </div>
         </div>
 
         <div className="flex flex-col gap-10 lg:gap-14">
@@ -112,6 +114,17 @@ export default function ClientWorks() {
               ))}
             </div>
           ))}
+        </div>
+
+        {/* Mobile-only bottom button */}
+        <div className="flex justify-start lg:hidden">
+          <OutlineButton
+            href="#projects"
+            variant="light"
+            circleOffset={{ left: "-41px", top: "55px" }}
+          >
+            View All Projects
+          </OutlineButton>
         </div>
       </div>
     </section>

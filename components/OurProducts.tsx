@@ -123,7 +123,7 @@ export default function OurProducts() {
 
         <div className="mt-4 sm:mt-8 lg:mt-12 w-full overflow-hidden px-4 sm:px-6 lg:px-[max(1.5rem,calc((100vw-1200px)/2))]">
           <motion.div 
-            className="flex w-max gap-4 sm:gap-10 lg:gap-16"
+            className="flex w-max gap-12 sm:gap-16 lg:gap-32"
             style={{ x }}
           >
             {PRODUCTS.map((product) => (
@@ -134,7 +134,7 @@ export default function OurProducts() {
                 <SectionImage
                   src={product.image}
                   alt={`${product.name} product preview`}
-                  className="aspect-[4/3] sm:aspect-square w-full max-w-full shrink-0 lg:max-w-[576px] lg:basis-[576px] object-cover object-center rounded-lg sm:rounded-none"
+                  className="aspect-square w-full max-w-full shrink-0 lg:aspect-[4/3] lg:max-w-[576px] lg:basis-[576px] rounded-2xl lg:rounded-3xl shadow-lg shadow-black/20"
                   sizes="(max-width: 1024px) 92vw, 576px"
                 />
                 <div className="flex min-h-0 flex-1 flex-col justify-between gap-3 p-0 sm:gap-10 sm:p-4 lg:min-h-[480px] lg:gap-14 lg:p-6">

@@ -176,7 +176,7 @@ export default function Footer() {
             </FooterColumn>
           </div>
 
-          <div className="flex w-full flex-col items-start justify-between gap-3 sm:flex-row sm:items-center">
+          <div className="flex w-full flex-row items-center justify-between gap-3">
             <Link href="/" aria-label="Tectra Technologies home">
               <Image
                 src="/logo/tectra_logo_only.png"
@@ -211,7 +211,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="grid w-full grid-cols-1 gap-1.5 border-t border-color-neutral-800 pt-3 text-[11px] font-normal leading-4 text-color-neutral-500 sm:grid-cols-3 sm:items-center">
+          <div className="flex w-full flex-col gap-4 border-t border-color-neutral-800 pt-4 text-[11px] font-normal leading-4 text-color-neutral-500 sm:grid sm:grid-cols-3 sm:items-center sm:gap-1.5">
             <p className="order-last flex items-center gap-1 font-dm-sans sm:order-first sm:justify-self-start">
               <Image
                 src={FOOTER_ICONS.copyright}
@@ -224,18 +224,20 @@ export default function Footer() {
               />
               Tectra Technologies © 2026 All Rights reserved
             </p>
-            <Link
-              href="/privacy"
-              className="font-dm-sans transition-colors hover:text-color-neutral-300 sm:justify-self-center"
-            >
-              Privacy Policy
-            </Link>
-            <Link
-              href="/terms"
-              className="font-dm-sans transition-colors hover:text-color-neutral-300 sm:justify-self-end"
-            >
-              Terms &amp; Conditions
-            </Link>
+            <div className="flex w-full justify-between sm:contents">
+              <Link
+                href="/privacy"
+                className="font-dm-sans transition-colors hover:text-color-neutral-300 sm:justify-self-center"
+              >
+                Privacy Policy
+              </Link>
+              <Link
+                href="/terms"
+                className="font-dm-sans transition-colors hover:text-color-neutral-300 sm:justify-self-end"
+              >
+                Terms &amp; Conditions
+              </Link>
+            </div>
           </div>
         </div>
       </div>

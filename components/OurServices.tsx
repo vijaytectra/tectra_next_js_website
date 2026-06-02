@@ -58,13 +58,15 @@ export default function OurServices() {
               We create digital solutions that drive growth.
             </h2>
           </div>
-          <OutlineButton
-            href="/services"
-            variant="light"
-            circleOffset={{ left: "-30px", top: "55px" }}
-          >
-            Explore All Services
-          </OutlineButton>
+          <div className="hidden lg:block">
+            <OutlineButton
+              href="/services"
+              variant="light"
+              circleOffset={{ left: "-30px", top: "55px" }}
+            >
+              Explore All Services
+            </OutlineButton>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 border-color-neutral-300 md:grid-cols-2">
@@ -118,6 +120,17 @@ export default function OurServices() {
               </div>
             </motion.article>
           ))}
+        </div>
+
+        {/* Mobile-only bottom button */}
+        <div className="flex justify-start lg:hidden">
+          <OutlineButton
+            href="/services"
+            variant="light"
+            circleOffset={{ left: "-30px", top: "55px" }}
+          >
+            Explore All Services
+          </OutlineButton>
         </div>
       </div>
     </section>

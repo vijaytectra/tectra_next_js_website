@@ -36,14 +36,16 @@ export default function Careers() {
             </div>
 
             <div className="flex flex-col gap-4">
-              <OutlineButton
-                href="#careers"
-                variant="solid-black"
-                className="h-14 max-w-full"
-                circleOffset={{ left: "-48px", top: "-157px" }}
-              >
-                Explore Opportunities
-              </OutlineButton>
+              <div className="hidden lg:block">
+                <OutlineButton
+                  href="#careers"
+                  variant="solid-black"
+                  className="h-14 max-w-full"
+                  circleOffset={{ left: "-48px", top: "-157px" }}
+                >
+                  Explore Opportunities
+                </OutlineButton>
+              </div>
 
               <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
                 {ROLES.map((role, index) => (
@@ -77,6 +79,18 @@ export default function Careers() {
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
           </motion.div>
+        </div>
+
+        {/* Mobile-only bottom button */}
+        <div className="mt-8 flex justify-start lg:hidden">
+          <OutlineButton
+            href="#careers"
+            variant="solid-black"
+            className="h-14 w-full"
+            circleOffset={{ left: "-48px", top: "-157px" }}
+          >
+            Explore Opportunities
+          </OutlineButton>
         </div>
       </div>
     </section>

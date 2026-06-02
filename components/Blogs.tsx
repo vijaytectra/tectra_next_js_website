@@ -52,15 +52,7 @@ export default function Blogs() {
               Tech Perspective
             </h2>
           </div>
-          <OutlineButton
-            href="#blogs"
-            variant="light"
-            circleOffset={{ left: "-53px", top: "55px" }}
-          >
-            View all Blogs
-          </OutlineButton>
         </div>
-
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
           {BLOGS.map((blog, index) => (
             <motion.article
@@ -108,6 +100,17 @@ export default function Blogs() {
               </div>
             </motion.article>
           ))}
+        </div>
+
+        {/* Bottom button */}
+        <div className="flex justify-start">
+          <OutlineButton
+            href="#blogs"
+            variant="light"
+            circleOffset={{ left: "-53px", top: "55px" }}
+          >
+            View all Blogs
+          </OutlineButton>
         </div>
       </div>
     </section>

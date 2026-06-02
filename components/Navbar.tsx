@@ -63,10 +63,10 @@ export default function Navbar({ className = "", onMobileMenuChange, tone = "lig
           <Logo className="relative z-10 shrink-0" tone={tone} />
 
           <nav
-             className="absolute left-1/2 hidden -translate-x-1/2 lg:block"
+             className="hidden flex-1 justify-center px-4 lg:flex"
              aria-label="Primary"
           >
-            <ul className="flex items-center gap-7 xl:gap-9">
+            <ul className="flex items-center justify-center gap-5 xl:gap-9">
               {NAV_LINKS.map((link, index) => (
                 <motion.li
                   key={link.href}

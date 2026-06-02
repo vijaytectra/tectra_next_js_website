@@ -71,7 +71,7 @@ export default function OurServices() {
           {SERVICES.map((service, index) => (
             <motion.article
               key={service.title}
-              className="group flex flex-col gap-8 border border-color-neutral-300 bg-color-neutral-0 p-6 transition-colors duration-300 hover:bg-color-primary-main sm:gap-10 sm:p-8 lg:gap-12 lg:p-10"
+              className="group flex flex-col gap-8 border border-color-neutral-300 bg-color-neutral-0 p-6 transition-colors duration-700 hover:bg-color-primary-main sm:gap-10 sm:p-8 lg:gap-12 lg:p-10"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -83,18 +83,18 @@ export default function OurServices() {
                 width={40}
                 height={40}
                 unoptimized
-                className="h-10 w-10 object-contain transition-[filter] duration-300 group-hover:brightness-0 group-hover:invert"
+                className="h-10 w-10 object-contain transition-[filter] duration-700 group-hover:brightness-0 group-hover:invert"
                 aria-hidden
               />
               <div className="flex flex-col gap-3">
                 <h3
-                  className={`font-dm-mono text-lg font-medium leading-6 text-color-neutral-900 transition-colors duration-300 group-hover:text-color-neutral-50 sm:text-xl ${
+                  className={`font-dm-mono text-lg font-medium leading-6 text-color-neutral-900 transition-colors duration-700 group-hover:text-color-neutral-50 sm:text-xl ${
                     service.uppercaseOnHover ? "group-hover:uppercase" : ""
                   }`}
                 >
                   {service.title}
                 </h3>
-                <p className="font-dm-sans text-sm font-normal leading-5 text-color-neutral-500 transition-colors duration-300 group-hover:text-color-neutral-400 sm:text-base">
+                <p className="font-dm-sans text-sm font-normal leading-5 text-color-neutral-500 transition-colors duration-700 group-hover:text-color-neutral-400 sm:text-base">
                   {service.description}
                 </p>
               </div>
@@ -102,7 +102,7 @@ export default function OurServices() {
                 <OutlineButton
                   href={service.href}
                   variant="light"
-                  className="absolute inset-0 w-full transition-opacity duration-300 group-hover:pointer-events-none group-hover:opacity-0 sm:w-auto"
+                  className="absolute inset-0 w-full transition-opacity duration-700 group-hover:pointer-events-none group-hover:opacity-0 sm:w-auto"
                   circleOffset={{ left: "-43px", top: "55px" }}
                 >
                   Explore Services
@@ -110,7 +110,7 @@ export default function OurServices() {
                 <OutlineButton
                   href={service.href}
                   variant="dark"
-                  className="absolute inset-0 w-full opacity-0 transition-opacity duration-300 group-hover:opacity-100 sm:w-auto"
+                  className="absolute inset-0 w-full opacity-0 transition-opacity duration-700 group-hover:opacity-100 sm:w-auto"
                   circleOffset={{ left: "-43px", top: "55px" }}
                 >
                   Explore Services

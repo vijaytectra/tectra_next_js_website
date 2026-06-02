@@ -19,7 +19,7 @@ export default function Careers() {
     >
       <div className="section-shell">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-12">
-          <div className="flex min-h-[380px] flex-col justify-between gap-10 lg:min-h-[600px]">
+          <div className="flex flex-col justify-start gap-8 sm:min-h-[380px] sm:justify-between sm:gap-10 lg:min-h-[600px]">
             <div className="flex flex-col gap-6 sm:gap-8">
               <h2
                 id="careers-heading"

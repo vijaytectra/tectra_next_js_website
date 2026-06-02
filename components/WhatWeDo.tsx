@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useScroll, useMotionValueEvent, useSpring } from "framer-motion";
 import OutlineButton from "./ui/OutlineButton";
 import { images } from "@/lib/images";
 
@@ -13,12 +13,7 @@ const SERVICE_CARDS = [
     description:
       "We combine strategy, design, and technology to build tailored digital solutions that drive business growth.",
     image: images.whatWeDoDesign,
-    bodyClass: "text-White",
-    titleClass: "text-color-neutral-50",
-    numberClass: "font-urbanist font-semibold text-color-neutral-50",
-    bgClass: "bg-color-neutral-900",
-    overlayClass:
-      "bg-gradient-to-b from-black/50 via-neutral-600/0 to-black/50",
+    bgClass: "bg-[#111111]",
   },
   {
     id: "02",
@@ -26,11 +21,7 @@ const SERVICE_CARDS = [
     description:
       "We develop scalable digital products engineered for performance, reliability, and seamless user experiences.",
     image: images.whatWeDoDevelop,
-    bodyClass: "text-color-neutral-200",
-    titleClass: "text-color-neutral-50",
-    numberClass: "font-urbanist font-semibold text-color-neutral-50",
-    bgClass: "bg-color-neutral-500",
-    overlayClass: "bg-gradient-to-b from-black via-neutral-600/0 to-black",
+    bgClass: "bg-[#0d0d0d]",
   },
   {
     id: "03",
@@ -38,72 +29,74 @@ const SERVICE_CARDS = [
     description:
       "We market brands through data-driven strategies, digital campaigns, and impactful digital experiences.",
     image: images.whatWeDoGrow,
-    bodyClass: "text-color-neutral-200",
-    titleClass: "text-color-neutral-100",
-    numberClass: "font-urbanist font-medium text-color-neutral-100",
-    bgClass: "bg-color-neutral-500",
-    overlayClass: "bg-gradient-to-b from-black via-neutral-600/0 to-black",
+    bgClass: "bg-[#0a0a0a]",
   },
 ] as const;
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
+/* ── Layout constants ───────────────────────────────────────── */
+const PEEK = 82;   // collapsed card header height (px)
+const GAP = 10;   // gap between cards (px)
+const EXPANDED_D = 440; // expanded height – desktop
+const EXPANDED_M = 310; // expanded height – mobile
+
+function getTopOffset(index: number, activeIndex: number, expanded: number): number {
+  if (index <= activeIndex) {
+    // cards at or above active sit at their natural stacked position
+    return index * (PEEK + GAP);
+  }
+  // cards below active sit after the expanded active card
+  return activeIndex * (PEEK + GAP) + expanded + GAP + (index - activeIndex - 1) * (PEEK + GAP);
+}
+
 export default function WhatWeDo() {
-  const containerRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 640);
-    };
-
-    checkMobile();
-
-    window.addEventListener("resize", checkMobile);
-
-    return () => window.removeEventListener("resize", checkMobile);
+    const check = () => setIsMobile(window.innerWidth < 640);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
   }, []);
 
-  const handleScroll = () => {
-    const container = containerRef.current;
-    if (!container) return;
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    // Maximize the scroll range: start when section enters, end when it leaves.
+    // This spreads the 3 cards over the longest possible scroll distance.
+    offset: ["start 95%", "end 5%"],
+  });
 
-    const scrollTop = container.scrollTop;
-    const children = Array.from(container.children) as HTMLElement[];
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 30, // Much softer spring
+    damping: 20,
+    restDelta: 0.001
+  });
 
-    let closestIndex = 0;
-    let minDistance = Infinity;
+  useMotionValueEvent(smoothProgress, "change", (latest) => {
+    const index = Math.min(
+      SERVICE_CARDS.length - 1,
+      Math.max(0, Math.round(latest * (SERVICE_CARDS.length - 1)))
+    );
+    setActiveIndex(index);
+  });
 
-    children.forEach((child, index) => {
-      const distance = Math.abs(child.offsetTop - scrollTop);
-      if (distance < minDistance) {
-        minDistance = distance;
-        closestIndex = index;
-      }
-    });
 
-    setActiveIndex(closestIndex);
-  };
-
-  useEffect(() => {
-    const container = containerRef.current;
-
-    if (!container) return;
-
-    container.addEventListener("scroll", handleScroll);
-
-    return () => {
-      container.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  const expanded = isMobile ? EXPANDED_M : EXPANDED_D;
+  // total container height: one expanded + (n-1) peek strips + (n-1) gaps
+  const containerH = expanded + (SERVICE_CARDS.length - 1) * (PEEK + GAP);
 
   return (
-    <section
+    <section ref={sectionRef}
       className="section-dark-surface relative w-full overflow-hidden"
       aria-labelledby="what-we-do-heading"
     >
       <div className="section-shell grid grid-cols-1 items-start gap-12 py-16 lg:min-h-[var(--Section-Height)] lg:grid-cols-2 lg:gap-8 lg:pt-10 lg:pb-[100px]">
+
+        {/* ── Left – heading & CTA ─────────────────────────────── */}
         <motion.div
           className="flex flex-col justify-between gap-10 lg:min-h-[610px] lg:max-w-[564px]"
           initial={{ opacity: 0, y: 28 }}
@@ -134,93 +127,73 @@ export default function WhatWeDo() {
           </OutlineButton>
         </motion.div>
 
+        {/* ── Right – stacked cards ────────────────────────────── */}
         <div className="relative w-full lg:max-w-[564px] lg:justify-self-end">
+          {/* fixed-height canvas for the stack */}
           <div
-            ref={containerRef}
-            className="what-we-do-cards flex max-h-[560px] flex-col gap-0 overflow-y-auto pr-1 sm:max-h-[700px]"
+            className="relative w-full"
+            style={{ height: containerH }}
           >
             {SERVICE_CARDS.map((card, index) => {
-              const collapsedHeight = isMobile ? 85 : 95;
-              const expandedHeight = isMobile ? 340 : 480;
               const isActive = activeIndex === index;
+              const topPx = getTopOffset(index, activeIndex, expanded);
 
               return (
                 <motion.article
                   key={card.id}
+                  ref={el => (cardRefs.current[index] = el)}
+                  className={`absolute left-0 right-0 overflow-hidden rounded-[28px] cursor-pointer ${card.bgClass}`}
+                  style={{
+                    zIndex: isActive ? 100 : 10 + index,
+                  }}
+                  animate={{
+                    top: topPx,
+                    height: isActive ? expanded : PEEK,
+                  }}
+                  transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  animate={{
-                    height: isActive ? expandedHeight : collapsedHeight,
-                  }}
-                  transition={{
-                    duration: 0.45,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                  onClick={() => {
-                    setActiveIndex(index);
-                    const cardElement = containerRef.current?.children[index] as HTMLElement;
-                    if (cardElement) {
-                      containerRef.current?.scrollTo({
-                        top: cardElement.offsetTop,
-                        behavior: "smooth",
-                      });
-                    }
-                  }}
-                  onMouseEnter={() => {
-                    setActiveIndex(index);
-                  }}
-                  className={`relative sticky overflow-hidden rounded-[28px] cursor-pointer ${card.bgClass}`}
-                  style={{
-                    top: `${index * collapsedHeight}px`,
-                    zIndex: 10 + index,
-                  }}
+                  viewport={{ once: false }}
                 >
-                  {/* Image */}
+                  {/* Background image (always rendered, dimmed when collapsed) */}
                   <div className="absolute inset-0">
                     <Image
                       src={card.image}
                       alt={card.title}
                       fill
-                      className="object-cover transition-all duration-500"
+                      className="object-cover"
                       sizes="(max-width:1024px) 100vw, 564px"
                     />
-
-                    <div
-                      className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/90"
-                      style={{
-                        opacity: isActive ? 0.35 : 0.8,
-                      }}
+                    <motion.div
+                      className="absolute inset-0 bg-black"
+                      animate={{ opacity: isActive ? 0.25 : 0.72 }}
+                      transition={{ duration: 0.45 }}
                     />
                   </div>
 
-                  {/* Content */}
-                  <div className="relative z-10 flex h-full flex-col p-8 md:p-10">
-                    <div className="flex items-center justify-between shrink-0">
-                      <h3 className="font-dm-sans text-[30px] font-medium text-white md:text-[42px]">
+                  {/* Card content */}
+                  <div className="relative z-10 flex h-full flex-col px-8 pt-6 pb-8 md:px-10 md:pt-7 md:pb-10">
+                    {/* ── Header row – always visible ── */}
+                    <div className="flex shrink-0 items-center justify-between">
+                      <h3 className="font-dm-sans text-[28px] font-medium leading-none text-white md:text-[40px]">
                         {card.title}
                       </h3>
-
-                      <span className="font-dm-sans text-[30px] font-medium text-white md:text-[42px]">
+                      <span className="font-dm-sans text-[28px] font-medium leading-none text-white md:text-[40px]">
                         {card.id}
                       </span>
                     </div>
 
+                    {/* ── Body – fades in when expanded ── */}
                     <motion.div
-                      initial={false}
+                      className="overflow-hidden flex flex-1 flex-col justify-end"
                       animate={{
                         opacity: isActive ? 1 : 0,
-                        y: isActive ? 0 : 20,
-                        height: isActive ? "auto" : 0,
-                        marginTop: isActive ? 24 : 0,
+                        y: isActive ? 0 : 16,
+                        marginTop: isActive ? 20 : 0,
                       }}
-                      transition={{
-                        duration: 0.35,
-                        ease: [0.22, 1, 0.36, 1],
-                      }}
-                      className="overflow-hidden flex-1 flex flex-col justify-end"
+                      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                     >
-                      <p className="max-w-[85%] font-dm-sans text-lg leading-[1.8] text-white md:text-xl">
+                      <p className="max-w-[82%] font-dm-sans text-lg leading-[1.8] text-white/90 md:text-xl">
                         {card.description}
                       </p>
                     </motion.div>

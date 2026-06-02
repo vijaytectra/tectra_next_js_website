@@ -17,8 +17,8 @@ export const images = {
     asset("images/d054aa3f9e542cb7d7197f95067432bbbd4bfe45.png"),
     asset("images/f9a40d23ddce07931956897f2fcb7f37996390a2.png"),
   ] as const,
-  productMotherly: asset("images/motherly.png"),
-  productElderly: asset("images/elderly.png"),
+  productMotherly: asset("images/image 115.png"),
+  productElderly: asset("images/ChatGPT Image May 30, 2026, 06_27_07 PM_upscayl_4x_ultrasharp-4x 1.png"),
   clientLogo: (index: number) => {
     if (index === 1) return asset("logo/image 49.png");
     if (index === 2) return asset("logo/image 50.png");

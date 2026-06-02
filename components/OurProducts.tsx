@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import Link from "next/link";
 import OutlineButton from "./ui/OutlineButton";
@@ -46,8 +46,10 @@ export default function OurProducts() {
   const targetRef = useRef<HTMLDivElement>(null);
   
   // Track vertical scroll progress of the tall section
+  // offset ensures horizontal movement only happens while section is sticky
   const { scrollYProgress } = useScroll({
     target: targetRef,
+    offset: ["start start", "end end"]
   });
 
   // Apply a spring physics model to make the scrolling extremely smooth
@@ -60,6 +62,42 @@ export default function OurProducts() {
   // Transform the smoothed progress into a horizontal translation.
   // Translating to -50% reveals the second product nicely.
   const x = useTransform(smoothProgress, [0, 1], ["0%", "-50%"]);
+
+  // Snap to the nearest card when scrolling stops
+  useEffect(() => {
+    let timeoutId: NodeJS.Timeout;
+    
+    const handleScroll = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        const p = scrollYProgress.get();
+        // Only snap if we are inside the progress range, not at the very edges
+        if (p > 0.05 && p < 0.95) {
+          const targetP = p < 0.5 ? 0 : 1;
+          if (targetRef.current) {
+            const rect = targetRef.current.getBoundingClientRect();
+            const absoluteTop = window.scrollY + rect.top;
+            const absoluteBottom = window.scrollY + rect.bottom;
+            
+            const targetScrollY = targetP === 0 
+              ? absoluteTop 
+              : absoluteBottom - window.innerHeight;
+              
+            window.scrollTo({
+              top: targetScrollY,
+              behavior: "smooth"
+            });
+          }
+        }
+      }, 150); // 150ms debounce
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      clearTimeout(timeoutId);
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [scrollYProgress]);
 
   return (
     <section
@@ -136,6 +174,8 @@ export default function OurProducts() {
                 </div>
               </article>
             ))}
+            {/* Zero-width spacer to force the total width to precisely 2x card + 2x gap. This makes a -50% translation perfectly align the second card. */}
+            <div className="w-0 shrink-0" aria-hidden="true" />
           </motion.div>
         </div>
       </div>

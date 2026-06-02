@@ -1,7 +1,7 @@
 "use client";
 
 import { animate, useInView } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 
 type CountUpProps = {
   value: string;
@@ -22,7 +22,7 @@ export default function CountUp({
 }: CountUpProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.4 });
-  const parsed = parseStatValue(value);
+  const parsed = useMemo(() => parseStatValue(value), [value]);
   const end = parsed?.end ?? 0;
   const suffix = parsed?.suffix ?? "";
   const [display, setDisplay] = useState(() => (parsed ? `0${suffix}` : value));
@@ -53,7 +53,7 @@ export default function CountUp({
     });
 
     return () => controls.stop();
-  }, [isInView, end, suffix, value, duration, parsed]);
+  }, [isInView, end, suffix, value, duration]);
 
   return (
     <span

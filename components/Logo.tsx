@@ -3,9 +3,10 @@ import Link from "next/link";
 
 type LogoProps = {
   className?: string;
+  tone?: "light" | "dark";
 };
 
-export default function Logo({ className = "" }: LogoProps) {
+export default function Logo({ className = "", tone = "light" }: LogoProps) {
   return (
     <Link
       href="/"
@@ -18,7 +19,7 @@ export default function Logo({ className = "" }: LogoProps) {
           alt="Tectra Technologies"
           fill
           priority
-          className="object-contain object-left"
+          className={`object-contain object-left ${tone === "dark" ? "brightness-0" : ""}`}
           sizes="(max-width: 1024px) 260px, 300px"
         />
       </span>

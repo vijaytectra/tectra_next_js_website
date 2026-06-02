@@ -130,12 +130,12 @@ export default function Footer() {
             </FooterColumn>
 
             <FooterColumn title="Services">
-              <ul className="grid grid-cols-1 gap-1 lg:grid-cols-2 lg:gap-x-4">
+              <ul className="flex flex-col gap-1">
                 {SERVICE_LINKS.map((label) => (
                   <li key={label}>
                     <Link
                       href="#services"
-                      className="font-dm-sans text-xs font-normal leading-4 text-color-neutral-400 transition-colors hover:text-color-neutral-0"
+                      className="font-dm-sans text-xs font-normal leading-4 text-color-neutral-400 transition-colors hover:text-color-neutral-0 whitespace-nowrap"
                     >
                       {label}
                     </Link>

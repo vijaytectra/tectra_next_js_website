@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
-const HERO_VIDEO_SRC = "/videos/hero-coins-loop.mp4";
+const HERO_VIDEO_SRC = "/videos/Landing%20Page.mp4";
 const HERO_VIDEO_POSTER = "/logo/bg_image_hero.png";
 
 export default function HeroScrollBackground() {
@@ -26,6 +26,22 @@ export default function HeroScrollBackground() {
     };
 
     const updateParallax = () => {
+      const scroll = window.scrollY;
+      const threshold = window.innerHeight * 2;
+
+      // Pause and hide video background past the threshold to optimize performance
+      if (scroll > threshold) {
+        if (!video.paused) {
+          video.pause();
+        }
+        element.style.display = "none";
+      } else {
+        if (video.paused) {
+          void video.play().catch(() => {});
+        }
+        element.style.display = "block";
+      }
+
       if (motionMedia.matches) {
         element.style.setProperty("--parallax-x", "0px");
         element.style.setProperty("--parallax-y", "0px");
@@ -33,7 +49,6 @@ export default function HeroScrollBackground() {
         return;
       }
 
-      const scroll = window.scrollY;
       element.style.setProperty("--parallax-x", `${scroll * 0.012}px`);
       element.style.setProperty("--parallax-y", `${scroll * 0.22}px`);
       element.style.setProperty("--parallax-scale", `${1 + scroll * 0.000024}`);

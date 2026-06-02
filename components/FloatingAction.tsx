@@ -1,7 +1,6 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import Image from "next/image";
 
 type FloatingActionProps = {
   className?: string;
@@ -49,12 +48,11 @@ export default function FloatingAction({
       }
       whileTap={{ scale: 0.94 }}
     >
-      <Image
+      <img
         src="/logo/bg_chatbot.svg"
         alt=""
         width={56}
         height={56}
-        unoptimized
         className="absolute inset-0 h-14 w-14 rounded-2xl"
         aria-hidden
       />
@@ -67,12 +65,11 @@ export default function FloatingAction({
             : { duration: 5, repeat: Infinity, ease: "easeInOut" }
         }
       >
-        <Image
+        <img
           src="/logo/chatbot_sparkle.svg"
           alt=""
           width={28}
           height={28}
-          unoptimized
           className="h-7 w-7"
           aria-hidden
         />

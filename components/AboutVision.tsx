@@ -40,9 +40,8 @@ export default function AboutVision() {
               About us
             </OutlineButton>
           </div>
-          <p className="max-w-full font-dm-sans text-lg font-normal leading-8 text-color-neutral-400 sm:text-xl sm:leading-9 lg:text-2xl">
-            Tectra began with a vision to turn possibilities into meaningful
-            digital experiences through innovation, precision, and purpose.
+          <p className="flex-1 font-dm-sans text-lg font-normal leading-[1.6] text-color-neutral-400 sm:text-xl sm:leading-[1.7] lg:text-[24px] lg:leading-[36px]">
+             Tectra began with a vision to turn possibilities into meaningful digital experiences through innovation, precision, and purpose.
           </p>
         </div>
 
@@ -56,14 +55,14 @@ export default function AboutVision() {
           <SectionImage
             src={images.ourVision}
             alt="Tectra team and workspace representing our vision"
-            className="h-[240px] w-full sm:h-[400px] lg:h-[600px]"
+            className="h-[280px] w-full max-w-[1200px] mx-auto sm:h-[380px] lg:h-[500px]"
             sizes="(max-width: 1440px) 100vw, 1200px"
           />
         </motion.div>
 
-        <div className="flex flex-wrap items-center justify-center gap-6 sm:justify-end sm:gap-8">
+        <div className="flex flex-wrap items-center justify-center gap-4 sm:justify-end sm:gap-8">
           {STATS.map((stat, index) => (
-            <div key={stat.label} className="flex items-center gap-6 sm:gap-8">
+            <div key={stat.label} className="flex items-center gap-4 sm:gap-8">
               {index > 0 ? (
                 <div
                   aria-hidden
@@ -75,7 +74,7 @@ export default function AboutVision() {
                   value={stat.value}
                   className="text-center font-urbanist text-3xl font-semibold leading-tight text-color-neutral-200 sm:text-4xl sm:leading-[62.4px] lg:text-5xl"
                 />
-                <span className="text-center font-dm-sans text-base font-normal leading-7 text-color-neutral-500 sm:text-lg lg:text-xl">
+                <span className="text-center font-dm-sans text-sm font-normal leading-7 text-color-neutral-500 sm:text-lg lg:text-xl whitespace-nowrap">
                   {stat.label}
                 </span>
               </div>

@@ -65,7 +65,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth; */
 }
 
 body {
@@ -232,4 +232,26 @@ body {
 
 .products-track::-webkit-scrollbar {
   display: none;
+}
+
+/* Solid background for dark sections after services to completely hide the fixed background video */
+#products.section-dark-surface,
+#about.section-dark-surface,
+#clients.section-dark-surface {
+  background-color: var(--color-primary-main);
+}
+
+.what-we-do-cards::-webkit-scrollbar {
+  display: none;
+}
+
+.what-we-do-cards {
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+}
+
+.what-we-do-cards > article {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }

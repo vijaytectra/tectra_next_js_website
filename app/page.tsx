@@ -21,9 +21,9 @@ export default function HomePage() {
       <OurProducts />
       <ClientWorks />
       <AboutVision />
+      <Blogs />
       <ClientLogos />
       <Careers />
-      <Blogs />
       <Footer />
     </main>
     </>

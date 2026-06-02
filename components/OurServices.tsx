@@ -59,7 +59,7 @@ export default function OurServices() {
             </h2>
           </div>
           <OutlineButton
-            href="#services"
+            href="/services"
             variant="light"
             circleOffset={{ left: "-30px", top: "55px" }}
           >

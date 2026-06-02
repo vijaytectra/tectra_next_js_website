@@ -82,13 +82,13 @@ export default function Hero() {
       className="section-hero-surface relative flex m h-dvh max-h-dvh w-full flex-col overflow-hidden"
       aria-labelledby="hero-heading"
     >
-      <div className="hero-shell relative z-10 flex h-full min-h-0 w-full flex-col justify-between pt-6 pb-8 md:pt-[var(--Hero-Padding-Top)] md:pb-[var(--Hero-Padding-Bottom)]">
+      <div className="hero-shell relative z-10 flex h-full min-h-0 w-full flex-col justify-between pt-6 pb-8 md:pt-[var(--Hero-Padding-Top)] md:pb-8 lg:pb-8">
         <Navbar className="shrink-0" />
 
-        <div className="relative z-20 mb-16 flex w-full shrink-0 items-end justify-between gap-4 sm:mb-20 md:mb-28 lg:mb-36">
-          <div className="w-full max-w-3xl shrink-0">
+        <div className="relative z-20 mb-6 flex flex-col w-full shrink-0 items-start justify-between gap-6 sm:mb-8 md:mb-10 lg:mb-12">
+          <div className="w-full max-w-3xl">
             <motion.p
-              className="font-dm-mono text-base font-normal leading-5 tracking-[3.2px] text-color-neutral-300"
+              className="font-dm-mono text-sm font-normal leading-5 tracking-[3.2px] text-color-neutral-300 sm:text-base"
               variants={labelVariants}
               initial="hidden"
               animate="visible"
@@ -98,7 +98,7 @@ export default function Hero() {
 
             <h1
               id="hero-heading"
-              className="mt-4 font-dm-sans text-2xl font-normal leading-9 text-color-neutral-50 sm:text-3xl sm:leading-10"
+              className="mt-4 font-dm-sans text-[28px] font-normal leading-9 text-color-neutral-50 sm:text-3xl sm:leading-10 md:text-4xl md:leading-tight lg:text-5xl lg:leading-[1.2]"
             >
               <motion.span
                 className="block"
@@ -158,7 +158,9 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          <FloatingAction className="mb-0.5 ml-auto shrink-0" />
+          <div className="absolute bottom-0 right-0 z-20 hidden sm:block">
+            <FloatingAction />
+          </div>
         </div>
       </div>
     </section>

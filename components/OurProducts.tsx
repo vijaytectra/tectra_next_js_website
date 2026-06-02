@@ -12,25 +12,34 @@ const PRODUCTS = [
   {
     name: "Motherly",
     image: images.productMotherly,
-    tagline:
-      "Trusted care and compassionate support for every stage of parenthood.",
+    tagline: (
+      <>
+        Trusted care and compassionate support
+        <br className="hidden lg:inline" />
+        for every stage of parenthood.
+      </>
+    ),
     stat: "Trusted by Thousands of Growing Families",
     quote:
       "“Motherly delivers trusted care and compassionate support for every stage of parenthood.”",
-    titleClass: "font-ibm-plex text-3xl leading-tight text-White sm:text-4xl sm:leading-[68px]",
+    titleClass: "font-dm-sans text-[32px] font-normal leading-[40px] text-White",
   },
   {
     name: "Elderly",
     image: images.productElderly,
-    tagline:
-      "Trusted care and compassionate support for every stage of senior wellness.",
+    tagline: (
+      <>
+        Trusted care and compassionate support
+        <br className="hidden lg:inline" />
+        for every stage of senior wellness.
+      </>
+    ),
     stat: "Trusted Support for Every Stage of Senior Care",
     quote:
       "“The app delivers trusted care and compassionate support designed to improve seniors’ comfort and quality of life.”",
-    titleClass:
-      "font-ibm-plex text-4xl leading-tight text-White sm:text-5xl sm:leading-[95px] lg:text-6xl",
+    titleClass: "font-dm-sans text-[32px] font-normal leading-[40px] text-White",
   },
-] as const;
+];
 
 export default function OurProducts() {
   return (
@@ -68,17 +77,25 @@ export default function OurProducts() {
               />
               <div className="flex min-h-0 flex-1 flex-col justify-between gap-8 p-2 sm:gap-10 sm:p-4 lg:min-h-[480px] lg:gap-14 lg:p-6">
                 <div className="flex flex-col gap-3 sm:gap-4">
-                  <h3 className={product.titleClass}>{product.name}</h3>
-                  <p className="font-dm-sans text-lg font-normal leading-8 text-color-neutral-400 sm:text-xl sm:leading-9 lg:text-2xl">
+                  <h3 className="font-dm-sans text-2xl font-normal leading-tight text-White sm:text-[32px] sm:leading-[40px]">{product.name}</h3>
+                  <p className="font-dm-sans text-base font-normal leading-relaxed text-color-neutral-400 self-stretch max-w-[400px] sm:text-[20px] sm:leading-[36px]">
                     {product.tagline}
                   </p>
                 </div>
                 <div className="flex flex-col gap-8 lg:gap-14">
-                  <div className="flex flex-col gap-3 sm:gap-4">
-                    <p className="font-dm-sans text-lg font-normal leading-7 text-White sm:text-xl">
+                  <div className="flex flex-col items-start gap-3 self-stretch p-3 rounded-2xl bg-color-neutral-700 max-w-[400px] sm:p-4">
+                    <div className="flex gap-[3px] items-center shrink-0" aria-hidden>
+                      <svg width="9.124" height="16" viewBox="0 0 10 17" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
+                        <path d="M9.20758 0.0960535V2.10497C5.72545 1.83708 4.68751 4.28132 4.60381 5.53692V6.9599H9.12387V16.0837H0.0837402V5.62063C0.0837402 5.62063 0.354907 4.01264 0.837085 3.10943C2.47325 0.0445671 7.08705 0.0402502 9.20758 0.0960535Z" fill="white" stroke="white" strokeWidth="0.167"/>
+                      </svg>
+                      <svg width="9.124" height="16" viewBox="0 0 10 17" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
+                        <path d="M9.20758 0.0960535V2.10497C5.72545 1.83708 4.68751 4.28132 4.60381 5.53692V6.9599H9.12387V16.0837H0.0837402V5.62063C0.0837402 5.62063 0.354907 4.01264 0.837085 3.10943C2.47325 0.0445671 7.08705 0.0402502 9.20758 0.0960535Z" fill="white" stroke="white" strokeWidth="0.167"/>
+                      </svg>
+                    </div>
+                    <p className="font-dm-sans text-base font-normal leading-[1.5] text-White self-stretch sm:text-[20px] sm:leading-[28px]">
                       {product.stat}
                     </p>
-                    <p className="font-ibm-plex text-base font-normal leading-8 text-color-neutral-400 sm:text-xl sm:leading-9">
+                    <p className="font-ibm-plex text-sm font-normal italic leading-relaxed text-color-neutral-400 self-stretch sm:text-[16px] sm:leading-[26px]">
                       {product.quote}
                     </p>
                   </div>
@@ -97,15 +114,7 @@ export default function OurProducts() {
           ))}
         </div>
 
-        <div className="flex justify-center">
-          <OutlineButton
-            href="#products"
-            variant="dark-muted"
-            circleOffset={{ left: "-30px", top: "55px" }}
-          >
-            View All Products
-          </OutlineButton>
-        </div>
+
       </div>
     </section>
   );

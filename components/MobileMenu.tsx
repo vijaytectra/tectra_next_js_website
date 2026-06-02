@@ -6,13 +6,13 @@ import Image from "next/image";
 import Link from "next/link";
 
 const NAV_LINKS = [
-  { label: "Services", href: "#services" },
-  { label: "Projects", href: "#projects" },
-  { label: "Blogs", href: "#blogs" },
-  { label: "Careers", href: "#careers" },
-  { label: "Pricings", href: "#pricings" },
-  { label: "Industries", href: "#industries" },
-  { label: "About", href: "#about" },
+  { label: "Services", href: "/#services" },
+  { label: "Projects", href: "/#projects" },
+  { label: "Blogs", href: "/#blogs" },
+  { label: "Careers", href: "/#careers" },
+  { label: "Pricings", href: "/#pricings" },
+  { label: "Industries", href: "/#industries" },
+  { label: "About", href: "/#about" },
 ] as const;
 
 const overlayVariants = {

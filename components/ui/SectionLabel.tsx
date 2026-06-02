@@ -8,16 +8,16 @@ export default function SectionLabel({
   theme = "dark",
 }: SectionLabelProps) {
   const border =
-    theme === "dark" ? "border-color-neutral-400" : "border-color-neutral-500";
+    theme === "dark" ? "border-color-neutral-400" : "border-[#ADADAD]";
   const text =
-    theme === "dark" ? "text-color-neutral-400" : "text-color-neutral-500";
+    theme === "dark" ? "text-color-neutral-400" : "text-[#ADADAD]";
 
   return (
     <div
-      className={`inline-flex items-center gap-5 border-t py-1 pr-4 ${border}`}
+      className={`flex w-fit self-start items-center gap-[19.2px] border-t pt-[4px] pr-[16px] pb-[4px] pl-0 ${border}`}
     >
       <span
-        className={`font-dm-mono text-base font-normal leading-5 tracking-[3.2px] ${text}`}
+        className={`font-dm-mono text-base font-normal leading-[1.3] tracking-[3.2px] ${text}`}
       >
         {children}
       </span>

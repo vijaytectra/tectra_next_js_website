@@ -63,7 +63,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${dmSans.variable} ${dmMono.variable} ${ibmPlexSans.variable} ${urbanist.variable} ${geistSans.variable} ${geistMono.variable} h-full scroll-smooth`}
+      className={`${dmSans.variable} ${dmMono.variable} ${ibmPlexSans.variable} ${urbanist.variable} ${geistSans.variable} ${geistMono.variable} h-full`}
     >
       <body className="min-h-full overflow-x-hidden bg-color-primary-main text-color-neutral-50 antialiased">
         {children}

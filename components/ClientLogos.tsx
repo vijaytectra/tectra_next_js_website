@@ -118,7 +118,7 @@ export default function ClientLogos() {
              return (
               <motion.div
                 key={logoIndex}
-                className="group flex items-center justify-center p-4 transition-all duration-300 w-1/2 sm:w-1/3 lg:w-[400px] h-[192px] gap-[18px] bg-color-primary-main"
+                className="group flex items-center justify-center p-4 transition-all duration-300 w-1/2 sm:w-1/3 h-[192px] gap-[18px] bg-color-primary-main"
                 style={{
                   borderTop: "0.8px solid var(--color-neutral-700, #404040)",
                   borderRight: "0.8px solid var(--color-neutral-700, #404040)",

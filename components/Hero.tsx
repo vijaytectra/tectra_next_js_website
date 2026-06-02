@@ -158,7 +158,7 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          <div className="absolute bottom-0 right-0 z-20 hidden sm:block">
+          <div className="relative self-end mt-4 sm:absolute sm:bottom-0 sm:right-0 sm:mt-0 z-20 block">
             <FloatingAction />
           </div>
         </div>

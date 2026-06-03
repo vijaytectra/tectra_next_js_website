@@ -58,7 +58,7 @@ export default function Blogs({
               Tech Perspective
             </h2>
           </div>
-          <div className="flex">
+          <div className="hidden sm:flex">
             <OutlineButton
               href="#blogs"
               variant="light"
@@ -122,6 +122,17 @@ export default function Blogs({
           ))}
         </div>
 
+        {/* Mobile-only View all Blogs button */}
+        <div className="flex sm:hidden w-full mt-2">
+          <OutlineButton
+            href="#blogs"
+            variant="light"
+            className="w-full"
+            circleOffset={{ left: "-53px", top: "55px" }}
+          >
+            View all Blogs
+          </OutlineButton>
+        </div>
 
       </div>
     </section>

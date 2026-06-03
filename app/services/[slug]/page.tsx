@@ -544,7 +544,7 @@ export default function ServiceDetailsPage() {
           transition={{ duration: 0.95, ease: easeOut, delay: 0.4 }}
         >
           {/* Back Button */}
-          <div className="shrink-0 self-start lg:self-auto">
+          <div className="shrink-0 self-start lg:self-auto order-2 lg:order-1">
             <motion.div
               whileHover={{ scale: 1.03, y: -2 }}
               whileTap={{ scale: 0.97 }}
@@ -562,7 +562,7 @@ export default function ServiceDetailsPage() {
 
           {/* Title — character-level feel via delay */}
           <motion.div
-            className="w-full flex flex-col items-end"
+            className="w-full flex flex-col items-start lg:items-end order-1 lg:order-2"
             initial={{ opacity: 0, x: 24 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.95, ease: easeOut, delay: 0.55 }}
@@ -731,7 +731,7 @@ export default function ServiceDetailsPage() {
             <h2 className="font-dm-sans text-[28px] sm:text-[32px] font-normal not-italic leading-[1.3] text-[#171717]">
               Related Case Studies
             </h2>
-            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}>
+            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }} className="hidden sm:block w-full sm:w-auto">
               <Link
                 href="/portfolio"
                 className="group relative inline-flex justify-center items-center gap-[12px] rounded-none border-[1.5px] border-[#222] bg-transparent px-[32px] py-[16px] font-dm-sans text-[16px] font-medium leading-[1.3] text-[#000] overflow-hidden transition-colors duration-[400ms] ease-out hover:border-[#111] hover:text-[#fff] shrink-0 w-full sm:w-auto sm:mr-8"
@@ -810,6 +810,18 @@ export default function ServiceDetailsPage() {
                 </motion.div>
               </div>
             </motion.div>
+          </motion.div>
+
+          {/* Mobile-only View All Projects Button */}
+          <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }} className="w-full sm:hidden mt-8">
+            <Link
+              href="/portfolio"
+              className="group relative flex justify-center items-center gap-[12px] rounded-none border-[1.5px] border-[#222] bg-transparent px-[32px] py-[16px] font-dm-sans text-[16px] font-medium leading-[1.3] text-[#000] overflow-hidden transition-colors duration-[400ms] ease-out hover:border-[#111] hover:text-[#fff] shrink-0 w-full"
+            >
+              <span className="absolute inset-0 z-0 origin-left scale-x-0 bg-[#111] transition-transform duration-[400ms] ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:scale-x-100"></span>
+              <span className="relative z-10">View All Projects</span>
+              <span className="relative z-10 inline-block transition-transform duration-[350ms] ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:translate-x-[5px] group-hover:-rotate-45">→</span>
+            </Link>
           </motion.div>
         </div>
       </section>

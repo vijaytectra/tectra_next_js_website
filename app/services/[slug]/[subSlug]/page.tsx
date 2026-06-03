@@ -373,8 +373,8 @@ export default function SubServiceDetailsPage() {
       </div>
 
       {/* ── Page Hero Main Grid Content ───────────────────── */}
-      <main className="w-full flex flex-col pt-12 pb-24 sm:pt-[64px] px-6 sm:px-12 lg:px-[120px]">
-        <div className="w-full max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-[1.25fr_0.75fr] gap-16 lg:gap-16 items-stretch">
+      <main className="w-full flex flex-col pt-12 pb-12 sm:pb-24 sm:pt-[64px] px-6 sm:px-12 lg:px-[120px]">
+        <div className="w-full max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-[1.25fr_0.75fr] gap-10 sm:gap-16 lg:gap-16 items-stretch">
 
           {/* Left Column Text details */}
           <motion.div
@@ -391,13 +391,30 @@ export default function SubServiceDetailsPage() {
               </span>
             </div>
 
+            {/* Mobile Only Mockup Image preview (Hidden on lg) */}
+            <motion.div
+              className="relative w-full aspect-square max-w-[572px] mx-auto overflow-hidden bg-color-neutral-900 rounded-none shadow-xl border border-color-neutral-200 block lg:hidden mb-8"
+              initial={{ opacity: 0, scale: 1.03 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.2, ease: easeOut, delay: 0.15 }}
+            >
+              <Image
+                src={data.image}
+                alt={`${data.title} Mockup Preview`}
+                fill
+                priority
+                className="object-cover object-center"
+                sizes="(max-width: 1024px) 100vw, 572px"
+              />
+            </motion.div>
+
             {/* Custom Heading Description */}
             <h1 className="font-dm-sans text-3xl lg:text-[36px] xl:text-[40px] font-normal leading-normal text-[#171717] tracking-[-1.6px] self-stretch mb-6 max-w-[650px] whitespace-pre-line">
               {data.heading}
             </h1>
 
             {/* Key Statistics Row */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-10 w-full max-w-[750px] mb-16 pt-2 pb-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-10 w-full max-w-[750px] mb-8 sm:mb-16 pt-2 pb-4 sm:pb-8">
               {data.stats.map((stat, index) => (
                 <div key={index} className="flex flex-row items-center gap-4">
                   {/* Circle Icon Container - all three use consistent inline SVG with #ADADAD circle */}
@@ -435,21 +452,21 @@ export default function SubServiceDetailsPage() {
             </div>
 
             {/* Actions Buttons Row */}
-            <div className="flex flex-wrap gap-4 items-center mt-auto">
-              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+            <div className="flex flex-wrap gap-4 items-center mt-auto w-full">
+              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="w-full sm:w-auto">
                 <Link
                   href="/contact"
-                  className="inline-flex h-14 items-center justify-center gap-3 bg-Black px-8 py-4 font-dm-sans text-base font-semibold leading-5 text-White transition-colors duration-200 hover:bg-color-neutral-800 rounded-none shadow-sm"
+                  className="inline-flex h-14 w-full sm:w-auto items-center justify-center gap-3 bg-Black px-8 py-4 font-dm-sans text-base font-semibold leading-5 text-White transition-colors duration-200 hover:bg-color-neutral-800 rounded-none shadow-sm"
                 >
                   Get a Quote
                   <span className="text-xl">→</span>
                 </Link>
               </motion.div>
 
-              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="w-full sm:w-auto">
                 <Link
                   href="/portfolio"
-                  className="inline-flex h-14 items-center justify-center border-[1.5px] border-color-neutral-900 px-8 py-4 font-dm-sans text-base font-semibold leading-5 text-color-neutral-900 transition-colors duration-200 hover:bg-color-neutral-50 rounded-none"
+                  className="inline-flex h-14 w-full sm:w-auto items-center justify-center border-[1.5px] border-color-neutral-900 px-8 py-4 font-dm-sans text-base font-semibold leading-5 text-color-neutral-900 transition-colors duration-200 hover:bg-color-neutral-50 rounded-none"
                 >
                   View Case Studies
                 </Link>
@@ -459,7 +476,7 @@ export default function SubServiceDetailsPage() {
 
           {/* Right Column Custom Mockup Image preview */}
           <motion.div
-            className="relative w-full aspect-square max-w-[572px] mx-auto overflow-hidden bg-color-neutral-900 rounded-none shadow-xl border border-color-neutral-200"
+            className="relative w-full aspect-square max-w-[572px] mx-auto overflow-hidden bg-color-neutral-900 rounded-none shadow-xl border border-color-neutral-200 hidden lg:block"
             initial={{ opacity: 0, scale: 1.03 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, ease: easeOut, delay: 0.15 }}
@@ -567,8 +584,8 @@ export default function SubServiceDetailsPage() {
       </section>
 
       {/* ── Our Process ───────────────────────────────────────── */}
-      <section className="w-full bg-White flex flex-col justify-center items-center self-stretch px-6 pt-8 pb-16 md:px-[120px] md:pt-[40px] md:pb-[100px] border-t border-color-neutral-200">
-        <div className="w-full max-w-[1440px] mx-auto flex flex-col items-start gap-[56px]">
+      <section className="w-full bg-White flex flex-col justify-center items-center self-stretch px-6 pt-8 pb-4 sm:pb-16 md:px-[120px] md:pt-[40px] md:pb-[100px] border-t border-color-neutral-200">
+        <div className="w-full max-w-[1440px] mx-auto flex flex-col items-start gap-4 sm:gap-[56px]">
           {/* Section Heading */}
           <motion.h2
             className="font-dm-sans text-[28px] sm:text-[32px] font-normal not-italic leading-[1.3] text-[#171717]"
@@ -583,7 +600,7 @@ export default function SubServiceDetailsPage() {
 
           {/* Process Steps Grid */}
           <motion.div
-            className="flex flex-col lg:flex-row w-[calc(100%+32px)] -ml-4 justify-start items-stretch gap-[30px]"
+            className="flex flex-col lg:flex-row w-full lg:w-[calc(100%+32px)] lg:-ml-4 justify-start items-stretch gap-8 lg:gap-[30px]"
             variants={staggerContainer}
             initial="hidden"
             whileInView="show"
@@ -625,19 +642,19 @@ export default function SubServiceDetailsPage() {
       </section>
 
       {/* ── Tech Stacks Used ────────────────────────────────── */}
-      <section className="w-full bg-[#F7F7F7] flex flex-col items-center justify-center self-stretch px-6 pt-8 pb-16 sm:px-12 md:px-[120px] md:pt-[40px] md:pb-[100px]">
+      <section className="w-full bg-[#F7F7F7] flex flex-col items-center justify-center self-stretch px-6 pt-6 pb-4 sm:pb-16 sm:px-12 md:px-[120px] md:pt-[40px] md:pb-[100px]">
         <div className="w-full max-w-[1440px] mx-auto flex flex-col items-start gap-8">
           <h2 className="font-dm-sans text-[28px] sm:text-[32px] font-normal not-italic leading-[1.3] text-[#171717]">
             Tech Stacks Used
           </h2>
 
           {/* Tabs */}
-          <div className="flex flex-row items-center gap-8 w-full mt-2">
+          <div className="flex flex-row items-center gap-4 sm:gap-8 w-full mt-2 overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {Object.keys(TECH_STACKS).map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTechTab(tab)}
-                className={`pb-2 font-dm-sans text-[18px] font-medium transition-colors duration-200 relative ${
+                className={`pb-2 font-dm-sans text-[16px] sm:text-[18px] font-medium transition-colors duration-200 relative whitespace-nowrap shrink-0 ${
                   activeTechTab === tab ? "text-[#171717]" : "text-[#737373] hover:text-[#171717]"
                 }`}
               >
@@ -681,7 +698,7 @@ export default function SubServiceDetailsPage() {
       </section>
 
       {/* ── Related Case Studies ──────────────────────────────── */}
-      <section className="w-full bg-White flex flex-col justify-center items-start self-stretch px-6 py-16 sm:px-12 md:px-[120px] md:pt-[40px] md:pb-[100px] border-t border-[#E5E5E5]">
+      <section className="w-full bg-White flex flex-col justify-center items-start self-stretch px-6 pt-8 pb-16 sm:py-16 sm:px-12 md:px-[120px] md:pt-[40px] md:pb-[100px] border-t border-[#E5E5E5]">
         <div className="w-full max-w-[1440px] mx-auto flex flex-col items-start">
 
           {/* Heading Row */}
@@ -696,7 +713,7 @@ export default function SubServiceDetailsPage() {
             <h2 className="font-dm-sans text-[28px] sm:text-[32px] font-normal not-italic leading-[1.3] text-[#171717]">
               Related Case Studies
             </h2>
-            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}>
+            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }} className="hidden sm:block w-full sm:w-auto">
               <Link
                 href="/portfolio"
                 className="group relative inline-flex justify-center items-center gap-[12px] rounded-none border-[1.5px] border-[#222] bg-transparent px-[32px] py-[16px] font-dm-sans text-[16px] font-medium leading-[1.3] text-[#000] overflow-hidden transition-colors duration-[400ms] ease-out hover:border-[#111] hover:text-[#fff] shrink-0 w-full sm:w-auto sm:mr-8"
@@ -776,11 +793,23 @@ export default function SubServiceDetailsPage() {
               </div>
             </motion.div>
           </motion.div>
+
+          {/* Mobile-only View All Projects Button */}
+          <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }} className="w-full sm:hidden mt-8">
+            <Link
+              href="/portfolio"
+              className="group relative flex justify-center items-center gap-[12px] rounded-none border-[1.5px] border-[#222] bg-transparent px-[32px] py-[16px] font-dm-sans text-[16px] font-medium leading-[1.3] text-[#000] overflow-hidden transition-colors duration-[400ms] ease-out hover:border-[#111] hover:text-[#fff] shrink-0 w-full"
+            >
+              <span className="absolute inset-0 z-0 origin-left scale-x-0 bg-[#111] transition-transform duration-[400ms] ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:scale-x-100"></span>
+              <span className="relative z-10">View All Projects</span>
+              <span className="relative z-10 inline-block transition-transform duration-[350ms] ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:translate-x-[5px] group-hover:-rotate-45">→</span>
+            </Link>
+          </motion.div>
         </div>
       </section>
 
       {/* ── Serving Industries ──────────────────────────────── */}
-      <section className="w-full bg-[#F7F7F7] flex flex-col justify-center items-start self-stretch px-6 pt-8 pb-16 sm:px-12 md:px-[120px] md:pt-[40px] md:pb-[100px]">
+      <section className="w-full bg-[#F7F7F7] flex flex-col justify-center items-start self-stretch px-6 pt-8 pb-4 sm:pb-16 sm:px-12 md:px-[120px] md:pt-[40px] md:pb-[100px]">
         <div className="w-full max-w-[1440px] mx-auto flex flex-col items-start">
           {/* Heading Row */}
           <motion.div
@@ -794,7 +823,7 @@ export default function SubServiceDetailsPage() {
             <h2 className="font-dm-sans text-[28px] sm:text-[32px] font-normal not-italic leading-[1.3] text-[#171717]">
               Serving Industries
             </h2>
-            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}>
+            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }} className="hidden sm:block w-full sm:w-auto">
               <Link
                 href="/industries"
                 className="group relative inline-flex justify-center items-center gap-[12px] rounded-none border border-[#E5E5E5] bg-transparent px-[32px] py-[16px] font-dm-sans text-[16px] font-medium leading-[1.3] text-[#000] overflow-hidden transition-colors duration-[400ms] ease-out hover:border-[#111] hover:text-[#fff] shrink-0 w-full sm:w-auto sm:mr-8"
@@ -808,7 +837,7 @@ export default function SubServiceDetailsPage() {
 
           {/* Industries Grid */}
           <motion.div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full"
+            className="flex flex-row overflow-x-auto snap-x snap-mandatory gap-6 w-full pb-8 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
             variants={staggerContainer}
             initial="hidden"
             whileInView="show"
@@ -817,7 +846,7 @@ export default function SubServiceDetailsPage() {
             {INDUSTRIES_DATA.map((industry, index) => (
               <motion.div
                 key={index}
-                className="flex flex-col group cursor-pointer w-full bg-White overflow-hidden"
+                className="flex flex-col group cursor-pointer bg-White overflow-hidden shrink-0 w-[280px] sm:w-[320px] lg:w-[340px] snap-start"
                 variants={cardVariant}
               >
                 <div className="relative w-full aspect-[4/3] overflow-hidden bg-[#F5F5F5]">
@@ -849,11 +878,23 @@ export default function SubServiceDetailsPage() {
               </motion.div>
             ))}
           </motion.div>
+
+          {/* Mobile-only View All Industries Button */}
+          <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }} className="w-full sm:hidden mt-4">
+            <Link
+              href="/industries"
+              className="group relative flex justify-center items-center gap-[12px] rounded-none border border-[#E5E5E5] bg-transparent px-[32px] py-[16px] font-dm-sans text-[16px] font-medium leading-[1.3] text-[#000] overflow-hidden transition-colors duration-[400ms] ease-out hover:border-[#111] hover:text-[#fff] shrink-0 w-full"
+            >
+              <span className="absolute inset-0 z-0 origin-left scale-x-0 bg-[#111] transition-transform duration-[400ms] ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:scale-x-100"></span>
+              <span className="relative z-10">View All Industries</span>
+              <span className="relative z-10 inline-block transition-transform duration-[350ms] ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:translate-x-[5px] group-hover:-rotate-45">→</span>
+            </Link>
+          </motion.div>
         </div>
       </section>
 
       {/* ── Related Services ────────────────────────────────── */}
-      <section className="w-full bg-White flex flex-col justify-center items-start self-stretch px-6 pt-8 pb-16 sm:px-12 md:px-[120px] md:pt-[40px] md:pb-[100px]">
+      <section className="w-full bg-White flex flex-col justify-center items-start self-stretch px-6 pt-8 sm:pt-16 pb-16 sm:px-12 md:px-[120px] md:pt-[40px] md:pb-[100px]">
         <div className="w-full max-w-[1440px] mx-auto flex flex-col items-start">
           {/* Heading Row */}
           <motion.div
@@ -867,13 +908,13 @@ export default function SubServiceDetailsPage() {
             <h2 className="font-dm-sans text-[28px] sm:text-[32px] font-normal not-italic leading-[1.3] text-[#171717]">
               Related Services
             </h2>
-            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}>
+            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }} className="hidden sm:block w-full sm:w-auto">
               <Link
                 href="/services"
                 className="group relative inline-flex justify-center items-center gap-[12px] rounded-none border border-[#E5E5E5] bg-transparent px-[32px] py-[16px] font-dm-sans text-[16px] font-medium leading-[1.3] text-[#000] overflow-hidden transition-colors duration-[400ms] ease-out hover:border-[#111] hover:text-[#fff] shrink-0 w-full sm:w-auto sm:mr-8"
               >
                 <span className="absolute inset-0 z-0 origin-left scale-x-0 bg-[#111] transition-transform duration-[400ms] ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:scale-x-100"></span>
-                <span className="relative z-10">View All Industries</span>
+                <span className="relative z-10">View All Services</span>
                 <span className="relative z-10 inline-block transition-transform duration-[350ms] ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:translate-x-[5px] group-hover:-rotate-45">→</span>
               </Link>
             </motion.div>
@@ -1016,10 +1057,10 @@ export default function SubServiceDetailsPage() {
             whileInView="show"
             viewport={{ once: true }}
           >
-            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}>
+            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }} className="w-full sm:w-auto">
               <Link
                 href="/contact"
-                className="group relative inline-flex justify-center items-center gap-[12px] rounded-none bg-White px-[32px] py-[16px] font-dm-sans text-[16px] font-medium leading-[1.3] text-[#000] overflow-hidden transition-colors duration-[400ms] ease-out hover:bg-[#E5E5E5]"
+                className="group relative w-full sm:w-auto inline-flex justify-center items-center gap-[12px] rounded-none bg-White px-[32px] py-[16px] font-dm-sans text-[16px] font-medium leading-[1.3] text-[#000] overflow-hidden transition-colors duration-[400ms] ease-out hover:bg-[#E5E5E5]"
               >
                 <span className="relative z-10">Talk to Us</span>
                 <span className="relative z-10 inline-block transition-transform duration-[350ms] ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:translate-x-[5px] group-hover:-rotate-45">→</span>

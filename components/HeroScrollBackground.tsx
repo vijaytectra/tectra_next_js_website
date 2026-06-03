@@ -37,7 +37,7 @@ export default function HeroScrollBackground() {
         element.style.display = "none";
       } else {
         if (video.paused) {
-          void video.play().catch(() => {});
+          void video.play().catch(() => { });
         }
         element.style.display = "block";
       }
@@ -78,9 +78,8 @@ export default function HeroScrollBackground() {
             alt=""
             fill
             priority
-            className={`object-contain object-center transition-opacity duration-500 ${
-              videoReady ? "opacity-0" : "opacity-100"
-            }`}
+            className={`object-contain object-center transition-opacity duration-500 ${videoReady ? "opacity-0" : "opacity-100"
+              }`}
             sizes="100vw"
           />
 

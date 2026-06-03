@@ -130,8 +130,14 @@ body {
   border-radius: 4px;
 }
 
-/* Dark sections: 50% black tint over fixed #000 + discs layer */
-.section-dark-surface,
+/* Dark sections: solid black */
+.section-dark-surface {
+  position: relative;
+  z-index: 10;
+  background-color: var(--color-primary-main);
+}
+
+/* Hero section: 50% black tint over fixed #000 + discs layer */
 .section-hero-surface {
   position: relative;
   z-index: 10;
@@ -212,7 +218,13 @@ body {
   max-width: 100%;
   min-height: 480px;
   object-fit: contain;
-  object-position: center;
+  object-position: center 20%;
+}
+
+@media (min-width: 1024px) {
+  .hero-bg-video {
+    object-position: center;
+  }
 }
 
 .hero-discs-float {

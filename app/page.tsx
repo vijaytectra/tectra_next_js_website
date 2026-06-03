@@ -13,19 +13,18 @@ import WhatWeDo from "@/components/WhatWeDo";
 export default function HomePage() {
   return (
     <>
-      <HeroScrollBackground />
-      <main className="relative z-10">
-      <Hero />
-      <WhatWeDo />
-      <OurServices />
-      <OurProducts />
-      <ClientWorks />
-      <AboutVision />
-      <Blogs />
-      <ClientLogos />
-      <Careers />
-      <Footer />
-    </main>
+      <main className="relative z-10 bg-black">
+        <Hero />
+        <WhatWeDo />
+        <OurServices />
+        <OurProducts />
+        <ClientWorks />
+        <AboutVision />
+        <Blogs />
+        <ClientLogos />
+        <Careers />
+        <Footer />
+      </main>
     </>
   );
 }

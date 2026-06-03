@@ -544,7 +544,7 @@ export default function ServiceDetailsPage() {
           transition={{ duration: 0.95, ease: easeOut, delay: 0.4 }}
         >
           {/* Back Button */}
-          <div className="shrink-0 self-start lg:self-auto order-2 lg:order-1">
+          <div className="shrink-0 lg:self-auto order-2 lg:order-1">
             <motion.div
               whileHover={{ scale: 1.03, y: -2 }}
               whileTap={{ scale: 0.97 }}

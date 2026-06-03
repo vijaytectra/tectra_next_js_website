@@ -1021,7 +1021,7 @@ export default function SubServiceDetailsPage() {
 
             {/* Dark Cards (Right 2x2 Grid) */}
             <motion.div
-              className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6"
+              className="lg:col-span-2 grid grid-cols-2 gap-4 sm:gap-6"
               variants={staggerContainer}
               initial="hidden"
               whileInView="show"
@@ -1035,13 +1035,13 @@ export default function SubServiceDetailsPage() {
               ].map((stat, i) => (
                 <motion.div
                   key={i}
-                  className="bg-[#141414] border border-[#222] flex flex-col justify-between p-8 min-h-[160px]"
+                  className="bg-[#141414] border border-[#222] flex flex-col justify-between p-5 sm:p-8 min-h-[140px] sm:min-h-[160px]"
                   variants={cardVariant}
                 >
-                  <h3 className="font-dm-sans text-[36px] font-normal text-White mb-6">
+                  <h3 className="font-dm-sans text-[28px] sm:text-[36px] font-normal text-White mb-4 sm:mb-6">
                     {stat.value}
                   </h3>
-                  <p className="font-dm-sans text-[14px] font-normal text-[#A3A3A3]">
+                  <p className="font-dm-sans text-[13px] sm:text-[14px] font-normal text-[#A3A3A3]">
                     {stat.label}
                   </p>
                 </motion.div>

@@ -88,53 +88,53 @@ export default function OurProducts() {
             {PRODUCTS.map((product) => (
               <div
                 key={product.name}
-                className="w-[100vw] h-full flex items-start lg:items-center justify-center section-shell pb-8 lg:pb-0"
+                className="w-[100vw] h-full flex items-start lg:items-center justify-center section-shell pb-2 lg:pb-0"
               >
-                <article className="flex w-full max-w-[1200px] flex-col gap-4 sm:gap-8 lg:flex-row lg:items-center lg:gap-12 bg-transparent">
+                <article className="flex w-full max-w-[1200px] flex-col gap-2 sm:gap-8 lg:flex-row lg:items-center lg:gap-12 bg-transparent">
                   {/* Image */}
-                  <div className="relative w-[85%] max-w-[400px] lg:w-[45%] lg:max-w-[500px] shrink-0 aspect-square flex items-center lg:mx-0">
+                  <div className="relative w-[85%] max-w-[400px] lg:w-[45%] lg:max-w-[500px] shrink-0 h-[28vh] min-h-[180px] max-h-[250px] lg:h-auto lg:aspect-square flex items-center lg:mx-0">
                     <Image
                       src={product.image}
                       alt={`${product.name} product preview`}
                       fill
-                      className="object-contain shadow-xl shadow-black/30"
+                      className="object-contain lg:shadow-xl lg:shadow-black/30"
                       sizes="(max-width: 1024px) 85vw, 50vw"
                     />
                   </div>
 
                   {/* Content */}
-                  <div className="flex min-h-0 flex-1 flex-col justify-center gap-4 sm:gap-8 lg:gap-12">
-                    <div className="flex flex-col gap-2 sm:gap-4">
-                      <h3 className="font-dm-sans text-[28px] font-medium leading-tight text-White sm:text-[36px] sm:font-normal sm:leading-[40px]">{product.name}</h3>
-                      <p className="font-dm-sans text-base font-normal leading-relaxed text-color-neutral-400 self-stretch max-w-[500px] sm:text-[20px] sm:leading-[36px]">
+                  <div className="flex min-h-0 flex-1 flex-col justify-center gap-2 sm:gap-8 lg:gap-12">
+                    <div className="flex flex-col gap-1 sm:gap-4">
+                      <h3 className="font-dm-sans text-[22px] font-medium leading-tight text-White sm:text-[36px] sm:font-normal sm:leading-[40px]">{product.name}</h3>
+                      <p className="font-dm-sans text-sm font-normal leading-snug text-color-neutral-400 self-stretch max-w-[500px] sm:text-[20px] sm:leading-[36px]">
                         {product.tagline}
                       </p>
                     </div>
-                    <div className="flex flex-col gap-4 sm:gap-8 lg:gap-14">
-                      <div className="flex flex-col items-start gap-2 sm:gap-4 self-stretch p-4 sm:p-8 rounded-2xl bg-[#0a0a0a] border border-white/10 relative overflow-hidden max-w-[500px] shadow-lg">
-                        <div className="flex gap-[4px] items-center shrink-0 mb-1 sm:mb-2" aria-hidden>
-                          <svg width="14" height="22" viewBox="0 0 10 17" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0 h-4 w-auto sm:h-6">
+                    <div className="flex flex-col gap-3 sm:gap-8 lg:gap-14">
+                      <div className="flex flex-col items-start gap-1 sm:gap-4 self-stretch p-3 sm:p-8 rounded-xl sm:rounded-2xl bg-[#0a0a0a] border border-white/10 relative overflow-hidden max-w-[500px] shadow-lg">
+                        <div className="flex gap-[4px] items-center shrink-0 mb-0.5 sm:mb-2" aria-hidden>
+                          <svg width="14" height="22" viewBox="0 0 10 17" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0 h-3 w-auto sm:h-6">
                             <path d="M9.20758 0.0960535V2.10497C5.72545 1.83708 4.68751 4.28132 4.60381 5.53692V6.9599H9.12387V16.0837H0.0837402V5.62063C0.0837402 5.62063 0.354907 4.01264 0.837085 3.10943C2.47325 0.0445671 7.08705 0.0402502 9.20758 0.0960535Z" fill="white" stroke="white" strokeWidth="0.167" />
                           </svg>
-                          <svg width="14" height="22" viewBox="0 0 10 17" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0 h-4 w-auto sm:h-6">
+                          <svg width="14" height="22" viewBox="0 0 10 17" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0 h-3 w-auto sm:h-6">
                             <path d="M9.20758 0.0960535V2.10497C5.72545 1.83708 4.68751 4.28132 4.60381 5.53692V6.9599H9.12387V16.0837H0.0837402V5.62063C0.0837402 5.62063 0.354907 4.01264 0.837085 3.10943C2.47325 0.0445671 7.08705 0.0402502 9.20758 0.0960535Z" fill="white" stroke="white" strokeWidth="0.167" />
                           </svg>
                         </div>
-                        <p className="font-dm-sans text-sm sm:text-lg font-medium leading-[1.5] text-White self-stretch sm:text-[22px]">
+                        <p className="font-dm-sans text-xs sm:text-lg font-medium leading-[1.4] text-White self-stretch sm:text-[22px]">
                           {product.stat}
                         </p>
-                        <p className="font-ibm-plex text-xs sm:text-base font-normal italic leading-relaxed text-color-neutral-400 self-stretch sm:text-[17px]">
+                        <p className="font-ibm-plex text-[11px] sm:text-base font-normal italic leading-relaxed text-color-neutral-400 self-stretch sm:text-[17px]">
                           {product.quote}
                         </p>
                       </div>
                       <Link
                         href="#"
-                        className="group inline-flex w-fit items-center gap-2 sm:gap-4 text-White transition-opacity hover:opacity-70"
+                        className="group inline-flex w-fit items-center gap-1.5 sm:gap-4 text-White transition-opacity hover:opacity-70"
                       >
-                        <span className="font-dm-sans text-sm sm:text-base font-medium leading-5">
+                        <span className="font-dm-sans text-[13px] sm:text-base font-medium leading-5">
                           Visit Product
                         </span>
-                        <ArrowRight tone="dark" size={24} className="h-4 w-4 sm:h-6 sm:w-6 transition-transform duration-300 group-hover:translate-x-2" />
+                        <ArrowRight tone="dark" size={24} className="h-3 w-3 sm:h-6 sm:w-6 transition-transform duration-300 group-hover:translate-x-2" />
                       </Link>
                     </div>
                   </div>

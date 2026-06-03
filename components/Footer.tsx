@@ -81,7 +81,7 @@ export default function Footer() {
             <div className="flex min-w-0 flex-col gap-0.5">
               <h2
                 id="footer-cta-heading"
-                className="font-dm-sans text-xl font-normal leading-tight text-color-neutral-0 sm:text-2xl lg:text-3xl"
+                className="font-dm-sans text-3xl font-normal leading-tight text-color-neutral-0 sm:text-4xl lg:text-6xl"
               >
                 Build beyond ordinary.
               </h2>

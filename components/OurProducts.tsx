@@ -51,7 +51,7 @@ export default function OurProducts() {
 
   // Map 0 -> 1 scroll progress to 0% -> -50% horizontal translation
   // To ensure the cards NEVER get stuck in between, we snap the target to exactly 0 or -50 based on the scroll threshold.
-  const targetX = useTransform(scrollYProgress, (v) => (v < 0.5 ? 0 : -50));
+  const targetX = useTransform(scrollYProgress, (v) => (v < 0.5 ? 0 : -50) as number);
   const springX = useSpring(targetX, { stiffness: 300, damping: 30, mass: 0.8 });
   const x = useTransform(springX, (v) => `${v}%`);
 

@@ -62,21 +62,21 @@ export default function AboutVision() {
           />
         </motion.div>
 
-        <div className="flex flex-wrap items-center justify-center gap-4 sm:justify-end sm:gap-8">
+        <div className="flex flex-nowrap items-center justify-between w-full gap-2 sm:justify-end sm:gap-8">
           {STATS.map((stat, index) => (
-            <div key={stat.label} className="flex items-center gap-4 sm:gap-8">
+            <div key={stat.label} className="flex items-center gap-2 sm:gap-8 flex-1 sm:flex-none">
               {index > 0 ? (
                 <div
                   aria-hidden
                   className="hidden h-px w-12 rotate-90 bg-color-neutral-300 sm:block sm:w-24"
                 />
               ) : null}
-              <div className="flex w-24 flex-col items-center gap-2 sm:w-36">
+              <div className="flex flex-col items-center gap-1 sm:gap-2 flex-1 sm:w-36 sm:flex-none">
                 <CountUp
                   value={stat.value}
-                  className="text-center font-urbanist text-3xl font-semibold leading-tight text-color-neutral-200 sm:text-4xl sm:leading-[62.4px] lg:text-5xl"
+                  className="text-center font-urbanist text-[28px] font-semibold leading-tight text-color-neutral-200 sm:text-4xl sm:leading-[62.4px] lg:text-5xl"
                 />
-                <span className="text-center font-dm-sans text-sm font-normal leading-7 text-color-neutral-500 sm:text-lg lg:text-xl whitespace-nowrap">
+                <span className="text-center font-dm-sans text-xs font-normal leading-tight text-color-neutral-500 sm:text-lg lg:text-xl whitespace-nowrap">
                   {stat.label}
                 </span>
               </div>

@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import FloatingAction from "./FloatingAction";
 import ArrowRight from "./ui/ArrowRight";
 import Navbar from "./Navbar";
 
@@ -82,10 +81,10 @@ export default function Hero() {
       className="section-hero-surface relative flex m h-dvh max-h-dvh w-full flex-col overflow-hidden"
       aria-labelledby="hero-heading"
     >
-      <div className="hero-shell relative z-10 flex h-full min-h-0 w-full flex-col justify-between pt-6 pb-8 md:pt-[var(--Hero-Padding-Top)] md:pb-8 lg:pb-8">
+      <div className="hero-shell relative z-10 flex h-full min-h-0 w-full flex-col justify-between pt-6 pb-4 md:pt-[var(--Hero-Padding-Top)] md:pb-4 lg:pb-0">
         <Navbar className="shrink-0" />
 
-        <div className="relative z-20 mb-6 flex flex-col w-full shrink-0 items-start justify-between gap-6 sm:mb-8 md:mb-10 lg:mb-12">
+        <div className="relative z-20 mb-4 flex flex-col w-full shrink-0 items-start justify-between gap-6 sm:mb-6 md:mb-6 lg:mb-4">
           <div className="w-full max-w-3xl">
             <motion.p
               className="font-dm-mono text-sm font-normal leading-5 tracking-[3.2px] text-color-neutral-300 sm:text-base"
@@ -158,9 +157,6 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          <div className="relative self-end mt-4 sm:absolute sm:bottom-0 sm:right-0 sm:mt-0 z-20 block">
-            <FloatingAction />
-          </div>
         </div>
       </div>
     </section>

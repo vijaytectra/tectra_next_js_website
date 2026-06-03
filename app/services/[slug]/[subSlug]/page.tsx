@@ -173,41 +173,6 @@ export default function SubServiceDetailsPage() {
         </div>
       </main>
 
-      {/* ── Sparkling Chatbot Floating Button ─────────────── */}
-      <motion.div
-        className="fixed bottom-8 right-8 z-50 pointer-events-auto"
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 1, duration: 0.5 }}
-      >
-        <motion.div
-          whileHover={{ scale: 1.05, y: -2 }}
-          whileTap={{ scale: 0.95 }}
-          className="h-16 w-16 rounded-2xl bg-black flex items-center justify-center relative overflow-hidden shadow-2xl border-[0.179px] border-[#ffffff]/50 cursor-pointer"
-        >
-          <Image
-            src="/logo/bg_chatbot.svg"
-            alt=""
-            width={64}
-            height={64}
-            unoptimized
-            className="absolute inset-0 h-16 w-16 rounded-2xl"
-            aria-hidden
-          />
-          <span className="relative z-10 flex items-center justify-center">
-            <Image
-              src="/logo/chatbot_sparkle.svg"
-              alt=""
-              width={32}
-              height={32}
-              unoptimized
-              className="h-8 w-8 animate-pulse"
-              aria-hidden
-            />
-          </span>
-        </motion.div>
-      </motion.div>
-
       {/* ── Footer ────────────────────────────────────────── */}
       <Footer />
     </div>

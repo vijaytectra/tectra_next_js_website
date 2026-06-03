@@ -212,7 +212,7 @@ export default function Footer() {
           </div>
 
           <div className="flex w-full flex-col gap-4 border-t border-color-neutral-800 pt-4 text-[11px] font-normal leading-4 text-color-neutral-500 sm:grid sm:grid-cols-3 sm:items-center sm:gap-1.5">
-            <p className="order-last flex items-center gap-1 font-dm-sans sm:order-first sm:justify-self-start">
+            <p className="order-last flex items-center justify-center sm:justify-start gap-1 font-dm-sans sm:order-first sm:justify-self-start">
               <Image
                 src={FOOTER_ICONS.copyright}
                 alt=""

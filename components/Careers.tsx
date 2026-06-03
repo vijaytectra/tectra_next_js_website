@@ -25,8 +25,7 @@ export default function Careers() {
                 id="careers-heading"
                 className="font-dm-sans text-3xl font-normal leading-tight text-color-neutral-900 sm:text-4xl sm:leading-tight lg:text-6xl"
               >
-                Join Our
-                <br />
+                Join Our <br className="hidden lg:block" />
                 Team Today
               </h2>
               <p className="flex w-full max-w-[478px] flex-col justify-center font-dm-sans text-lg font-normal leading-relaxed text-color-neutral-500 sm:text-[24px] sm:leading-[36px] lg:h-[101px] lg:w-[478px]">

@@ -40,7 +40,7 @@ export default function WhatWeDo() {
       className="section-dark-surface relative w-full"
       aria-labelledby="what-we-do-heading"
     >
-      <div className="section-shell grid grid-cols-1 gap-12 py-16 lg:grid-cols-2 lg:gap-8 lg:pt-24 lg:pb-[100px] relative">
+      <div className="section-shell grid grid-cols-1 gap-12 py-8 lg:grid-cols-2 lg:gap-8 lg:pt-8 lg:pb-[100px] relative">
 
         {/* ── Left – heading & CTA ─────────────────────────────── */}
         <div className="relative w-full h-full">

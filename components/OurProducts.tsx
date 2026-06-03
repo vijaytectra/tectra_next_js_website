@@ -49,12 +49,11 @@ export default function OurProducts() {
     offset: ["start start", "end end"]
   });
 
-  // Map 0 -> 1 scroll progress to 0% -> -50% horizontal translation (since we have 2 items)
-  // We use useSpring for an incredibly smooth, buttery feel as requested.
-  const x = useSpring(
-    useTransform(scrollYProgress, [0, 1], ["0%", "-50%"]),
-    { stiffness: 200, damping: 40, mass: 0.8 }
-  );
+  // Map 0 -> 1 scroll progress to 0% -> -50% horizontal translation
+  // To ensure the cards NEVER get stuck in between, we snap the target to exactly 0 or -50 based on the scroll threshold.
+  const targetX = useTransform(scrollYProgress, (v) => (v < 0.5 ? 0 : -50));
+  const springX = useSpring(targetX, { stiffness: 300, damping: 30, mass: 0.8 });
+  const x = useTransform(springX, (v) => `${v}%`);
 
   return (
     <section

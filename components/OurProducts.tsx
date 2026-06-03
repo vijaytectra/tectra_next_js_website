@@ -90,14 +90,14 @@ export default function OurProducts() {
                 key={product.name}
                 className="w-[100vw] h-full flex items-start lg:items-center justify-center section-shell pb-2 lg:pb-0"
               >
-                <article className="flex w-full max-w-[1200px] flex-col gap-2 sm:gap-8 lg:flex-row lg:items-center lg:gap-12 bg-transparent">
+                <article className="flex w-full max-w-[1200px] h-full flex-col gap-2 sm:gap-8 lg:flex-row lg:items-center lg:gap-12 bg-transparent pb-2 lg:pb-0">
                   {/* Image */}
-                  <div className="relative w-[85%] max-w-[400px] lg:w-[45%] lg:max-w-[500px] shrink-0 h-[28vh] min-h-[180px] max-h-[250px] lg:h-auto lg:aspect-square flex items-center lg:mx-0">
+                  <div className="relative w-[85%] max-w-[400px] lg:w-[45%] lg:max-w-[500px] flex-1 shrink-0 min-h-0 lg:h-auto lg:aspect-square flex items-center lg:mx-0">
                     <Image
                       src={product.image}
                       alt={`${product.name} product preview`}
                       fill
-                      className="object-contain lg:shadow-xl lg:shadow-black/30"
+                      className="object-contain object-left-bottom lg:object-center lg:shadow-xl lg:shadow-black/30"
                       sizes="(max-width: 1024px) 85vw, 50vw"
                     />
                   </div>

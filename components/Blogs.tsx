@@ -34,11 +34,17 @@ const BLOGS = [
   },
 ] as const;
 
-export default function Blogs() {
+export default function Blogs({ 
+  bgClass = "section-light-surface",
+  paddingClass = "py-16 sm:py-24"
+}: { 
+  bgClass?: string;
+  paddingClass?: string;
+}) {
   return (
     <section
       id="blogs"
-      className="section-light-surface w-full overflow-hidden py-16 sm:py-24"
+      className={`${bgClass} w-full overflow-hidden ${paddingClass}`}
       aria-labelledby="blogs-heading"
     >
       <div className="section-shell flex flex-col gap-12 lg:gap-16">
@@ -52,12 +58,21 @@ export default function Blogs() {
               Tech Perspective
             </h2>
           </div>
+          <div className="flex">
+            <OutlineButton
+              href="#blogs"
+              variant="light"
+              circleOffset={{ left: "-53px", top: "55px" }}
+            >
+              View all Blogs
+            </OutlineButton>
+          </div>
         </div>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
           {BLOGS.map((blog, index) => (
             <motion.article
               key={blog.title}
-              className="flex flex-col gap-3 overflow-hidden bg-color-neutral-0"
+              className="flex flex-col h-full overflow-hidden bg-color-neutral-0"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -66,52 +81,48 @@ export default function Blogs() {
               <SectionImage
                 src={blog.image}
                 alt={blog.title}
-                className="h-44 w-full sm:h-48"
+                className="h-44 w-full sm:h-48 shrink-0"
                 sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 380px"
               />
-              <div className="flex flex-col gap-4 px-4 py-4 sm:px-6">
-                <span className="font-dm-sans text-sm font-medium leading-5 text-color-neutral-400">
-                  {blog.category}
-                </span>
-                <div className="flex items-start justify-between gap-2.5">
-                  <Link href="#" className="min-w-0 flex-1">
-                    <h3 className="font-dm-sans text-base font-medium leading-6 text-Black">
-                      {blog.title}
-                    </h3>
-                  </Link>
-                  <Image
-                    src={icons.arrowUpRight}
-                    alt=""
-                    width={24}
-                    height={24}
-                    unoptimized
-                    className="mt-1 h-6 w-6 shrink-0"
-                    aria-hidden
-                  />
+              <div className="flex flex-col flex-1 gap-4 px-4 py-4 sm:px-6 pt-6">
+                <div className="flex flex-col gap-4">
+                  <span className="font-dm-sans text-sm font-medium leading-5 text-color-neutral-400">
+                    {blog.category}
+                  </span>
+                  <div className="flex items-start justify-between gap-2.5">
+                    <Link href="#" className="min-w-0 flex-1">
+                      <h3 className="font-dm-sans text-base font-medium leading-6 text-Black">
+                        {blog.title}
+                      </h3>
+                    </Link>
+                    <Image
+                      src={icons.arrowUpRight}
+                      alt=""
+                      width={24}
+                      height={24}
+                      unoptimized
+                      className="mt-1 h-6 w-6 shrink-0"
+                      aria-hidden
+                    />
+                  </div>
                 </div>
-                <time className="font-dm-sans text-xs font-medium leading-4 text-color-neutral-400">
-                  {blog.date}
-                </time>
-                <div className="h-px w-full bg-color-neutral-200" />
-                <p className="font-dm-sans text-sm font-medium leading-5">
-                  <span className="text-color-neutral-400">By | </span>
-                  <span className="text-color-neutral-900">{blog.author}</span>
-                </p>
+                
+                <div className="flex flex-col gap-4 mt-auto">
+                  <time className="font-dm-sans text-xs font-medium leading-4 text-color-neutral-400">
+                    {blog.date}
+                  </time>
+                  <div className="h-px w-full bg-color-neutral-200" />
+                  <p className="font-dm-sans text-sm font-medium leading-5">
+                    <span className="text-color-neutral-400">By | </span>
+                    <span className="text-color-neutral-900">{blog.author}</span>
+                  </p>
+                </div>
               </div>
             </motion.article>
           ))}
         </div>
 
-        {/* Bottom button */}
-        <div className="flex justify-start">
-          <OutlineButton
-            href="#blogs"
-            variant="light"
-            circleOffset={{ left: "-53px", top: "55px" }}
-          >
-            View all Blogs
-          </OutlineButton>
-        </div>
+
       </div>
     </section>
   );

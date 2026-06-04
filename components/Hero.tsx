@@ -81,15 +81,26 @@ export default function Hero() {
       className="section-hero-surface relative flex h-[100dvh] min-h-[450px] w-full flex-col overflow-hidden bg-black"
       aria-labelledby="hero-heading"
     >
-      {/* Background Video */}
+      {/* Desktop/Tablet Background Video */}
       <video
         autoPlay
         loop
         muted
         playsInline
-        className="absolute inset-0 z-0 h-full w-full object-cover object-center opacity-60 pointer-events-none"
+        className="absolute inset-0 z-0 h-full w-full object-cover object-center opacity-60 pointer-events-none hidden sm:block"
       >
         <source src="/videos/quality_restoration_20260604115105126.webm" type="video/webm" />
+      </video>
+
+      {/* Mobile Background Video */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 z-0 h-full w-full object-cover object-center opacity-60 pointer-events-none sm:hidden"
+      >
+        <source src="/videos/mobile%20video%20landing%20page.webm" type="video/webm" />
       </video>
 
       <div className="hero-shell relative z-10 flex h-full min-h-0 w-full flex-col justify-between pt-6 pb-8 md:pt-[var(--Hero-Padding-Top)] md:pb-4 lg:pb-0">

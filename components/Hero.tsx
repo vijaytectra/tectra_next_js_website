@@ -78,7 +78,7 @@ const ctaArrowVariants = {
 export default function Hero() {
   return (
     <section
-      className="section-hero-surface relative flex h-[75dvh] min-h-[550px] lg:h-dvh w-full flex-col overflow-hidden bg-black"
+      className="section-hero-surface relative flex h-[100dvh] min-h-[450px] w-full flex-col overflow-hidden bg-black"
       aria-labelledby="hero-heading"
     >
       {/* Background Video */}
@@ -92,10 +92,10 @@ export default function Hero() {
         <source src="/videos/quality_restoration_20260604115105126.webm" type="video/webm" />
       </video>
 
-      <div className="hero-shell relative z-10 flex h-full min-h-0 w-full flex-col justify-between pt-6 pb-4 md:pt-[var(--Hero-Padding-Top)] md:pb-4 lg:pb-0">
+      <div className="hero-shell relative z-10 flex h-full min-h-0 w-full flex-col justify-between pt-6 pb-8 md:pt-[var(--Hero-Padding-Top)] md:pb-4 lg:pb-0">
         <Navbar className="shrink-0" />
 
-        <div className="relative z-20 mb-4 flex flex-col w-full shrink-0 items-start justify-between gap-6 sm:mb-6 md:mb-6 lg:mb-4">
+        <div className="relative z-20 mb-0 flex flex-col w-full shrink-0 items-start justify-between gap-6 sm:mb-6 md:mb-6 lg:mb-4">
           <div className="w-full max-w-3xl">
             <motion.p
               className="font-dm-mono text-sm font-normal leading-5 tracking-[3.2px] text-color-neutral-300 sm:text-base"

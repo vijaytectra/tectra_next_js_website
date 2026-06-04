@@ -66,7 +66,7 @@ export default function Navbar({ className = "", onMobileMenuChange, tone = "lig
              className="hidden flex-1 justify-center px-4 lg:flex"
              aria-label="Primary"
           >
-            <ul className="flex items-center justify-center gap-5 xl:gap-9">
+            <ul className="flex items-center justify-center gap-3 lg:gap-4 xl:gap-9">
               {NAV_LINKS.map((link, index) => (
                 <motion.li
                   key={link.href}
@@ -77,7 +77,7 @@ export default function Navbar({ className = "", onMobileMenuChange, tone = "lig
                 >
                   <Link
                     href={link.href}
-                    className={`text-[15px] font-normal transition-opacity hover:opacity-70 ${
+                    className={`whitespace-nowrap text-[14px] xl:text-[15px] font-normal transition-opacity hover:opacity-70 ${
                       tone === "dark" ? "text-color-neutral-900" : "text-White"
                     }`}
                   >
@@ -97,7 +97,7 @@ export default function Navbar({ className = "", onMobileMenuChange, tone = "lig
             >
               <Link
                 href="#contact"
-                className={`inline-flex items-center gap-2.5 text-[15px] transition-opacity hover:opacity-70 ${
+                className={`inline-flex items-center whitespace-nowrap gap-2.5 text-[14px] xl:text-[15px] transition-opacity hover:opacity-70 ${
                   tone === "dark" ? "text-color-neutral-900" : "text-White"
                 }`}
               >

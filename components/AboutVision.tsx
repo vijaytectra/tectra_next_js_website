@@ -57,7 +57,7 @@ export default function AboutVision() {
           <SectionImage
             src={images.ourVision}
             alt="Tectra team and workspace representing our vision"
-            className="h-[280px] w-full max-w-[1200px] mx-auto sm:h-[380px] lg:h-[500px]"
+            className="h-[280px] w-full max-w-[1200px] mx-auto sm:h-[380px] lg:h-[530px]"
             sizes="(max-width: 1440px) 100vw, 1200px"
           />
         </motion.div>

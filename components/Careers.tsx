@@ -5,10 +5,6 @@ import OutlineButton from "./ui/OutlineButton";
 import SectionImage from "./ui/SectionImage";
 import { images } from "@/lib/images";
 
-const ROLES = [
-  "Full Stack Developer",
-  "UI/UX Designer",
-] as const;
 
 export default function Careers() {
   return (
@@ -46,21 +42,6 @@ export default function Careers() {
                 </OutlineButton>
               </div>
 
-              <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                {ROLES.map((role, index) => (
-                  <span key={role} className="flex items-center gap-2">
-                    <span className="whitespace-nowrap font-dm-mono text-xs font-normal leading-4 tracking-wide text-color-neutral-500">
-                      {role}
-                    </span>
-                    {index < ROLES.length - 1 ? (
-                      <span
-                        className="h-1.5 w-1.5 shrink-0 rounded-full bg-color-neutral-300"
-                        aria-hidden
-                      />
-                    ) : null}
-                  </span>
-                ))}
-              </div>
             </div>
           </div>
 

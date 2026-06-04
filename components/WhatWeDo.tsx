@@ -45,7 +45,7 @@ export default function WhatWeDo() {
         {/* ── Left – heading & CTA ─────────────────────────────── */}
         <div className="relative w-full h-full">
           <motion.div
-            className="lg:sticky lg:top-32 flex flex-col gap-12 lg:max-w-[564px] lg:h-[632px]"
+            className="lg:sticky lg:top-16 flex flex-col gap-12 lg:max-w-[564px] lg:h-[632px]"
             initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
@@ -78,8 +78,8 @@ export default function WhatWeDo() {
         {/* ── Right – stacked cards ────────────────────────────── */}
         <div className="relative w-full lg:max-w-[564px] lg:justify-self-end flex flex-col">
           {SERVICE_CARDS.map((card, index) => {
-            // Calculate top position: 8rem (top-32) + 6rem per card (96px peek)
-            const stickyTop = `calc(8rem + ${index * 6}rem)`;
+            // Calculate top position: 4rem (top-16) + 6rem per card (96px peek)
+            const stickyTop = `calc(4rem + ${index * 6}rem)`;
             
             // Align sticky bottoms to prevent reverse-collapse when scrolling away
             const mb = (SERVICE_CARDS.length - 1 - index) * 6;

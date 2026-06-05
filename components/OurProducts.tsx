@@ -63,7 +63,7 @@ export default function OurProducts() {
       aria-labelledby="products-heading"
     >
       {/* Sticky Container */}
-      <div className="products-sticky-container sticky top-0 flex h-[100dvh] md:h-[700px] lg:h-[750px] xl:h-[100dvh] w-full flex-col overflow-hidden pb-4 sm:pb-16 lg:pb-6 xl:pb-12">
+      <div className="products-sticky-container sticky top-0 flex h-[100vh] md:h-[700px] lg:h-[750px] xl:h-[100vh] w-full flex-col overflow-hidden pb-4 sm:pb-16 lg:pb-6 xl:pb-12">
 
         {/* Sticky Heading */}
         <div className="products-heading-container section-shell pt-6 sm:pt-12 lg:pt-6 xl:pt-16 pb-0 shrink-0 flex flex-col gap-2 sm:gap-4 lg:gap-4 xl:gap-8">
@@ -91,7 +91,7 @@ export default function OurProducts() {
               >
                 <article className="product-article flex w-full max-w-[1200px] h-full flex-col gap-2 sm:gap-8 md:flex-row md:items-center md:gap-6 lg:gap-8 xl:gap-12 bg-transparent pb-2 md:pb-0">
                   {/* Image */}
-                  <div className="product-image-wrapper relative w-[85%] max-w-[400px] md:w-[45%] md:max-w-[500px] flex-1 shrink min-h-[200px] md:min-h-0 md:h-full md:max-h-[400px] xl:max-h-[500px] flex items-center md:mx-0">
+                  <div className="product-image-wrapper relative w-[85%] max-w-[400px] md:w-[45%] md:max-w-[500px] h-[220px] sm:h-[300px] shrink-0 md:shrink md:h-full md:min-h-0 md:max-h-[400px] xl:max-h-[500px] flex items-center md:mx-0">
                     <Image
                       src={product.image}
                       alt={`${product.name} product preview`}

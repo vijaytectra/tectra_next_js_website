@@ -66,7 +66,7 @@ export default function OurProducts() {
       <div className="products-sticky-container sticky top-0 flex h-[100vh] md:h-[700px] lg:h-[750px] xl:h-[100vh] w-full flex-col overflow-hidden pb-4 sm:pb-16 lg:pb-6 xl:pb-12">
 
         {/* Sticky Heading */}
-        <div className="products-heading-container section-shell pt-6 sm:pt-12 lg:pt-6 xl:pt-16 pb-0 shrink-0 flex flex-col gap-2 sm:gap-4 lg:gap-4 xl:gap-8">
+        <div className="products-heading-container section-shell pt-16 sm:pt-20 lg:pt-20 xl:pt-24 pb-0 shrink-0 flex flex-col gap-2 sm:gap-4 lg:gap-4 xl:gap-8">
           <div className="flex max-w-[607px] flex-col gap-1 sm:gap-3">
             <SectionLabel>OUR PRODUCTS</SectionLabel>
             <h2
@@ -149,12 +149,11 @@ export default function OurProducts() {
           .hide-scrollbar::-webkit-scrollbar {
             display: none;
           }
-          @media (max-height: 820px) {
+          @media (min-width: 768px) and (max-height: 820px) {
             .products-sticky-container {
               padding-bottom: 16px !important;
             }
             .products-heading-container {
-              padding-top: 16px !important;
               gap: 8px !important;
             }
             .products-heading-container h2 {

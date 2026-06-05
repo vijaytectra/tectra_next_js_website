@@ -29,7 +29,7 @@ const SUB_SERVICES_DETAILS: Record<
     "web-development": {
       label: "WEB DEVELOPMENT",
       title: "Web Development",
-      heading: "Custom web development solutions\nbuilt for performance, usability, and\nscalable business growth.",
+      heading: "Custom web development solutions built for performance, usability, and scalable business growth.",
       image: "/images/ChatGPT Image May 29, 2026, 06_49_57 PM_upscayl_4x_ultrasharp-4x 1.png",
       stats: [
         { iconName: "grid", value: "50 +", label: "Projects Delivered" },
@@ -410,7 +410,7 @@ export default function SubServiceDetailsPage() {
             </motion.div>
 
             {/* Custom Heading Description */}
-            <h1 className="font-dm-sans text-3xl lg:text-[36px] xl:text-[40px] font-normal leading-normal text-[#171717] tracking-[-1.6px] self-stretch mb-6 max-w-[650px] whitespace-pre-line">
+            <h1 className="font-dm-sans text-3xl lg:text-[36px] xl:text-[40px] font-normal leading-normal text-[#171717] tracking-[-1.6px] self-stretch mb-6 max-w-[650px] whitespace-normal">
               {data.heading}
             </h1>
 

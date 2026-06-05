@@ -8,11 +8,11 @@ import Link from "next/link";
 const NAV_LINKS = [
   { label: "Services", href: "/#services" },
   { label: "Case Study", href: "/#casestudies" },
-  { label: "Blogs", href: "/#blogs" },
+  { label: "Blogs", href: "/blogs" },
   { label: "Careers", href: "/#careers" },
   { label: "Pricings", href: "/#pricings" },
   { label: "Industries", href: "/#industries" },
-  { label: "About", href: "/#about" },
+  { label: "About", href: "/about" },
 ] as const;
 
 const overlayVariants = {
@@ -113,7 +113,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               className="mt-8 border-t border-Gray-800 pt-8"
             >
               <Link
-                href="#contact"
+                href="/#contact"
                 onClick={onClose}
                 className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-White px-6 py-3.5 text-sm font-medium text-Black transition-transform hover:scale-[1.02] active:scale-[0.98]"
               >

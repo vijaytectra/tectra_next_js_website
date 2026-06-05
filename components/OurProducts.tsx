@@ -63,10 +63,10 @@ export default function OurProducts() {
       aria-labelledby="products-heading"
     >
       {/* Sticky Container */}
-      <div className="sticky top-0 flex h-screen w-full flex-col overflow-hidden pb-4 sm:pb-16 lg:pb-6 xl:pb-12">
+      <div className="sticky top-0 flex h-[100dvh] md:h-[700px] lg:h-[100dvh] w-full flex-col overflow-hidden pb-4 sm:pb-16 lg:pb-6 xl:pb-12">
 
         {/* Sticky Heading */}
-        <div className="section-shell pt-6 sm:pt-12 lg:pt-8 xl:pt-16 pb-0 shrink-0 flex flex-col gap-2 sm:gap-6 lg:gap-8">
+        <div className="section-shell pt-6 sm:pt-12 lg:pt-6 xl:pt-16 pb-0 shrink-0 flex flex-col gap-2 sm:gap-4 lg:gap-4 xl:gap-8">
           <div className="flex max-w-[607px] flex-col gap-1 sm:gap-3">
             <SectionLabel>OUR PRODUCTS</SectionLabel>
             <h2
@@ -79,7 +79,7 @@ export default function OurProducts() {
         </div>
 
         {/* Sliding Horizontal Track */}
-        <div className="relative flex-1 w-full mt-2 lg:mt-6 overflow-hidden">
+        <div className="relative flex-1 w-full mt-2 lg:mt-4 xl:mt-6 overflow-hidden">
           <motion.div
             style={{ x }}
             className="absolute left-0 top-0 flex h-full w-[200vw]"
@@ -87,25 +87,25 @@ export default function OurProducts() {
             {PRODUCTS.map((product) => (
               <div
                 key={product.name}
-                className="w-[100vw] h-full flex items-start lg:items-center justify-center section-shell pb-2 lg:pb-0"
+                className="w-[100vw] h-full flex items-start md:items-center justify-center section-shell pb-2 lg:pb-0"
               >
-                <article className="flex w-full max-w-[1200px] h-full flex-col gap-2 sm:gap-8 lg:flex-row lg:items-center lg:gap-12 bg-transparent pb-2 lg:pb-0">
+                <article className="flex w-full max-w-[1200px] h-full flex-col gap-2 sm:gap-8 md:flex-row md:items-center md:gap-6 lg:gap-8 xl:gap-12 bg-transparent pb-2 md:pb-0">
                   {/* Image */}
-                  <div className="relative w-[85%] max-w-[400px] lg:w-[45%] lg:max-w-[500px] flex-1 shrink min-h-[200px] lg:min-h-0 lg:h-full lg:max-h-[500px] flex items-center lg:mx-0">
+                  <div className="relative w-[85%] max-w-[400px] md:w-[45%] md:max-w-[500px] flex-1 shrink min-h-[200px] md:min-h-0 md:h-full md:max-h-[400px] xl:max-h-[500px] flex items-center md:mx-0">
                     <Image
                       src={product.image}
                       alt={`${product.name} product preview`}
                       fill
-                      className="object-contain object-left-bottom lg:object-center lg:shadow-xl lg:shadow-black/30"
-                      sizes="(max-width: 1024px) 85vw, 50vw"
+                      className="object-contain object-left-bottom md:object-center md:shadow-xl md:shadow-black/30"
+                      sizes="(max-width: 768px) 85vw, 50vw"
                     />
                   </div>
 
                   {/* Content */}
-                  <div className="flex min-h-0 flex-1 flex-col justify-center gap-2 sm:gap-6 lg:gap-4 xl:gap-6">
+                  <div className="flex min-h-0 flex-1 flex-col justify-center gap-2 sm:gap-6 md:gap-3 lg:gap-3 xl:gap-6">
                     <div className="flex flex-col gap-1 sm:gap-3">
                       <h3 className="font-dm-sans text-[22px] font-medium leading-tight text-White sm:text-[28px] xl:text-[36px] sm:font-normal sm:leading-[40px]">{product.name}</h3>
-                      <p className="font-dm-sans text-sm font-normal leading-snug text-color-neutral-400 self-stretch max-w-[500px] sm:text-[18px] sm:leading-[28px] xl:text-[20px] xl:leading-[36px]">
+                      <p className="font-dm-sans text-sm font-normal leading-snug text-color-neutral-400 self-stretch max-w-[500px] sm:text-[18px] sm:leading-[28px] lg:text-[16px] lg:leading-[26px] xl:text-[20px] xl:leading-[36px]">
                         {product.tagline}
                       </p>
                     </div>
@@ -119,10 +119,10 @@ export default function OurProducts() {
                             <path d="M9.20758 0.0960535V2.10497C5.72545 1.83708 4.68751 4.28132 4.60381 5.53692V6.9599H9.12387V16.0837H0.0837402V5.62063C0.0837402 5.62063 0.354907 4.01264 0.837085 3.10943C2.47325 0.0445671 7.08705 0.0402502 9.20758 0.0960535Z" fill="white" stroke="white" strokeWidth="0.167" />
                           </svg>
                         </div>
-                        <p className="font-dm-sans text-xs sm:text-lg font-medium leading-[1.4] text-White self-stretch sm:text-[18px] xl:text-[22px]">
+                        <p className="font-dm-sans text-xs sm:text-lg font-medium leading-[1.4] text-White self-stretch sm:text-[18px] lg:text-[16px] xl:text-[22px]">
                           {product.stat}
                         </p>
-                        <p className="font-ibm-plex text-[11px] sm:text-base font-normal italic leading-relaxed text-color-neutral-400 self-stretch sm:text-[15px] xl:text-[17px]">
+                        <p className="font-ibm-plex text-[11px] sm:text-base font-normal italic leading-relaxed text-color-neutral-400 self-stretch sm:text-[14px] lg:text-[13px] xl:text-[17px]">
                           {product.quote}
                         </p>
                       </div>

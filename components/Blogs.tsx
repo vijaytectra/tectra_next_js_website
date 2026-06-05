@@ -60,7 +60,7 @@ export default function Blogs({
           </div>
           <div className="hidden sm:flex">
             <OutlineButton
-              href="#blogs"
+              href="/blogs"
               variant="light"
               circleOffset={{ left: "-53px", top: "55px" }}
             >
@@ -125,7 +125,7 @@ export default function Blogs({
         {/* Mobile-only View all Blogs button */}
         <div className="flex sm:hidden w-full mt-2">
           <OutlineButton
-            href="#blogs"
+            href="/blogs"
             variant="light"
             className="w-full"
             circleOffset={{ left: "-53px", top: "55px" }}

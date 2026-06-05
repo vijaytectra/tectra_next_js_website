@@ -34,7 +34,7 @@ export default function AboutVision() {
             </div>
           <div className="hidden lg:block">
             <OutlineButton
-              href="#about"
+              href="/about"
               variant="dark-muted"
               circleOffset={{ left: "-69px", top: "55px" }}
             >
@@ -62,16 +62,16 @@ export default function AboutVision() {
           />
         </motion.div>
 
-        <div className="flex flex-nowrap items-center justify-between w-full gap-2 sm:justify-end sm:gap-8">
+        <div className="flex flex-nowrap items-center justify-between w-full gap-2 sm:justify-center sm:gap-10 lg:gap-16">
           {STATS.map((stat, index) => (
-            <div key={stat.label} className="flex items-center gap-2 sm:gap-8 flex-1 sm:flex-none">
+            <div key={stat.label} className="flex items-center gap-2 sm:gap-10 lg:gap-16 flex-1 sm:flex-none">
               {index > 0 ? (
                 <div
                   aria-hidden
-                  className="hidden h-px w-12 rotate-90 bg-color-neutral-300 sm:block sm:w-24"
+                  className="hidden w-px h-12 bg-color-neutral-300 sm:block sm:h-20"
                 />
               ) : null}
-              <div className="flex flex-col items-center gap-1 sm:gap-2 flex-1 sm:w-36 sm:flex-none">
+              <div className="flex flex-col items-center gap-1 sm:gap-2 flex-1 sm:flex-none">
                 <CountUp
                   value={stat.value}
                   className="text-center font-urbanist text-[28px] font-semibold leading-tight text-color-neutral-200 sm:text-4xl sm:leading-[62.4px] lg:text-5xl"
@@ -85,9 +85,9 @@ export default function AboutVision() {
         </div>
 
         {/* Mobile-only bottom button */}
-        <div className="flex justify-center sm:justify-end lg:hidden">
+        <div className="flex justify-center lg:hidden">
           <OutlineButton
-            href="#about"
+            href="/about"
             variant="dark-muted"
             circleOffset={{ left: "-69px", top: "55px" }}
           >

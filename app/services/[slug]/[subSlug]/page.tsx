@@ -1,4 +1,5 @@
 "use client";
+// Force Next.js to re-detect this route
 
 import { useParams } from "next/navigation";
 import Link from "next/link";
@@ -267,7 +268,7 @@ function FAQSection({ items }: { items: ReadonlyArray<{ question: string; answer
   const toggle = (i: number) => setOpenIndex(openIndex === i ? null : i);
 
   return (
-    <section className="w-full bg-[#F7F7F7] flex flex-col items-start self-stretch px-6 pt-8 pb-16 sm:px-12 md:px-[120px] md:pt-10 md:pb-[100px]">
+    <section className="w-full bg-[#F7F7F7] flex flex-col items-start self-stretch px-6 pt-8 pb-16 sm:px-12 md:px-16 lg:px-20 xl:px-28 md:pt-10 md:pb-[100px]">
       <div className="w-full max-w-[1440px] mx-auto flex flex-col items-start">
         <motion.h2
           className="font-dm-sans text-[28px] sm:text-[32px] font-normal not-italic leading-[1.3] text-[#171717] mb-10"
@@ -368,12 +369,12 @@ export default function SubServiceDetailsPage() {
     <div className="relative min-h-screen w-full bg-White text-[#171717] overflow-x-hidden">
 
       {/* ── Navbar ─────────────────────────────────────────── */}
-      <div className="w-full px-6 py-6 sm:px-12 md:px-[120px]">
+      <div className="w-full px-6 py-6 sm:px-12 md:px-16 lg:px-20 xl:px-28">
         <Navbar tone="dark" className="w-full" />
       </div>
 
       {/* ── Page Hero Main Grid Content ───────────────────── */}
-      <main className="w-full flex flex-col pt-12 pb-12 sm:pb-24 sm:pt-[64px] px-6 sm:px-12 lg:px-[120px]">
+      <main className="w-full flex flex-col pt-12 pb-12 sm:pb-24 sm:pt-[64px] px-6 sm:px-12 md:px-16 lg:px-20 xl:px-28">
         <div className="w-full max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-[1.25fr_0.75fr] gap-10 sm:gap-16 lg:gap-16 items-stretch">
 
           {/* Left Column Text details */}
@@ -465,7 +466,7 @@ export default function SubServiceDetailsPage() {
 
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="w-full sm:w-auto">
                 <Link
-                  href="/portfolio"
+                  href="/#casestudies"
                   className="inline-flex h-14 w-full sm:w-auto items-center justify-center border-[1.5px] border-color-neutral-900 px-8 py-4 font-dm-sans text-base font-semibold leading-5 text-color-neutral-900 transition-colors duration-200 hover:bg-color-neutral-50 rounded-none"
                 >
                   View Case Studies
@@ -495,7 +496,7 @@ export default function SubServiceDetailsPage() {
       </main>
 
       {/* ── Our Services Grid ─────────────────────────────────── */}
-      <section className="w-full bg-[#FAF9F9] flex flex-col justify-center items-start self-stretch px-6 py-8 sm:px-12 md:px-[120px] md:pt-[40px] md:pb-[100px] border-t border-color-neutral-200">
+      <section className="w-full bg-[#FAF9F9] flex flex-col justify-center items-start self-stretch px-6 py-8 sm:px-12 md:px-16 lg:px-20 xl:px-28 md:pt-[40px] md:pb-[100px] border-t border-color-neutral-200">
         <div className="w-full flex flex-col items-start">
           {/* Breadcrumbs — fade in */}
           <motion.nav
@@ -584,7 +585,7 @@ export default function SubServiceDetailsPage() {
       </section>
 
       {/* ── Our Process ───────────────────────────────────────── */}
-      <section className="w-full bg-White flex flex-col justify-center items-center self-stretch px-6 pt-8 pb-4 sm:pb-16 md:px-[120px] md:pt-[40px] md:pb-[100px] border-t border-color-neutral-200">
+      <section className="w-full bg-White flex flex-col justify-center items-center self-stretch px-6 pt-8 pb-4 sm:pb-16 md:px-16 lg:px-20 xl:px-28 md:pt-[40px] md:pb-[100px] border-t border-color-neutral-200">
         <div className="w-full max-w-[1440px] mx-auto flex flex-col items-start gap-4 sm:gap-[56px]">
           {/* Section Heading */}
           <motion.h2
@@ -642,7 +643,7 @@ export default function SubServiceDetailsPage() {
       </section>
 
       {/* ── Tech Stacks Used ────────────────────────────────── */}
-      <section className="w-full bg-[#F7F7F7] flex flex-col items-center justify-center self-stretch px-6 pt-6 pb-4 sm:pb-16 sm:px-12 md:px-[120px] md:pt-[40px] md:pb-[100px]">
+      <section className="w-full bg-[#F7F7F7] flex flex-col items-center justify-center self-stretch px-6 pt-6 pb-4 sm:pb-16 sm:px-12 md:px-16 lg:px-20 xl:px-28 md:pt-[40px] md:pb-[100px]">
         <div className="w-full max-w-[1440px] mx-auto flex flex-col items-start gap-8">
           <h2 className="font-dm-sans text-[28px] sm:text-[32px] font-normal not-italic leading-[1.3] text-[#171717]">
             Tech Stacks Used
@@ -698,7 +699,7 @@ export default function SubServiceDetailsPage() {
       </section>
 
       {/* ── Related Case Studies ──────────────────────────────── */}
-      <section className="w-full bg-White flex flex-col justify-center items-start self-stretch px-6 pt-8 pb-16 sm:py-16 sm:px-12 md:px-[120px] md:pt-[40px] md:pb-[100px] border-t border-[#E5E5E5]">
+      <section className="w-full bg-White flex flex-col justify-center items-start self-stretch px-6 pt-8 pb-16 sm:py-16 sm:px-12 md:px-16 lg:px-20 xl:px-28 md:pt-[40px] md:pb-[100px] border-t border-[#E5E5E5]">
         <div className="w-full max-w-[1440px] mx-auto flex flex-col items-start">
 
           {/* Heading Row */}
@@ -715,11 +716,11 @@ export default function SubServiceDetailsPage() {
             </h2>
             <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }} className="hidden sm:block w-full sm:w-auto">
               <Link
-                href="/portfolio"
+                href="/#casestudies"
                 className="group relative inline-flex justify-center items-center gap-[12px] rounded-none border-[1.5px] border-[#222] bg-transparent px-[32px] py-[16px] font-dm-sans text-[16px] font-medium leading-[1.3] text-[#000] overflow-hidden transition-colors duration-[400ms] ease-out hover:border-[#111] hover:text-[#fff] shrink-0 w-full sm:w-auto sm:mr-8"
               >
                 <span className="absolute inset-0 z-0 origin-left scale-x-0 bg-[#111] transition-transform duration-[400ms] ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:scale-x-100"></span>
-                <span className="relative z-10">View All Projects</span>
+                <span className="relative z-10">View All Case Studies</span>
                 <span className="relative z-10 inline-block transition-transform duration-[350ms] ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:translate-x-[5px] group-hover:-rotate-45">→</span>
               </Link>
             </motion.div>
@@ -794,14 +795,14 @@ export default function SubServiceDetailsPage() {
             </motion.div>
           </motion.div>
 
-          {/* Mobile-only View All Projects Button */}
+          {/* Mobile-only View All Case Studies Button */}
           <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }} className="w-full sm:hidden mt-8">
             <Link
-              href="/portfolio"
+              href="/#casestudies"
               className="group relative flex justify-center items-center gap-[12px] rounded-none border-[1.5px] border-[#222] bg-transparent px-[32px] py-[16px] font-dm-sans text-[16px] font-medium leading-[1.3] text-[#000] overflow-hidden transition-colors duration-[400ms] ease-out hover:border-[#111] hover:text-[#fff] shrink-0 w-full"
             >
               <span className="absolute inset-0 z-0 origin-left scale-x-0 bg-[#111] transition-transform duration-[400ms] ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:scale-x-100"></span>
-              <span className="relative z-10">View All Projects</span>
+              <span className="relative z-10">View All Case Studies</span>
               <span className="relative z-10 inline-block transition-transform duration-[350ms] ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:translate-x-[5px] group-hover:-rotate-45">→</span>
             </Link>
           </motion.div>

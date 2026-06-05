@@ -38,7 +38,7 @@ const PROJECTS = [
 export default function ClientWorks() {
   return (
     <section
-      id="projects"
+      id="casestudies"
       className="section-light-surface w-full overflow-hidden py-16 sm:py-20"
       aria-labelledby="client-works-heading"
     >
@@ -55,11 +55,11 @@ export default function ClientWorks() {
           </div>
           <div className="hidden lg:block">
             <OutlineButton
-              href="#projects"
+              href="#casestudies"
               variant="light"
               circleOffset={{ left: "-41px", top: "55px" }}
             >
-              View All Projects
+              View All Case Studies
             </OutlineButton>
           </div>
         </div>
@@ -119,11 +119,11 @@ export default function ClientWorks() {
         {/* Mobile-only bottom button */}
         <div className="flex justify-start lg:hidden">
           <OutlineButton
-            href="#projects"
+            href="#casestudies"
             variant="light"
             circleOffset={{ left: "-41px", top: "55px" }}
           >
-            View All Projects
+            View All Case Studies
           </OutlineButton>
         </div>
       </div>

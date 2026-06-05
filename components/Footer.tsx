@@ -15,10 +15,10 @@ const FOOTER_ICONS = {
 } as const;
 
 const COMPANY_LINKS = [
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Works", href: "#projects" },
-  { label: "Careers", href: "#careers" },
+  { label: "About", href: "/about" },
+  { label: "Services", href: "/#services" },
+  { label: "Case Study", href: "/#casestudies" },
+  { label: "Careers", href: "/#careers" },
   { label: "Contacts", href: "mailto:info@tectratechnologies.com" },
 ] as const;
 
@@ -34,8 +34,8 @@ const SERVICE_LINKS = [
 ] as const;
 
 const OTHER_LINKS = [
-  { label: "Blogs", href: "#blogs" },
-  { label: "Our Clients", href: "#clients" },
+  { label: "Blogs", href: "/#blogs" },
+  { label: "Our Clients", href: "/#clients" },
 ] as const;
 
 const CONTACT_ROWS = [

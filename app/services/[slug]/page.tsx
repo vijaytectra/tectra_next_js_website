@@ -422,7 +422,7 @@ function FAQSection({ items }: { items: ReadonlyArray<{ question: string; answer
   const toggle = (i: number) => setOpenIndex(openIndex === i ? null : i);
 
   return (
-    <section className="w-full bg-[#F5F5F5] flex flex-col items-start self-stretch px-6 py-8 sm:px-12 md:px-[120px] md:pt-[40px] md:pb-[80px] border-t border-color-neutral-200">
+    <section className="w-full bg-[#F5F5F5] flex flex-col items-start self-stretch px-6 py-8 sm:px-12 md:px-16 lg:px-20 xl:px-28 md:pt-[40px] md:pb-[80px] border-t border-color-neutral-200">
       <motion.h2
         className="font-dm-sans text-[28px] sm:text-[32px] font-normal not-italic leading-[1.3] text-[#171717] mb-10"
         initial={{ opacity: 0, y: 24 }}
@@ -507,7 +507,7 @@ export default function ServiceDetailsPage() {
     <div className="relative min-h-screen w-full bg-Black overflow-x-hidden">
 
       {/* ── Hero Section ─────────────────────────────────────────── */}
-      <header className="relative w-full h-[400px] sm:h-[500px] bg-Black flex flex-col justify-between items-start self-stretch px-6 py-10 sm:px-12 md:px-[120px] md:py-10">
+      <header className="relative w-full h-[400px] sm:h-[500px] bg-Black flex flex-col justify-between items-start self-stretch px-6 py-10 sm:px-12 md:px-16 lg:px-20 xl:px-28 md:py-10">
 
         {/* Background Image — scale in on load */}
         <motion.div
@@ -575,7 +575,7 @@ export default function ServiceDetailsPage() {
       </header>
 
       {/* ── White Description Section ─────────────────────────── */}
-      <main className="w-full bg-White flex flex-col justify-center items-start self-stretch px-6 py-16 sm:px-12 md:px-[120px] md:pt-[64px] md:pb-[80px] gap-14">
+      <main className="w-full bg-White flex flex-col justify-center items-start self-stretch px-6 py-16 sm:px-12 md:px-16 lg:px-20 xl:px-28 md:pt-[64px] md:pb-[80px] gap-14">
         <motion.div
           className="grid grid-cols-1 items-start gap-8 lg:grid-cols-[240px_1fr] lg:gap-16 w-full"
           variants={fadeUp}
@@ -615,7 +615,7 @@ export default function ServiceDetailsPage() {
       </main>
 
       {/* ── Our Services Grid ─────────────────────────────────── */}
-      <section className="w-full bg-[#FAF9F9] flex flex-col justify-center items-start self-stretch px-6 py-8 sm:px-12 md:px-[120px] md:pt-[40px] md:pb-[100px] border-t border-color-neutral-200">
+      <section className="w-full bg-[#FAF9F9] flex flex-col justify-center items-start self-stretch px-6 py-8 sm:px-12 md:px-16 lg:px-20 xl:px-28 md:pt-[40px] md:pb-[100px] border-t border-color-neutral-200">
         <div className="w-full flex flex-col items-start">
 
           {/* Breadcrumbs — fade in */}
@@ -658,65 +658,69 @@ export default function ServiceDetailsPage() {
             whileInView="show"
             viewport={{ once: true, margin: "-40px" }}
           >
-            {(SUB_SERVICES[slug] || SUB_SERVICES["software-solutions"]).map((subService) => (
-              <motion.div
-                key={subService.title}
-                variants={cardVariant}
-                whileHover={{ y: -4, boxShadow: "0 12px 32px rgba(0,0,0,0.08)" }}
-                transition={{ type: "spring", stiffness: 300, damping: 22 }}
-                className="flex flex-col bg-White overflow-hidden border border-color-neutral-200 w-full max-w-[380px] h-fit shrink-0 cursor-pointer"
-              >
-                {/* Image */}
-                <div className="relative h-[132px] w-full overflow-hidden shrink-0 flex flex-col items-start gap-[10px] bg-lightgray">
-                  <Image
-                    src={subService.image}
-                    alt={subService.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 380px"
-                    className="object-cover transition-transform duration-500 hover:scale-105"
-                  />
-                  <div
-                    className="absolute inset-0 pointer-events-none"
-                    style={{
-                      background: 'linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), linear-gradient(180deg, #FFF 0%, #999 100%)',
-                      mixBlendMode: 'multiply'
-                    }}
-                  />
-                  <h3 className="absolute bottom-4 left-6 z-10 font-dm-sans text-xl font-medium text-White">
-                    {subService.title}
-                  </h3>
-                </div>
+            {(SUB_SERVICES[slug] || SUB_SERVICES["software-solutions"]).map((subService) => {
+              const href = `/services/${slug}/${subService.title.toLowerCase().replace(/\s+/g, "-")}`;
+              const CardContent = (
+                <motion.div
+                  variants={cardVariant}
+                  whileHover={{ y: -4, boxShadow: "0 12px 32px rgba(0,0,0,0.08)" }}
+                  transition={{ type: "spring", stiffness: 300, damping: 22 }}
+                  className="flex flex-col bg-White overflow-hidden border border-color-neutral-200 w-full max-w-[380px] h-full cursor-pointer text-left"
+                >
+                  {/* Image */}
+                  <div className="relative h-[132px] w-full overflow-hidden shrink-0 flex flex-col items-start gap-[10px] bg-lightgray">
+                    <Image
+                      src={subService.image}
+                      alt={subService.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 380px"
+                      className="object-cover transition-transform duration-500 hover:scale-105"
+                    />
+                    <div
+                      className="absolute inset-0 pointer-events-none"
+                      style={{
+                        background: 'linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), linear-gradient(180deg, #FFF 0%, #999 100%)',
+                        mixBlendMode: 'multiply'
+                      }}
+                    />
+                    <h3 className="absolute bottom-4 left-6 z-10 font-dm-sans text-xl font-medium text-White">
+                      {subService.title}
+                    </h3>
+                  </div>
 
-                {/* Card Body */}
-                <div className="flex flex-col items-start gap-4 px-6 py-6 flex-grow overflow-hidden">
-                  <p className="self-stretch text-[#737373] font-dm-sans text-[16px] not-italic font-normal leading-[1.3]">
-                    {subService.description}
-                  </p>
-                  <div className="shrink-0">
-                    {subService.active ? (
-                      <Link
-                        href={`/services/${slug}/${subService.title.toLowerCase().replace(/\s+/g, "-")}`}
-                        className="inline-flex items-center gap-2 font-dm-sans text-[16px] font-medium leading-[1.3] text-[#ADADAD] transition-colors duration-200 hover:text-[#2563EB]"
-                      >
-                        View Details
-                        <span className="text-lg">→</span>
-                      </Link>
-                    ) : (
-                      <span className="inline-flex items-center gap-2 font-dm-sans text-[16px] font-medium leading-[1.3] text-[#ADADAD] cursor-not-allowed">
+                  {/* Card Body */}
+                  <div className="flex flex-col items-start gap-4 px-6 py-6 flex-grow overflow-hidden">
+                    <p className="self-stretch text-[#737373] font-dm-sans text-[16px] not-italic font-normal leading-[1.3]">
+                      {subService.description}
+                    </p>
+                    <div className="shrink-0">
+                      <span className={`inline-flex items-center gap-2 font-dm-sans text-[16px] font-medium leading-[1.3] text-[#ADADAD] transition-colors duration-200 ${
+                        subService.active ? "group-hover:text-[#2563EB]" : ""
+                      }`}>
                         View Details
                         <span className="text-lg">→</span>
                       </span>
-                    )}
+                    </div>
                   </div>
+                </motion.div>
+              );
+
+              return subService.active ? (
+                <Link key={subService.title} href={href} className="group flex h-full">
+                  {CardContent}
+                </Link>
+              ) : (
+                <div key={subService.title} className="cursor-not-allowed flex h-full">
+                  {CardContent}
                 </div>
-              </motion.div>
-            ))}
+              );
+            })}
           </motion.div>
         </div>
       </section>
 
       {/* ── Related Case Studies ──────────────────────────────── */}
-      <section className="w-full bg-White flex flex-col justify-center items-start self-stretch px-6 py-8 sm:px-12 md:px-[120px] md:pt-[40px] md:pb-[100px] border-t border-color-neutral-200">
+      <section className="w-full bg-White flex flex-col justify-center items-start self-stretch px-6 py-8 sm:px-12 md:px-16 lg:px-20 xl:px-28 md:pt-[40px] md:pb-[100px] border-t border-color-neutral-200">
         <div className="w-full flex flex-col items-start">
 
           {/* Heading Row */}
@@ -733,11 +737,11 @@ export default function ServiceDetailsPage() {
             </h2>
             <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }} className="hidden sm:block w-full sm:w-auto">
               <Link
-                href="/portfolio"
+                href="/#casestudies"
                 className="group relative inline-flex justify-center items-center gap-[12px] rounded-none border-[1.5px] border-[#222] bg-transparent px-[32px] py-[16px] font-dm-sans text-[16px] font-medium leading-[1.3] text-[#000] overflow-hidden transition-colors duration-[400ms] ease-out hover:border-[#111] hover:text-[#fff] shrink-0 w-full sm:w-auto sm:mr-8"
               >
                 <span className="absolute inset-0 z-0 origin-left scale-x-0 bg-[#111] transition-transform duration-[400ms] ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:scale-x-100"></span>
-                <span className="relative z-10">View All Projects</span>
+                <span className="relative z-10">View All Case Studies</span>
                 <span className="relative z-10 inline-block transition-transform duration-[350ms] ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:translate-x-[5px] group-hover:-rotate-45">→</span>
               </Link>
             </motion.div>
@@ -812,14 +816,14 @@ export default function ServiceDetailsPage() {
             </motion.div>
           </motion.div>
 
-          {/* Mobile-only View All Projects Button */}
+          {/* Mobile-only View All Case Studies Button */}
           <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }} className="w-full sm:hidden mt-8">
             <Link
-              href="/portfolio"
+              href="/#casestudies"
               className="group relative flex justify-center items-center gap-[12px] rounded-none border-[1.5px] border-[#222] bg-transparent px-[32px] py-[16px] font-dm-sans text-[16px] font-medium leading-[1.3] text-[#000] overflow-hidden transition-colors duration-[400ms] ease-out hover:border-[#111] hover:text-[#fff] shrink-0 w-full"
             >
               <span className="absolute inset-0 z-0 origin-left scale-x-0 bg-[#111] transition-transform duration-[400ms] ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:scale-x-100"></span>
-              <span className="relative z-10">View All Projects</span>
+              <span className="relative z-10">View All Case Studies</span>
               <span className="relative z-10 inline-block transition-transform duration-[350ms] ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:translate-x-[5px] group-hover:-rotate-45">→</span>
             </Link>
           </motion.div>

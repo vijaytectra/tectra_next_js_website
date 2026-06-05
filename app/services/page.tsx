@@ -159,7 +159,7 @@ export default function ServicesPage() {
     <div className="relative min-h-screen w-full bg-White text-[#171717] overflow-x-hidden">
       
       {/* ── Navbar ─────────────────────────────────────────── */}
-      <div className="w-full px-6 py-6 sm:px-12 md:px-[120px]">
+      <div className="w-full px-6 py-6 sm:px-12 md:px-16 lg:px-20 xl:px-28">
         <Navbar tone="dark" className="w-full" />
       </div>
 
@@ -198,7 +198,7 @@ export default function ServicesPage() {
 
         {/* ── Services Sections Group ───────────────────────── */}
         <section className="w-full bg-[#F5F5F5] border-t border-[#EBEBEB] flex flex-col items-center justify-center">
-          <div className="w-full flex flex-col justify-center items-start gap-[80px] self-stretch py-[100px] px-6 sm:px-12 lg:px-[120px]">
+          <div className="w-full flex flex-col justify-center items-start gap-[80px] self-stretch py-[100px] px-6 sm:px-12 md:px-16 lg:px-20 xl:px-28">
             
             {/* ── Software Solutions Main Interactive Section ────── */}
             <div id="software-solutions" className="w-full flex flex-col">

@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Menu } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
@@ -11,11 +10,11 @@ import MobileMenu from "./MobileMenu";
 const NAV_LINKS = [
   { label: "Services", href: "/#services" },
   { label: "Case Study", href: "/#casestudies" },
-  { label: "Blogs", href: "/#blogs" },
+  { label: "Blogs", href: "/blogs" },
   { label: "Careers", href: "/#careers" },
   { label: "Pricings", href: "/#pricings" },
   { label: "Industries", href: "/#industries" },
-  { label: "About", href: "/#about" },
+  { label: "About", href: "/about" },
 ] as const;
 
 const navItemVariants = {
@@ -93,10 +92,10 @@ export default function Navbar({ className = "", onMobileMenuChange, tone = "lig
               initial={{ opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.4 }}
-              className="hidden sm:block"
+              className="hidden lg:block"
             >
               <Link
-                href="#contact"
+                href="/#contact"
                 className={`inline-flex items-center whitespace-nowrap gap-2.5 text-[14px] xl:text-[15px] transition-opacity hover:opacity-70 ${
                   tone === "dark" ? "text-color-neutral-900" : "text-White"
                 }`}
@@ -116,14 +115,20 @@ export default function Navbar({ className = "", onMobileMenuChange, tone = "lig
 
             <button
               type="button"
-              className={`flex h-10 w-10 items-center justify-center lg:hidden ${
+              className={`flex items-center gap-2.5 lg:hidden transition-opacity hover:opacity-70 ${
                 tone === "dark" ? "text-color-neutral-900" : "text-White"
               }`}
               onClick={() => setOpen(true)}
               aria-expanded={mobileOpen}
               aria-label="Open menu"
             >
-              <Menu className="h-6 w-6" strokeWidth={1.5} aria-hidden />
+              <div className="flex flex-col items-end gap-[5px]" aria-hidden>
+                <div className="h-[2px] w-3.5 bg-current rounded-full"></div>
+                <div className="h-[2px] w-6 bg-current rounded-full"></div>
+              </div>
+              <span className="font-dm-sans text-[13px] font-bold tracking-[0.1em] uppercase mt-[1px]">
+                Menu
+              </span>
             </button>
           </div>
         </div>

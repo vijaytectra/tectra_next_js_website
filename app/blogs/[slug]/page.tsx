@@ -188,23 +188,23 @@ export default function BlogPostPage() {
     <div className="relative min-h-screen w-full bg-White text-Black flex flex-col">
 
       {/* ── Navbar ─────────────────────────────────────────── */}
-      <div className="w-full px-6 pt-6 pb-0 md:px-[120px] max-w-[1440px] mx-auto">
+      <div className="w-full px-6 pt-6 pb-0 md:px-12 lg:px-16 xl:px-[120px] max-w-[1440px] mx-auto">
         <Navbar tone="dark" className="w-full" />
       </div>
 
       {/* ── Main Layout Grid ───────────────────────────────── */}
-      <main className="flex-1 w-full max-w-[1440px] mx-auto px-6 md:px-[120px] pt-8 pb-16 bg-White">
+      <main className="flex-1 w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16 xl:px-[120px] pt-8 pb-16 bg-White">
 
         {/* Layout Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start w-full">
+        <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 lg:gap-12 items-start w-full">
 
           {/* Main Content Area */}
-          <div className="lg:col-span-8 flex flex-col gap-6 md:gap-8 w-full min-w-0">
+          <div className="xl:col-span-8 flex flex-col gap-6 md:gap-8 w-full min-w-0">
 
             {/* Header Content */}
             <div className="flex flex-col gap-2.5 w-full">
-              <h1 className="font-dm-sans text-[32px] font-semibold leading-[48px] text-color-primary-main self-stretch whitespace-pre-wrap">
-                {blog.title.replace("That AI Can", "That AI\nCan")}
+              <h1 className="font-dm-sans text-[28px] sm:text-[32px] font-semibold leading-tight text-color-primary-main self-stretch whitespace-pre-wrap">
+                {blog.title}
               </h1>
               <div className="flex flex-row flex-wrap items-center gap-x-4 sm:gap-x-5 gap-y-2 text-[14px] sm:text-[15px] font-medium mt-2">
                 <p className="flex items-center gap-1.5">
@@ -330,7 +330,7 @@ export default function BlogPostPage() {
           </div>
 
           {/* 3. Right Sidebar: Featured Blogs & CTA */}
-          <aside className="lg:col-span-4 w-full min-w-0 self-stretch">
+          <aside className="xl:col-span-4 w-full min-w-0 self-stretch mt-8 xl:mt-0">
             <div className="flex flex-col gap-10 sticky top-8">
 
               {/* Related Blogs Widget */}

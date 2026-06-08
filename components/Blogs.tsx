@@ -8,14 +8,16 @@ import SectionImage from "./ui/SectionImage";
 import SectionLabel from "./ui/SectionLabel";
 import { icons, images } from "@/lib/images";
 
+import { slugify } from "@/lib/blogs";
+
 const BLOGS = [
   {
     category: "APP DEVELOPMENT",
     title:
-      "Five Tasks Your Business is Doing Manually that AI can Handle Better, Faster and cheaper in 2026",
+      "Five Tasks Your Business Is Doing Manually That AI Can Handle Better, Faster, and Cheaper in 2026",
     date: "Sep 17, 2025",
     author: "Santhosh Kumar",
-    image: images.blog[0],
+    image: images.blog[2],
   },
   {
     category: "APP DEVELOPMENT",
@@ -90,7 +92,7 @@ export default function Blogs({
                     {blog.category}
                   </span>
                   <div className="flex items-start justify-between gap-2.5">
-                    <Link href="#" className="min-w-0 flex-1">
+                    <Link href={`/blogs/${slugify(blog.title)}`} className="min-w-0 flex-1">
                       <h3 className="font-dm-sans text-base font-medium leading-6 text-Black">
                         {blog.title}
                       </h3>

@@ -82,7 +82,7 @@ export default function ClientWorks() {
                   <SectionImage
                     src={project.image}
                     alt={project.title}
-                    className="aspect-[572/267] w-full sm:h-64"
+                    className="aspect-[572/267] w-full sm:h-64 md:h-auto lg:h-64"
                     sizes="(max-width: 1024px) 100vw, 572px"
                   />
                   <div className="flex items-end justify-between gap-4 sm:gap-6">

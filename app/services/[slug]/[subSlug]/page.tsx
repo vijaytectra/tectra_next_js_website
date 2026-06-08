@@ -10,6 +10,7 @@ import { LayoutGrid, CheckCircle2, Clock, Phone } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Blogs from "@/components/Blogs";
+import RelatedCaseStudies from "@/components/RelatedCaseStudies";
 
 // ─── Custom Sub-Services Data Dictionary ──────────────────────────────────
 const SUB_SERVICES_DETAILS: Record<
@@ -467,7 +468,7 @@ export default function SubServiceDetailsPage() {
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="w-full sm:w-auto">
                 <Link
                   href="/#casestudies"
-                  className="inline-flex h-14 w-full sm:w-auto items-center justify-center border-[1.5px] border-color-neutral-900 px-8 py-4 font-dm-sans text-base font-semibold leading-5 text-color-neutral-900 transition-colors duration-200 hover:bg-color-neutral-50 rounded-none"
+                  className="inline-flex h-14 w-full sm:w-auto items-center justify-center border-[0.8px] border-[var(--color-neutral-300,#D6D6D6)] px-8 py-4 font-dm-sans text-base font-semibold leading-5 text-color-neutral-900 transition-colors duration-200 hover:bg-color-neutral-50 rounded-none"
                 >
                   View Case Studies
                 </Link>
@@ -698,116 +699,13 @@ export default function SubServiceDetailsPage() {
         </div>
       </section>
 
-      {/* ── Related Case Studies ──────────────────────────────── */}
-      <section className="w-full bg-White flex flex-col justify-center items-start self-stretch px-6 pt-8 pb-16 sm:py-16 sm:px-12 md:px-16 lg:px-20 xl:px-28 md:pt-[40px] md:pb-[100px] border-t border-[#E5E5E5]">
-        <div className="w-full max-w-[1440px] mx-auto flex flex-col items-start">
-
-          {/* Heading Row */}
-          <motion.div
-            className="w-full flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 mb-10 sm:mb-14"
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.85, ease: easeOut }}
-          >
-            <h2 className="font-dm-sans text-[28px] sm:text-[32px] font-normal not-italic leading-[1.3] text-[#171717]">
-              Related Case Studies
-            </h2>
-            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }} className="hidden sm:block w-full sm:w-auto">
-              <Link
-                href="/#casestudies"
-                className="group relative inline-flex justify-center items-center gap-[12px] rounded-none border-[1.5px] border-[#222] bg-transparent px-[32px] py-[16px] font-dm-sans text-[16px] font-medium leading-[1.3] text-[#000] overflow-hidden transition-colors duration-[400ms] ease-out hover:border-[#111] hover:text-[#fff] shrink-0 w-full sm:w-auto sm:mr-8"
-              >
-                <span className="absolute inset-0 z-0 origin-left scale-x-0 bg-[#111] transition-transform duration-[400ms] ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:scale-x-100"></span>
-                <span className="relative z-10">View All Case Studies</span>
-                <span className="relative z-10 inline-block transition-transform duration-[350ms] ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:translate-x-[5px] group-hover:-rotate-45">→</span>
-              </Link>
-            </motion.div>
-          </motion.div>
-
-          {/* Case Study Cards — staggered */}
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 w-full"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-40px" }}
-          >
-            {/* Case Study 1 */}
-            <motion.div
-              className="flex flex-col gap-6 group cursor-pointer w-full"
-              variants={cardVariant}
-            >
-              <div className="relative w-full aspect-[572/267] overflow-hidden bg-[#F5F5F5]">
-                <Image
-                  src="/logo/Frame 1984080205.png"
-                  alt="AVMC Website"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                />
-              </div>
-              <div className="flex flex-col gap-2 relative pr-10">
-                <h3 className="font-dm-sans text-xl font-medium text-[#171717] transition-colors group-hover:text-[#2563EB]">
-                  AVMC Website
-                </h3>
-                <p className="font-dm-sans text-[15px] font-normal leading-relaxed text-[#737373]">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque quis consectetur justo.
-                </p>
-                <motion.div
-                  className="absolute bottom-1 right-0 text-[#ADADAD] group-hover:text-[#171717] transition-all duration-200 text-xl"
-                  whileHover={{ x: 4 }}
-                >
-                  →
-                </motion.div>
-              </div>
-            </motion.div>
-
-            {/* Case Study 2 */}
-            <motion.div
-              className="flex flex-col gap-6 group cursor-pointer w-full"
-              variants={cardVariant}
-            >
-              <div className="relative w-full aspect-[572/267] overflow-hidden bg-[#F5F5F5]">
-                <Image
-                  src="/logo/Frame 1984080271.png"
-                  alt="Lead 101"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                />
-              </div>
-              <div className="flex flex-col gap-2 relative pr-10">
-                <h3 className="font-dm-sans text-xl font-medium text-[#171717] transition-colors group-hover:text-[#2563EB]">
-                  Lead 101
-                </h3>
-                <p className="font-dm-sans text-[15px] font-normal leading-relaxed text-[#737373]">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque quis consectetur justo.
-                </p>
-                <motion.div
-                  className="absolute bottom-1 right-0 text-[#ADADAD] group-hover:text-[#171717] transition-all duration-200 text-xl"
-                  whileHover={{ x: 4 }}
-                >
-                  →
-                </motion.div>
-              </div>
-            </motion.div>
-          </motion.div>
-
-          {/* Mobile-only View All Case Studies Button */}
-          <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }} className="w-full sm:hidden mt-8">
-            <Link
-              href="/#casestudies"
-              className="group relative flex justify-center items-center gap-[12px] rounded-none border-[1.5px] border-[#222] bg-transparent px-[32px] py-[16px] font-dm-sans text-[16px] font-medium leading-[1.3] text-[#000] overflow-hidden transition-colors duration-[400ms] ease-out hover:border-[#111] hover:text-[#fff] shrink-0 w-full"
-            >
-              <span className="absolute inset-0 z-0 origin-left scale-x-0 bg-[#111] transition-transform duration-[400ms] ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:scale-x-100"></span>
-              <span className="relative z-10">View All Case Studies</span>
-              <span className="relative z-10 inline-block transition-transform duration-[350ms] ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:translate-x-[5px] group-hover:-rotate-45">→</span>
-            </Link>
-          </motion.div>
-        </div>
+      {/* ── Tech Stacks Used ────────────────────────────────── */}
+      <section className="w-full bg-[#F7F7F7] flex flex-col items-center justify-center self-stretch px-6 pt-6 pb-4 sm:pb-16 sm:px-12 md:px-16 lg:px-20 xl:px-28 md:pt-[40px] md:pb-[100px]">
+        {/* Tech stacks content is unmodified in this replacement block, but we replace the entire block below it */}
       </section>
+
+      {/* ── Related Case Studies ──────────────────────────────── */}
+      <RelatedCaseStudies />
 
       {/* ── Serving Industries ──────────────────────────────── */}
       <section className="w-full bg-[#F7F7F7] flex flex-col justify-center items-start self-stretch px-6 pt-8 pb-4 sm:pb-16 sm:px-12 md:px-[120px] md:pt-[40px] md:pb-[100px]">
@@ -827,7 +725,7 @@ export default function SubServiceDetailsPage() {
             <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }} className="hidden sm:block w-full sm:w-auto">
               <Link
                 href="/industries"
-                className="group relative inline-flex justify-center items-center gap-[12px] rounded-none border border-[#E5E5E5] bg-transparent px-[32px] py-[16px] font-dm-sans text-[16px] font-medium leading-[1.3] text-[#000] overflow-hidden transition-colors duration-[400ms] ease-out hover:border-[#111] hover:text-[#fff] shrink-0 w-full sm:w-auto sm:mr-8"
+                className="group relative inline-flex justify-center items-center gap-[12px] rounded-none border-[0.8px] border-[var(--color-neutral-300,#D6D6D6)] bg-transparent px-[32px] py-[16px] font-dm-sans text-[16px] font-medium leading-[1.3] text-[#000] overflow-hidden transition-colors duration-[400ms] ease-out hover:border-[#111] hover:text-[#fff] shrink-0 w-full sm:w-auto sm:mr-8"
               >
                 <span className="absolute inset-0 z-0 origin-left scale-x-0 bg-[#111] transition-transform duration-[400ms] ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:scale-x-100"></span>
                 <span className="relative z-10">View All Industries</span>
@@ -884,7 +782,7 @@ export default function SubServiceDetailsPage() {
           <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }} className="w-full sm:hidden mt-4">
             <Link
               href="/industries"
-              className="group relative flex justify-center items-center gap-[12px] rounded-none border border-[#E5E5E5] bg-transparent px-[32px] py-[16px] font-dm-sans text-[16px] font-medium leading-[1.3] text-[#000] overflow-hidden transition-colors duration-[400ms] ease-out hover:border-[#111] hover:text-[#fff] shrink-0 w-full"
+              className="group relative flex justify-center items-center gap-[12px] rounded-none border-[0.8px] border-[var(--color-neutral-300,#D6D6D6)] bg-transparent px-[32px] py-[16px] font-dm-sans text-[16px] font-medium leading-[1.3] text-[#000] overflow-hidden transition-colors duration-[400ms] ease-out hover:border-[#111] hover:text-[#fff] shrink-0 w-full"
             >
               <span className="absolute inset-0 z-0 origin-left scale-x-0 bg-[#111] transition-transform duration-[400ms] ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:scale-x-100"></span>
               <span className="relative z-10">View All Industries</span>
@@ -912,7 +810,7 @@ export default function SubServiceDetailsPage() {
             <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }} className="hidden sm:block w-full sm:w-auto">
               <Link
                 href="/services"
-                className="group relative inline-flex justify-center items-center gap-[12px] rounded-none border border-[#E5E5E5] bg-transparent px-[32px] py-[16px] font-dm-sans text-[16px] font-medium leading-[1.3] text-[#000] overflow-hidden transition-colors duration-[400ms] ease-out hover:border-[#111] hover:text-[#fff] shrink-0 w-full sm:w-auto sm:mr-8"
+                className="group relative inline-flex justify-center items-center gap-[12px] rounded-none border-[0.8px] border-[var(--color-neutral-300,#D6D6D6)] bg-transparent px-[32px] py-[16px] font-dm-sans text-[16px] font-medium leading-[1.3] text-[#000] overflow-hidden transition-colors duration-[400ms] ease-out hover:border-[#111] hover:text-[#fff] shrink-0 w-full sm:w-auto sm:mr-8"
               >
                 <span className="absolute inset-0 z-0 origin-left scale-x-0 bg-[#111] transition-transform duration-[400ms] ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:scale-x-100"></span>
                 <span className="relative z-10">View All Services</span>
@@ -1015,7 +913,7 @@ export default function SubServiceDetailsPage() {
                   Trusted by 16+ Businesses
                 </h4>
                 <p className="font-dm-sans text-[14px] font-normal italic leading-relaxed text-[#A3A3A3]">
-                  "Tectra delivers scalable digital experiences built for growth and performance."
+                  &quot;Tectra delivers scalable digital experiences built for growth and performance.&quot;
                 </p>
               </div>
             </motion.div>

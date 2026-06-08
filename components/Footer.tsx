@@ -16,7 +16,7 @@ const FOOTER_ICONS = {
 
 const COMPANY_LINKS = [
   { label: "About", href: "/about" },
-  { label: "Services", href: "/#services" },
+  { label: "Services", href: "/services" },
   { label: "Case Study", href: "/#casestudies" },
   { label: "Careers", href: "/#careers" },
   { label: "Contacts", href: "mailto:info@tectratechnologies.com" },
@@ -134,7 +134,7 @@ export default function Footer() {
                 {SERVICE_LINKS.map((label) => (
                   <li key={label}>
                     <Link
-                      href="#services"
+                      href="/services"
                       className="font-dm-sans text-xs font-normal leading-4 text-color-neutral-400 transition-colors hover:text-color-neutral-0 whitespace-nowrap"
                     >
                       {label}

@@ -10,9 +10,7 @@ import Footer from "@/components/Footer";
 import SectionImage from "@/components/ui/SectionImage";
 import { icons, images } from "@/lib/images";
 
-const CATEGORIES = ["ALL", "APP DEVELOPMENT", "AI & AUTOMATION", "BUSINESS & WEB"] as const;
-
-type Category = typeof CATEGORIES[number];
+import { ALL_BLOGS, CATEGORIES, type Category, slugify } from "@/lib/blogs";
 
 const SORT_OPTIONS = [
   { label: "Newest First", value: "newest" },
@@ -23,89 +21,6 @@ const SORT_OPTIONS = [
 
 type SortValue = typeof SORT_OPTIONS[number]["value"];
 
-const ALL_BLOGS = [
-  {
-    id: 1,
-    category: "APP DEVELOPMENT" as Category,
-    title: "Five Tasks your Business is Doing manually that AI can handle Better, Faster and Cheaper",
-    date: "Sep 17, 2025",
-    timestamp: new Date("2025-09-17").getTime(),
-    author: "Santhosh Kumar",
-    image: images.blog[0],
-  },
-  {
-    id: 2,
-    category: "AI & AUTOMATION" as Category,
-    title: "Five Tasks your Business is Doing manually that AI can handle Better, Faster and Cheaper",
-    date: "Oct 10, 2025",
-    timestamp: new Date("2025-10-10").getTime(),
-    author: "Santhosh Kumar",
-    image: images.blog[1],
-  },
-  {
-    id: 3,
-    category: "BUSINESS & WEB" as Category,
-    title: "How much does a Business Website actually cost in Chennai in 2026? An Honest breakdown",
-    date: "Nov 05, 2025",
-    timestamp: new Date("2025-11-05").getTime(),
-    author: "Santhosh Kumar",
-    image: images.blog[2],
-  },
-  {
-    id: 4,
-    category: "APP DEVELOPMENT" as Category,
-    title: "Things You Should Consider Automating In Your Business",
-    date: "Aug 20, 2025",
-    timestamp: new Date("2025-08-20").getTime(),
-    author: "Santhosh Kumar",
-    image: images.blog[0],
-  },
-  {
-    id: 5,
-    category: "AI & AUTOMATION" as Category,
-    title: "AI Agents: The Future of Workflow Optimization",
-    date: "Dec 01, 2025",
-    timestamp: new Date("2025-12-01").getTime(),
-    author: "Santhosh Kumar",
-    image: images.blog[1],
-  },
-  {
-    id: 6,
-    category: "APP DEVELOPMENT" as Category,
-    title: "Five Tasks your Business is Doing manually that AI can handle Better, Faster and Cheaper",
-    date: "Jan 15, 2026",
-    timestamp: new Date("2026-01-15").getTime(),
-    author: "Santhosh Kumar",
-    image: images.blog[2],
-  },
-  {
-    id: 7,
-    category: "APP DEVELOPMENT" as Category,
-    title: "How Chennai Business are using WhatsApp Automation to Generate more Enquiries without Increasing Headcount",
-    date: "Sep 17, 2025",
-    timestamp: new Date("2025-09-17").getTime(),
-    author: "Santhosh Kumar",
-    image: images.blog[0],
-  },
-  {
-    id: 8,
-    category: "AI & AUTOMATION" as Category,
-    title: "Five Tasks your Business is Doing manually that AI can handle Better, Faster and Cheaper",
-    date: "Oct 10, 2025",
-    timestamp: new Date("2025-10-10").getTime(),
-    author: "Santhosh Kumar",
-    image: images.blog[1],
-  },
-  {
-    id: 9,
-    category: "BUSINESS & WEB" as Category,
-    title: "How much does a Business Website actually cost in Chennai in 2026? An Honest breakdown",
-    date: "Nov 05, 2025",
-    timestamp: new Date("2025-11-05").getTime(),
-    author: "Santhosh Kumar",
-    image: images.blog[2],
-  },
-];
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
@@ -359,7 +274,7 @@ export default function BlogsPage() {
                           {blog.category}
                         </span>
                         <div className="flex items-start justify-between gap-2.5">
-                          <Link href="#" className="min-w-0 flex-1 group">
+                          <Link href={`/blogs/${slugify(blog.title)}`} className="min-w-0 flex-1 group">
                             <h3 className="font-dm-sans text-base font-medium leading-6 text-Black hover:text-neutral-600 transition-colors">
                               {blog.title}
                             </h3>

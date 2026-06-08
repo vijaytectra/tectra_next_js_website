@@ -19,7 +19,11 @@ export default function Logo({ className = "", tone = "light" }: LogoProps) {
           alt="Tectra Technologies"
           fill
           priority
-          className={`object-contain object-left ${tone === "dark" ? "brightness-0" : ""}`}
+          style={{
+            objectFit: "contain",
+            objectPosition: "left",
+          }}
+          className={tone === "dark" ? "brightness-0" : ""}
           sizes="(max-width: 1024px) 260px, 300px"
         />
       </span>

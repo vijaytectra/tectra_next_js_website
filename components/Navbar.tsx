@@ -8,11 +8,11 @@ import Logo from "./Logo";
 import MobileMenu from "./MobileMenu";
 
 const NAV_LINKS = [
-  { label: "Services", href: "/#services" },
+  { label: "Services", href: "/services" },
   { label: "Case Study", href: "/#casestudies" },
   { label: "Blogs", href: "/blogs" },
   { label: "Careers", href: "/#careers" },
-  { label: "Pricings", href: "/#pricings" },
+  { label: "Pricings", href: "/pricings" },
   { label: "Industries", href: "/#industries" },
   { label: "About", href: "/about" },
 ] as const;
@@ -58,8 +58,8 @@ export default function Navbar({ className = "", onMobileMenuChange, tone = "lig
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       >
-        <div className="relative flex min-h-12 w-full items-center justify-between gap-4 lg:min-h-14">
-          <Logo className="relative z-10 shrink-0" tone={tone} />
+        <div className="relative flex w-full py-4 items-center justify-between gap-4">
+          <Logo className="relative z-10 shrink-0 -ml-2 sm:-ml-3 lg:-ml-[14px]" tone={tone} />
 
           <nav
              className="hidden flex-1 justify-center px-4 lg:flex"

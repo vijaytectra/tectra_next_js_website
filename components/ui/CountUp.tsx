@@ -31,7 +31,8 @@ export default function CountUp({
     if (!isInView) return;
 
     if (!parsed) {
-      setDisplay(value);
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setTimeout(() => setDisplay(value), 0);
       return;
     }
 
@@ -40,7 +41,7 @@ export default function CountUp({
     ).matches;
 
     if (prefersReducedMotion) {
-      setDisplay(value);
+      setTimeout(() => setDisplay(value), 0);
       return;
     }
 
@@ -53,7 +54,7 @@ export default function CountUp({
     });
 
     return () => controls.stop();
-  }, [isInView, end, suffix, value, duration]);
+  }, [isInView, end, suffix, value, duration, parsed]);
 
   return (
     <span

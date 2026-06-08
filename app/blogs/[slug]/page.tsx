@@ -358,10 +358,8 @@ export default function BlogPostPage() {
                         <h4 className="font-dm-sans text-[15px] sm:text-base font-medium leading-[1.35] text-neutral-800 group-hover:text-neutral-600 transition-colors line-clamp-3">
                           {item.title}
                         </h4>
-                        <p className="flex items-center gap-2 font-dm-sans text-[13px] font-normal leading-none text-neutral-500">
-                          <span>{item.author}</span>
-                          <span>•</span>
-                          <span>{item.readTime || "12 mins read"}</span>
+                        <p className="font-dm-sans text-[13px] font-normal leading-snug text-neutral-500 mt-0.5">
+                          {item.author} <span className="mx-1.5">&bull;</span> {item.readTime || "12 mins read"}
                         </p>
                       </div>
                     </Link>

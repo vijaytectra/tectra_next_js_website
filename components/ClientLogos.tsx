@@ -14,23 +14,30 @@ export default function ClientLogos() {
       className="section-dark-surface w-full overflow-hidden py-16 sm:py-24"
       aria-labelledby="clients-heading"
     >
-      <div className="section-shell flex flex-col gap-12 lg:gap-16">
-        <div className="flex max-w-[607px] flex-col gap-3">
-          <SectionLabel>OUR CLIENTS</SectionLabel>
-          <h2
-            id="clients-heading"
-            className="font-dm-sans text-2xl font-normal leading-10 text-color-neutral-50 sm:text-3xl"
-          >
-            We Value Our Clients
-          </h2>
+      <div className="section-shell flex flex-col gap-[56px]">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-[120px] items-start w-full">
+          <div className="w-full lg:w-[45%] flex flex-col">
+            <div className="border-t-[1px] border-[#737373] pt-1 mb-6 w-fit pr-8">
+              <span className="font-dm-mono text-[14px] font-normal tracking-[3px] text-[#A3A3A3] uppercase">
+                Our clients
+              </span>
+            </div>
+            <h2
+              id="clients-heading"
+              className="font-dm-sans text-[36px] md:text-[48px] font-light leading-[1.2] text-White"
+            >
+              Businesses that<br />trust Tectra.
+            </h2>
+          </div>
+
+          <div className="w-full lg:w-[55%] flex flex-col lg:pt-[42px]">
+            <p className="font-dm-sans text-[16px] md:text-[18px] font-normal leading-[1.6] text-[#A3A3A3] max-w-[560px]">
+              From Funded Startups to Enterprise teams we build long term Partnerships with Business that value Craft, Accountability and results. Our Clients Stay because we stay Invested
+            </p>
+          </div>
         </div>
 
-        <div
-          className="flex flex-wrap items-center content-center self-stretch justify-start w-full"
-          style={{
-            borderLeft: "0.8px solid var(--color-neutral-700, #404040)",
-          }}
-        >
+        <div className="flex flex-wrap items-center content-center self-stretch justify-start w-full">
           {Array.from({ length: CLIENT_LOGO_COUNT }, (_, index) => {
             const logoIndex = index + 1;
             const isFirstBox = logoIndex === 1;
@@ -118,12 +125,7 @@ export default function ClientLogos() {
              return (
               <motion.div
                 key={logoIndex}
-                className="group flex items-center justify-center p-4 transition-all duration-300 w-1/2 sm:w-1/3 h-[192px] gap-[18px] bg-color-primary-main"
-                style={{
-                  borderTop: "0.8px solid var(--color-neutral-700, #404040)",
-                  borderRight: "0.8px solid var(--color-neutral-700, #404040)",
-                  borderBottom: "0.8px solid var(--color-neutral-700, #404040)",
-                }}
+                className="group flex items-center justify-center p-4 transition-all duration-300 w-1/2 sm:w-1/3 lg:w-1/4 h-[192px] gap-[18px] bg-color-primary-main"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 whileHover={{ backgroundColor: "#080808" }}

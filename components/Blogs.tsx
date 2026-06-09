@@ -80,7 +80,8 @@ export default function Blogs({
               viewport={{ once: true }}
               transition={{ delay: index * 0.08 }}
             >
-              <SectionImage
+              <Link href={`/blogs/${slugify(blog.title)}`} className="flex flex-col h-full group">
+                <SectionImage
                 src={blog.image}
                 alt={blog.title}
                 className="h-44 w-full sm:h-48 shrink-0"
@@ -92,11 +93,11 @@ export default function Blogs({
                     {blog.category}
                   </span>
                   <div className="flex items-start justify-between gap-2.5">
-                    <Link href={`/blogs/${slugify(blog.title)}`} className="min-w-0 flex-1">
-                      <h3 className="font-dm-sans text-base font-medium leading-6 text-Black">
+                    <div className="min-w-0 flex-1">
+                      <h3 className="font-dm-sans text-base font-medium leading-6 text-Black group-hover:text-neutral-600 transition-colors">
                         {blog.title}
                       </h3>
-                    </Link>
+                    </div>
                     <Image
                       src={icons.arrowUpRight}
                       alt=""
@@ -120,6 +121,7 @@ export default function Blogs({
                   </p>
                 </div>
               </div>
+              </Link>
             </motion.article>
           ))}
         </div>

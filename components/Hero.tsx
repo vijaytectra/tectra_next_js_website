@@ -103,7 +103,7 @@ export default function Hero() {
         <source src="/videos/mobile%20video%20landing%20page.webm" type="video/webm" />
       </video>
 
-      <div className="hero-shell relative z-10 flex h-full min-h-0 w-full flex-col justify-between pt-6 pb-8 md:pt-[var(--Hero-Padding-Top)] md:pb-4 lg:pb-0">
+      <div className="hero-shell relative z-10 flex h-full min-h-0 w-full flex-col justify-between pt-6 pb-8 md:pt-[var(--Hero-Padding-Top)]">
         <Navbar className="shrink-0" />
 
         <div className="relative z-20 mb-0 flex flex-col w-full shrink-0 items-start justify-between gap-6 sm:mb-6 md:mb-6 lg:mb-4">

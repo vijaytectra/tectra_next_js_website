@@ -8,9 +8,9 @@ import { serviceIcons } from "@/lib/images";
 
 const SERVICES = [
   {
-    title: "Software Solutions",
+    title: "SOFTWARE SOLUTIONS",
     description: "Software solutions built for scalability and growth.",
-    uppercaseOnHover: true,
+    uppercaseOnHover: false,
     icon: serviceIcons.software,
     href: "/services/software-solutions",
   },

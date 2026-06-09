@@ -95,7 +95,7 @@ export default function Navbar({ className = "", onMobileMenuChange, tone = "lig
               className="hidden lg:block"
             >
               <Link
-                href="/#contact"
+                href="contact"
                 className={`inline-flex items-center whitespace-nowrap gap-2.5 text-[14px] xl:text-[15px] transition-opacity hover:opacity-70 ${
                   tone === "dark" ? "text-color-neutral-900" : "text-White"
                 }`}

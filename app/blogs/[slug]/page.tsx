@@ -299,9 +299,6 @@ export default function BlogPostPage() {
                   {blog.sections.map((sec, i) => (
                     <section key={sec.id} id={sec.id} className="scroll-mt-8 flex flex-col gap-3">
                       <h3 className="font-dm-sans text-xl sm:text-2xl font-medium text-neutral-900 leading-snug">
-                        <span className="font-mono text-neutral-400 text-sm font-normal mr-2">
-                          0{i + 1}.
-                        </span>
                         {sec.title}
                       </h3>
                       <p className="font-dm-sans text-[15px] sm:text-[17px] leading-relaxed text-neutral-600 font-normal">

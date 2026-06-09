@@ -262,6 +262,7 @@ export default function BlogsPage() {
                     exit={{ opacity: 0, scale: 0.95 }}
                     transition={{ duration: 0.5, ease: easeOut, delay: index * 0.05 }}
                   >
+                    <Link href={`/blogs/${slugify(blog.title)}`} className="flex flex-col h-full group">
                     <SectionImage
                       src={blog.image}
                       alt={blog.title}
@@ -274,11 +275,11 @@ export default function BlogsPage() {
                           {blog.category}
                         </span>
                         <div className="flex items-start justify-between gap-2.5">
-                          <Link href={`/blogs/${slugify(blog.title)}`} className="min-w-0 flex-1 group">
-                            <h3 className="font-dm-sans text-base font-medium leading-6 text-Black hover:text-neutral-600 transition-colors">
+                          <div className="min-w-0 flex-1">
+                            <h3 className="font-dm-sans text-base font-medium leading-6 text-Black group-hover:text-neutral-600 transition-colors">
                               {blog.title}
                             </h3>
-                          </Link>
+                          </div>
                           <Image
                             src={icons.arrowUpRight}
                             alt=""
@@ -302,6 +303,7 @@ export default function BlogsPage() {
                         </p>
                       </div>
                     </div>
+                    </Link>
                   </motion.article>
                 ))}
               </motion.div>

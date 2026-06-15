@@ -65,7 +65,7 @@ export default function WhatWeDo() {
             </div>
 
             <OutlineButton
-              href="#casestudies"
+              href="/case-studies"
               variant="dark"
               className="w-full sm:w-auto"
               circleOffset={{ left: "-42px", top: "55px" }}

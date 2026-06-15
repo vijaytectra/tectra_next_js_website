@@ -26,10 +26,16 @@ const cardVariant = {
   show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: easeOut } },
 };
 
-export default function RelatedCaseStudies() {
+interface RelatedCaseStudiesProps {
+  hideBorder?: boolean;
+  className?: string;
+  contentClassName?: string;
+}
+
+export default function RelatedCaseStudies({ hideBorder = false, className = "", contentClassName = "max-w-[1440px]" }: RelatedCaseStudiesProps = {}) {
   return (
-    <section className="w-full bg-White flex flex-col justify-center items-start self-stretch px-6 py-8 sm:py-16 sm:px-12 md:px-16 lg:px-20 xl:px-28 md:pt-[40px] md:pb-[100px] border-t border-color-neutral-200">
-      <div className="w-full max-w-[1440px] mx-auto flex flex-col items-start">
+    <section className={`w-full bg-White flex flex-col justify-center items-start self-stretch px-6 py-8 sm:py-16 sm:px-12 md:px-16 lg:px-20 xl:px-28 md:pt-[40px] md:pb-[100px] ${hideBorder ? "" : "border-t border-color-neutral-200"} ${className}`}>
+      <div className={`w-full ${contentClassName} mx-auto flex flex-col items-start`}>
         {/* Heading Row */}
         <motion.div
           className="w-full flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 mb-10 sm:mb-14"

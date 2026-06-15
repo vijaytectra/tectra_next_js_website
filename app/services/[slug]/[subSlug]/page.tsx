@@ -11,6 +11,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Blogs from "@/components/Blogs";
 import RelatedCaseStudies from "@/components/RelatedCaseStudies";
+import FAQSection from "@/components/FAQSection";
 
 // ─── Custom Sub-Services Data Dictionary ──────────────────────────────────
 const SUB_SERVICES_DETAILS: Record<
@@ -263,84 +264,7 @@ const FAQ_ITEMS = [
   },
 ];
 
-function FAQSection({ items }: { items: ReadonlyArray<{ question: string; answer: string }> }) {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
-
-  const toggle = (i: number) => setOpenIndex(openIndex === i ? null : i);
-
-  return (
-    <section className="w-full bg-[#F7F7F7] flex flex-col items-start self-stretch px-6 pt-8 pb-16 sm:px-12 md:px-16 lg:px-20 xl:px-28 md:pt-10 md:pb-[100px]">
-      <div className="w-full max-w-[1440px] mx-auto flex flex-col items-start">
-        <motion.h2
-          className="font-dm-sans text-[28px] sm:text-[32px] font-normal not-italic leading-[1.3] text-[#171717] mb-10"
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-        >
-          Have Any Questions ?
-        </motion.h2>
-
-        <motion.div
-          className="w-full flex flex-col"
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-40px" }}
-          variants={{
-            hidden: {},
-            show: { transition: { staggerChildren: 0.15 } },
-          }}
-        >
-          {items.map((item, i) => (
-            <motion.div
-              key={i}
-              variants={{
-                hidden: { opacity: 0, y: 16 },
-                show: { opacity: 1, y: 0, transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] } },
-              }}
-              className="border-t border-[#DEDEDE] last:border-b"
-            >
-              <button
-                onClick={() => toggle(i)}
-                className="w-full flex items-center justify-between gap-4 py-6 text-left group"
-              >
-                <span className="font-dm-sans text-[16px] sm:text-[18px] font-medium not-italic leading-[1.3] text-[#1B1C1C] transition-colors duration-200">
-                  {item.question}
-                </span>
-                <motion.span
-                  animate={{ rotate: openIndex === i ? 180 : 0 }}
-                  transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                  className="shrink-0 text-[#1B1C1C]"
-                >
-                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                    <path d="M4 6.5L9 11.5L14 6.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </motion.span>
-              </button>
-
-              <AnimatePresence initial={false}>
-                {openIndex === i && (
-                  <motion.div
-                    key="answer"
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                    className="overflow-hidden"
-                  >
-                    <p className="font-dm-sans text-[15px] font-normal leading-[1.6] text-[#737373] pb-6 pr-8">
-                      {item.answer}
-                    </p>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
-    </section>
-  );
-}
+// Using imported FAQSection component
 
 export default function SubServiceDetailsPage() {
   const params = useParams();
@@ -699,16 +623,13 @@ export default function SubServiceDetailsPage() {
         </div>
       </section>
 
-      {/* ── Tech Stacks Used ────────────────────────────────── */}
-      <section className="w-full bg-[#F7F7F7] flex flex-col items-center justify-center self-stretch px-6 pt-6 pb-4 sm:pb-16 sm:px-12 md:px-16 lg:px-20 xl:px-28 md:pt-[40px] md:pb-[100px]">
-        {/* Tech stacks content is unmodified in this replacement block, but we replace the entire block below it */}
-      </section>
+
 
       {/* ── Related Case Studies ──────────────────────────────── */}
       <RelatedCaseStudies />
 
       {/* ── Serving Industries ──────────────────────────────── */}
-      <section className="w-full bg-[#F7F7F7] flex flex-col justify-center items-start self-stretch px-6 pt-8 pb-4 sm:pb-16 sm:px-12 md:px-[120px] md:pt-[40px] md:pb-[100px]">
+      <section className="w-full bg-[#F7F7F7] flex flex-col justify-center items-start self-stretch px-6 pt-8 pb-4 sm:pb-16 sm:px-12 md:px-16 lg:px-20 xl:px-28 xl:px-[120px] md:pt-[40px] md:pb-[100px]">
         <div className="w-full max-w-[1440px] mx-auto flex flex-col items-start">
           {/* Heading Row */}
           <motion.div
@@ -793,7 +714,7 @@ export default function SubServiceDetailsPage() {
       </section>
 
       {/* ── Related Services ────────────────────────────────── */}
-      <section className="w-full bg-White flex flex-col justify-center items-start self-stretch px-6 pt-8 sm:pt-16 pb-16 sm:px-12 md:px-[120px] md:pt-[40px] md:pb-[100px]">
+      <section className="w-full bg-White flex flex-col justify-center items-start self-stretch px-6 pt-8 sm:pt-16 pb-16 sm:px-12 md:px-16 lg:px-20 xl:px-28 xl:px-[120px] md:pt-[40px] md:pb-[100px]">
         <div className="w-full max-w-[1440px] mx-auto flex flex-col items-start">
           {/* Heading Row */}
           <motion.div
@@ -871,7 +792,7 @@ export default function SubServiceDetailsPage() {
       </section>
 
       {/* ── Why Choose Us ────────────────────────────────────── */}
-      <section className="w-full bg-[#0A0A0A] flex flex-col justify-center items-start self-stretch px-6 pt-8 pb-8 sm:px-12 md:px-[120px] md:pt-[40px] md:pb-10">
+      <section className="w-full bg-[#0A0A0A] flex flex-col justify-center items-start self-stretch px-6 pt-8 pb-8 sm:px-12 md:px-16 lg:px-20 xl:px-28 xl:px-[120px] md:pt-[40px] md:pb-10">
         <div className="w-full max-w-[1440px] mx-auto flex flex-col items-start gap-12">
           {/* Header */}
           <motion.div
@@ -920,7 +841,7 @@ export default function SubServiceDetailsPage() {
 
             {/* Dark Cards (Right 2x2 Grid) */}
             <motion.div
-              className="lg:col-span-2 grid grid-cols-2 gap-4 sm:gap-6"
+              className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6"
               variants={staggerContainer}
               initial="hidden"
               whileInView="show"

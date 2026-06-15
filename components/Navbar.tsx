@@ -9,11 +9,11 @@ import MobileMenu from "./MobileMenu";
 
 const NAV_LINKS = [
   { label: "Services", href: "/services" },
-  { label: "Case Study", href: "/#casestudies" },
+  { label: "Case Studies", href: "/case-studies" },
   { label: "Blogs", href: "/blogs" },
-  { label: "Careers", href: "/#careers" },
+  { label: "Careers", href: "/careers" },
   { label: "Pricings", href: "/pricings" },
-  { label: "Industries", href: "/#industries" },
+  { label: "Industries", href: "/industries" },
   { label: "About", href: "/about" },
 ] as const;
 

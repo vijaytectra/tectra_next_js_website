@@ -33,7 +33,7 @@ export default function Careers() {
             <div className="flex flex-col gap-4">
               <div className="hidden md:block">
                 <OutlineButton
-                  href="#careers"
+                  href="/careers"
                   variant="solid-black"
                   className="h-14 max-w-full"
                   circleOffset={{ left: "-48px", top: "-157px" }}

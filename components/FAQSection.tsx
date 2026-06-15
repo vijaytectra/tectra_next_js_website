@@ -52,7 +52,7 @@ export default function FAQSection({ items, className = "" }: FAQSectionProps) {
             >
               <button
                 onClick={() => toggle(i)}
-                className={`w-full flex items-center justify-between gap-4 py-6 text-left group transition-colors duration-200 ${openIndex === i ? "bg-[#EDEDED] px-4 -mx-4" : ""}`}
+                className={`w-full flex items-center justify-between gap-4 py-6 px-4 sm:px-6 text-left group transition-colors duration-200 ${openIndex === i ? "bg-[#EDEDED]" : ""}`}
               >
                 <span className="font-dm-sans text-[16px] sm:text-[18px] font-medium not-italic leading-[1.3] text-[#1B1C1C] transition-colors duration-200">
                   {item.question}
@@ -76,7 +76,7 @@ export default function FAQSection({ items, className = "" }: FAQSectionProps) {
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                    className={`overflow-hidden ${openIndex === i ? "bg-[#EDEDED] px-4 -mx-4" : ""}`}
+                    className={`overflow-hidden ${openIndex === i ? "bg-[#EDEDED] px-4 sm:px-6" : "px-4 sm:px-6"}`}
                   >
                     <p className="font-dm-sans text-[15px] font-normal leading-[1.6] text-[#737373] pb-6 pr-8">
                       {item.answer}

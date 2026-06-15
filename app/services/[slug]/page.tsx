@@ -9,6 +9,7 @@ import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import RelatedCaseStudies from "@/components/RelatedCaseStudies";
+import FAQSection from "@/components/FAQSection";
 import { images } from "@/lib/images";
 
 const SERVICES_DATA: Record<
@@ -417,82 +418,7 @@ const FAQ_ITEMS = [
   },
 ];
 
-function FAQSection({ items }: { items: ReadonlyArray<{ question: string; answer: string }> }) {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
-  const toggle = (i: number) => setOpenIndex(openIndex === i ? null : i);
-
-  return (
-    <section className="w-full bg-[#F5F5F5] flex flex-col items-start self-stretch px-6 py-8 sm:px-12 md:px-16 lg:px-20 xl:px-28 md:pt-[40px] md:pb-[80px] border-t border-color-neutral-200">
-      <motion.h2
-        className="font-dm-sans text-[28px] sm:text-[32px] font-normal not-italic leading-[1.3] text-[#171717] mb-10"
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-40px" }}
-        transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-      >
-        Have Any Questions ?
-      </motion.h2>
-
-      <motion.div
-        className="w-full flex flex-col"
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: "-40px" }}
-        variants={{
-          hidden: {},
-          show: { transition: { staggerChildren: 0.15 } },
-        }}
-      >
-        {items.map((item, i) => (
-          <motion.div
-            key={i}
-            variants={{
-              hidden: { opacity: 0, y: 16 },
-              show: { opacity: 1, y: 0, transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] } },
-            }}
-            className="border-t border-[#DEDEDE] last:border-b"
-          >
-            <button
-              onClick={() => toggle(i)}
-              className="w-full flex items-center justify-between gap-4 py-5 text-left group"
-            >
-              <span className="font-dm-sans text-[20px] font-medium not-italic leading-[1.3] text-[#1B1C1C] transition-colors duration-200">
-                {item.question}
-              </span>
-              <motion.span
-                animate={{ rotate: openIndex === i ? 180 : 0 }}
-                transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="shrink-0 text-[#737373]"
-              >
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                  <path d="M4 6.5L9 11.5L14 6.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </motion.span>
-            </button>
-
-            <AnimatePresence initial={false}>
-              {openIndex === i && (
-                <motion.div
-                  key="answer"
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                  className="overflow-hidden"
-                >
-                  <p className="font-dm-sans text-[14px] font-normal leading-[1.6] text-[#737373] pb-5 pr-8">
-                    {item.answer}
-                  </p>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </motion.div>
-        ))}
-      </motion.div>
-    </section>
-  );
-}
+// Using imported FAQSection component
 
 export default function ServiceDetailsPage() {
   const params = useParams();
@@ -568,7 +494,7 @@ export default function ServiceDetailsPage() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.95, ease: easeOut, delay: 0.55 }}
           >
-            <h1 className="w-full max-w-[559px] font-dm-sans text-4xl font-medium not-italic leading-[1.3] text-White sm:text-[56px] sm:whitespace-nowrap text-left">
+            <h1 className="w-full max-w-[559px] font-dm-sans text-4xl font-medium not-italic leading-[1.3] text-White sm:text-[56px] whitespace-normal text-left">
               {data.title}
             </h1>
           </motion.div>

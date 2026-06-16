@@ -23,6 +23,10 @@ export interface Job {
   longDescription: string;
   aboutRole: string[];
   responsibilities: JobResponsibility[];
+  requirements?: {
+    mustHave: string[];
+    niceToHave: string[];
+  };
 }
 
 // Generate realistic mock timestamps for sorting
@@ -148,6 +152,10 @@ export const ALL_JOBS: Job[] = [
         description: "Create comprehensive design specifications, user flows, and documentation to support development and future iterations."
       }
     ],
+    requirements: {
+      mustHave: ["Figma", "Wireframing", "Prototyping", "User Flows", "Design Systems", "UX Research"],
+      niceToHave: ["HTML/CSS", "Motion Design", "AI Tools", "Adobe Creative Suite"]
+    }
   },
   {
     id: "job-4",

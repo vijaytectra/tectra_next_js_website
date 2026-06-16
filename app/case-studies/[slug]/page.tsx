@@ -146,18 +146,7 @@ export default function CaseStudyDetailsPage() {
 
         </div>
 
-        {/* Floating Action Button (Spark icon) */}
-        <motion.button
-          className="absolute bottom-8 right-8 z-20 w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg flex items-center justify-center text-white hover:scale-105 transition-transform"
-          style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.05) 100%)" }}
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 1.5L14.5 9.5L22.5 12L14.5 14.5L12 22.5L9.5 14.5L1.5 12L9.5 9.5L12 1.5Z" fill="currentColor" />
-          </svg>
-        </motion.button>
+
       </header>
 
       {/* ── Main Content ─────────────────────────────────────────── */}
@@ -239,7 +228,7 @@ export default function CaseStudyDetailsPage() {
             </aside>
 
             {/* Right Content */}
-            <div className="flex-1 w-full max-w-[1050px] flex flex-col gap-[56px] pb-0">
+            <div className="flex-1 min-w-0 w-full max-w-[1050px] flex flex-col gap-[56px] pb-0">
 
               {/* 1. About VMLS */}
               <section id="client-overview" className="w-full flex flex-col md:flex-row items-start gap-10 xl:gap-14">
@@ -250,7 +239,7 @@ export default function CaseStudyDetailsPage() {
                   </p>
                 </div>
                 <div
-                  className="w-full md:w-[611px] h-[220px] sm:h-[280px] md:h-[344px] shrink-0 flex flex-col items-start max-w-full"
+                  className="w-full md:w-[45%] lg:w-[50%] h-[220px] sm:h-[280px] md:h-[344px] flex flex-col items-start max-w-full rounded-sm overflow-hidden"
                   style={{
                     gap: '12.231px',
                     background: `url('/images/Frame%201984080896.png') lightgray 0.34px -48.664px / 100% 128.293% no-repeat`

@@ -94,7 +94,7 @@ export default function AboutPage() {
 
       {/* ── Black Hero Banner ─────────────────────── */}
       <div className="w-full bg-[#000] text-White flex flex-col items-center">
-        <div className="w-full max-w-[1440px] px-6 lg:px-[120px] py-10 lg:py-[40px] flex flex-col items-start min-h-[500px] lg:h-[500px] gap-16 lg:gap-[128px]">
+        <div className="w-full max-w-[1440px] px-6 lg:px-[120px] py-10 lg:py-[40px] flex flex-col items-start min-h-[400px] lg:h-[440px] gap-16 lg:gap-[100px]">
           {/* Navbar */}
           <Navbar tone="light" className="w-full" />
 
@@ -123,6 +123,39 @@ export default function AboutPage() {
 
 
 
+      {/* ── New Intro Section ──────────────────────────────── */}
+      <section className="w-full bg-White text-Black">
+        <div className="py-10 md:py-[80px] px-6 sm:px-12 md:px-16 lg:px-20 xl:px-28 max-w-[1440px] mx-auto flex flex-col lg:flex-row gap-12 lg:gap-[120px] items-start justify-between">
+          
+          {/* Left content */}
+          <motion.div 
+            className="w-full lg:w-[40%] shrink-0"
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+          >
+            <div className="border-t-[1px] border-[#A3A3A3] pt-[4px] w-fit pr-8">
+              <span className="font-dm-mono text-[14px] font-normal tracking-[3px] text-[#525252] uppercase leading-none block">
+                About us
+              </span>
+            </div>
+          </motion.div>
+
+          {/* Right content */}
+          <motion.div 
+            className="w-full lg:w-[60%] flex flex-col sm:flex-row sm:items-center justify-start lg:justify-end gap-8"
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+          >
+            <p className="font-dm-sans text-[24px] md:text-[32px] font-normal leading-[1.3] text-[#000] w-full max-w-[559px]">
+              Digital solutions designed to solve business challenges and support sustainable growth.
+            </p>
+          </motion.div>
+        </div>
+      </section>
 
       {/* ── Driven By Outcomes Section ──────────────────────────────── */}
       <section className="w-full bg-[#FAFAFA] text-Black">
@@ -137,13 +170,13 @@ export default function AboutPage() {
               whileInView="show"
               viewport={{ once: true, amount: 0.2 }}
             >
-              <div className="border-t-[1px] border-[#A3A3A3] pt-1 mb-5 w-fit pr-8">
-                <span className="font-dm-mono text-[14px] font-normal tracking-[3px] text-[#525252] uppercase">
+              <div className="border-t-[1px] border-[#A3A3A3] pt-[4px] mb-5 w-fit pr-8">
+                <span className="font-dm-mono text-[14px] font-normal tracking-[3px] text-[#525252] uppercase leading-none block">
                   About us
                 </span>
               </div>
-              <h2 className="self-stretch font-dm-sans text-[36px] md:text-[48px] font-light leading-normal text-[#171717] mb-6">
-                A team driven by outcomes, not outputs.
+              <h2 className="self-stretch font-dm-sans text-[36px] md:text-[48px] lg:text-[36px] xl:text-[48px] font-light leading-normal text-[#171717] mb-6">
+                A team driven by<br className="hidden md:block" /> outcomes, not outputs.
               </h2>
               <p className="font-dm-sans text-[20px] font-normal leading-[36px] text-[#525252] max-w-[715px]">
                 Tectra was built on the belief that design, technology, and growth work best together. For over a decade, we&apos;ve helped businesses turn ideas into digital products that deliver real results.
@@ -185,7 +218,7 @@ export default function AboutPage() {
             viewport={{ once: true, amount: 0.2 }}
           >
             <Image
-              src="/images/image 126.png"
+              src="/images/aboutus.png"
               alt="Our Team"
               fill
               className="object-cover"
@@ -210,12 +243,12 @@ export default function AboutPage() {
               whileInView="show"
               viewport={{ once: true, amount: 0.2 }}
             >
-              <div className="border-t-[1px] border-[#A3A3A3] pt-1 mb-6 w-fit pr-8">
-                <span className="font-dm-mono text-[14px] font-normal tracking-[3px] text-[#525252] uppercase">
+              <div className="border-t-[1px] border-[#A3A3A3] pt-[4px] mb-6 w-fit pr-8">
+                <span className="font-dm-mono text-[14px] font-normal tracking-[3px] text-[#525252] uppercase leading-none block">
                   What we do
                 </span>
               </div>
-              <h2 className="self-stretch font-dm-sans text-[36px] md:text-[48px] font-light leading-normal text-[#171717] mb-6">
+              <h2 className="self-stretch font-dm-sans text-[36px] md:text-[48px] lg:text-[36px] xl:text-[48px] font-light leading-normal text-[#171717] mb-6">
                 Built different.<br />Proven by results.
               </h2>
               <p className="self-stretch font-dm-sans text-[20px] font-normal leading-[36px] text-[#525252]">
@@ -280,12 +313,12 @@ export default function AboutPage() {
             whileInView="show"
             viewport={{ once: true, amount: 0.2 }}
           >
-            <div className="border-t-[1px] border-[#A3A3A3] pt-1 mb-6 w-fit pr-8">
-              <span className="font-dm-mono text-[14px] font-normal tracking-[3px] text-[#525252] uppercase">
+            <div className="border-t-[1px] border-[#A3A3A3] pt-[4px] mb-6 w-fit pr-8">
+              <span className="font-dm-mono text-[14px] font-normal tracking-[3px] text-[#525252] uppercase leading-none block">
                 Our purpose
               </span>
             </div>
-            <h2 className="self-stretch font-dm-sans text-[36px] md:text-[48px] font-light leading-normal text-[#171717]">
+            <h2 className="self-stretch font-dm-sans text-[36px] md:text-[48px] lg:text-[36px] xl:text-[48px] font-light leading-normal text-[#171717]">
               Built different.<br />Proven by results.
             </h2>
           </motion.div>
@@ -381,12 +414,12 @@ export default function AboutPage() {
               whileInView="show"
               viewport={{ once: true, amount: 0.2 }}
             >
-              <div className="border-t-[1px] border-[#A3A3A3] pt-1 mb-6 w-fit pr-8">
-                <span className="font-dm-mono text-[14px] font-normal tracking-[3px] text-[#525252] uppercase">
+              <div className="border-t-[1px] border-[#A3A3A3] pt-[4px] mb-6 w-fit pr-8">
+                <span className="font-dm-mono text-[14px] font-normal tracking-[3px] text-[#525252] uppercase leading-none block">
                   Client voices
                 </span>
               </div>
-              <h2 className="font-dm-sans text-[36px] md:text-[48px] font-light leading-[1.2] text-[#171717]">
+              <h2 className="font-dm-sans text-[36px] md:text-[48px] lg:text-[36px] xl:text-[48px] font-light leading-[1.2] text-[#171717]">
                 Trusted by<br />businesses that grow
               </h2>
             </motion.div>
@@ -553,8 +586,8 @@ export default function AboutPage() {
               whileInView="show"
               viewport={{ once: true }}
             >
-              <div className="flex items-center py-1 pr-4 border-t-[0.5px] border-[#525252] w-fit gap-[19.2px] mb-8">
-                <span className="font-dm-mono text-[14px] font-normal tracking-[3px] text-[#525252] uppercase">
+              <div className="flex items-center pt-[4px] pr-4 border-t-[0.5px] border-[#525252] w-fit gap-[19.2px] mb-8">
+                <span className="font-dm-mono text-[14px] font-normal tracking-[3px] text-[#525252] uppercase leading-none block">
                   Let's build together
                 </span>
               </div>

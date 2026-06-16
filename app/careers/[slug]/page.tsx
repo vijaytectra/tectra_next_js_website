@@ -53,7 +53,7 @@ export default function CareerRoleDetailsPage() {
       <main className="flex-1 w-full max-w-[1440px] mx-auto px-6 sm:px-12 md:px-16 lg:px-20 xl:px-28 pt-[30px] pb-[100px] flex flex-col gap-12">
         
         {/* 1. Job Header & Sidebar */}
-        <div className="flex flex-col lg:flex-row gap-12 lg:gap-[100px] items-start relative w-full">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-[100px] items-start lg:items-stretch relative w-full">
           
           {/* Left Column: Job Details */}
           <motion.div 
@@ -82,6 +82,26 @@ export default function CareerRoleDetailsPage() {
             <p className="font-dm-sans text-[17px] sm:text-[18px] leading-[1.65] text-[#525252] max-w-[680px]">
               {job.longDescription}
             </p>
+            <motion.div
+              className="mt-10 lg:mt-auto inline-block w-full sm:w-auto"
+              whileHover={{ scale: 1.02, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <Link 
+                href="/careers"
+                className="group relative overflow-hidden border border-[#E5E5E5] bg-[#FFF] py-4 px-8 flex items-center justify-center gap-4 w-full sm:w-auto select-none transition-colors duration-1000 ease-out"
+              >
+                <span className="absolute inset-0 z-0 origin-left scale-x-0 transition-transform duration-1000 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:scale-x-100 bg-[#000]"></span>
+                <span className="relative z-10 flex items-center transition-transform duration-1000 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-x-[5px] text-[#171717] group-hover:text-[#FFF]">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                  </svg>
+                </span>
+                <span className="relative z-10 font-dm-sans text-[15px] font-medium transition-colors duration-1000 ease-out text-[#171717] group-hover:text-[#FFF]">
+                  View All Open Roles
+                </span>
+              </Link>
+            </motion.div>
           </motion.div>
 
           {/* Right Column: Sidebar application card */}
@@ -98,22 +118,6 @@ export default function CareerRoleDetailsPage() {
                   Apply Now
                 </button>
                 
-                <button className="w-full border border-[#E5E5E5] bg-[#FFF] text-[#171717] py-3.5 font-dm-sans text-[15px] font-medium transition-colors hover:bg-neutral-50 flex items-center justify-center gap-2 select-none cursor-pointer">
-                  <svg 
-                    width="16" 
-                    height="16" 
-                    viewBox="0 0 24 24" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    strokeWidth="2" 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round"
-                    className="text-[#737373]"
-                  >
-                    <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/>
-                  </svg>
-                  Save Job
-                </button>
 
                 <button className="w-full border border-[#E5E5E5] bg-[#FFF] text-[#171717] py-3.5 font-dm-sans text-[15px] font-medium transition-colors hover:bg-neutral-50 flex items-center justify-center gap-2 select-none cursor-pointer">
                   <svg 
@@ -137,8 +141,7 @@ export default function CareerRoleDetailsPage() {
                 </button>
               </div>
 
-              {/* Separator line */}
-              <div className="w-full h-px bg-[#F0F0F0]"></div>
+
 
               {/* Sidebar Details list */}
               <div className="flex flex-col gap-5 text-left font-dm-sans">
@@ -213,16 +216,138 @@ export default function CareerRoleDetailsPage() {
           </div>
         </motion.div>
 
-        {/* 4. Similar Open Roles Section */}
+        {/* 4. Requirements Section */}
+        {job.requirements && (
+          <motion.div 
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: easeOut }}
+            className="w-full pt-0 flex flex-col gap-[56px] items-start"
+          >
+            <h2 className="font-dm-sans text-[28px] sm:text-[32px] font-normal leading-[1.2] text-[#171717]">
+              Requirements
+            </h2>
+            <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-12">
+              {/* Must Have */}
+              <div className="flex flex-col items-start gap-6 w-full">
+                <h3 className="font-dm-sans text-[24px] font-medium text-[#000] leading-[36px] tracking-[-0.6px]">
+                  Must Have
+                </h3>
+                <div className="flex flex-wrap gap-3 max-w-[500px]">
+                  {job.requirements.mustHave.map((item, idx) => (
+                    <span 
+                      key={idx} 
+                      className="border border-[#F0F0F0] bg-[#FFF] text-[#525252] px-4 py-2.5 font-dm-sans text-[13px] sm:text-[14px] whitespace-nowrap"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Nice to Have */}
+              <div className="flex flex-col items-start gap-6 w-full">
+                <h3 className="font-dm-sans text-[24px] font-medium text-[#000] leading-[36px] tracking-[-0.6px]">
+                  Nice to Have
+                </h3>
+                <div className="flex flex-wrap gap-3 max-w-[500px]">
+                  {job.requirements.niceToHave.map((item, idx) => (
+                    <span 
+                      key={idx} 
+                      className="border border-[#F0F0F0] bg-[#FFF] text-[#525252] px-4 py-2.5 font-dm-sans text-[13px] sm:text-[14px] whitespace-nowrap"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+
+
+
+      </main>
+
+      {/* ── Studio Not Factory Section ────────────────────── */}
+      <section className="w-full bg-[#000] text-White py-[80px]">
+        <div className="max-w-[1440px] mx-auto px-6 sm:px-12 md:px-16 lg:px-20 xl:px-28">
+          
+          <h2 className="font-dm-sans text-[36px] sm:text-[44px] md:text-[56px] font-light tracking-tight mb-16 text-[#FFF]">
+            A studio, not a factory
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 divide-y divide-neutral-800 md:divide-y-0 md:divide-x md:divide-neutral-800">
+            {/* Column 1: GROWTH */}
+            <div className="flex flex-col gap-8 pb-8 md:pb-0 md:pr-12">
+              <span className="font-dm-mono text-[12px] font-medium tracking-[2.5px] text-[#A3A3A3] uppercase">
+                GROWTH
+              </span>
+              <div className="flex justify-between items-center w-full">
+                <ul className="flex flex-col gap-4 text-[#A3A3A3] font-dm-sans text-[15px] sm:text-[16px]">
+                  {["Annual learning budget", "Conference attendance", "Mentorship program", "Design critique sessions", "Cross-functional projects"].map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-3">
+                      <span className="text-[#525252] mt-0.5">—</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <span className="font-dm-mono text-[14px] text-[#525252] pr-4 select-none">01</span>
+              </div>
+            </div>
+
+            {/* Column 2: CULTURE */}
+            <div className="flex flex-col gap-8 py-8 md:py-0 md:px-12">
+              <span className="font-dm-mono text-[12px] font-medium tracking-[2.5px] text-[#A3A3A3] uppercase">
+                CULTURE
+              </span>
+              <div className="flex justify-between items-center w-full">
+                <ul className="flex flex-col gap-4 text-[#A3A3A3] font-dm-sans text-[15px] sm:text-[16px]">
+                  {["Flexible work hours", "Hybrid work model", "Open feedback culture", "Flat hierarchy", "Creative autonomy"].map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-3">
+                      <span className="text-[#525252] mt-0.5">—</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <span className="font-dm-mono text-[14px] text-[#525252] pr-4 select-none">02</span>
+              </div>
+            </div>
+
+            {/* Column 3: REWARDS */}
+            <div className="flex flex-col gap-8 pt-8 md:pt-0 md:pl-12">
+              <span className="font-dm-mono text-[12px] font-medium tracking-[2.5px] text-[#A3A3A3] uppercase">
+                REWARDS
+              </span>
+              <div className="flex justify-between items-center w-full">
+                <ul className="flex flex-col gap-4 text-[#A3A3A3] font-dm-sans text-[15px] sm:text-[16px]">
+                  {["Competitive salary", "Health insurance", "Performance bonuses", "Stock options", "Wellness programs"].map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-3">
+                      <span className="text-[#525252] mt-0.5">—</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <span className="font-dm-mono text-[14px] text-[#525252] pr-4 select-none">03</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ── Similar Open Roles Section ──────────────────────── */}
+      <section className="max-w-[1440px] mx-auto px-6 sm:px-12 md:px-16 lg:px-20 xl:px-28 w-full py-[80px]">
         <motion.div 
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: easeOut }}
-          className="w-full pt-0 flex flex-col gap-10"
+          className="w-full flex flex-col gap-10"
         >
           {/* Header Row */}
-          <div className="flex justify-between items-end w-full border-t border-[#F0F0F0] pt-8">
+          <div className="flex justify-between items-end w-full">
             <h2 className="font-dm-sans text-[28px] sm:text-[32px] font-normal leading-[1.2] text-[#171717]">
               Similar Open Roles
             </h2>
@@ -305,74 +430,6 @@ export default function CareerRoleDetailsPage() {
               })}
           </div>
         </motion.div>
-
-      </main>
-
-      {/* ── Studio Not Factory Section ────────────────────── */}
-      <section className="w-full bg-[#000] text-White py-[80px]">
-        <div className="max-w-[1440px] mx-auto px-6 sm:px-12 md:px-16 lg:px-20 xl:px-28">
-          
-          <h2 className="font-dm-sans text-[36px] sm:text-[44px] md:text-[56px] font-light tracking-tight mb-16 text-[#FFF]">
-            A studio, not a factory
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 divide-y divide-neutral-800 md:divide-y-0 md:divide-x md:divide-neutral-800">
-            {/* Column 1: GROWTH */}
-            <div className="flex flex-col gap-8 pb-8 md:pb-0 md:pr-12">
-              <span className="font-dm-mono text-[12px] font-medium tracking-[2.5px] text-[#A3A3A3] uppercase">
-                GROWTH
-              </span>
-              <div className="flex justify-between items-center w-full">
-                <ul className="flex flex-col gap-4 text-[#A3A3A3] font-dm-sans text-[15px] sm:text-[16px]">
-                  {["Annual learning budget", "Conference attendance", "Mentorship program", "Design critique sessions", "Cross-functional projects"].map((item, idx) => (
-                    <li key={idx} className="flex items-start gap-3">
-                      <span className="text-[#525252] mt-0.5">—</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <span className="font-dm-mono text-[14px] text-[#525252] pr-4 select-none">01</span>
-              </div>
-            </div>
-
-            {/* Column 2: CULTURE */}
-            <div className="flex flex-col gap-8 py-8 md:py-0 md:px-12">
-              <span className="font-dm-mono text-[12px] font-medium tracking-[2.5px] text-[#A3A3A3] uppercase">
-                CULTURE
-              </span>
-              <div className="flex justify-between items-center w-full">
-                <ul className="flex flex-col gap-4 text-[#A3A3A3] font-dm-sans text-[15px] sm:text-[16px]">
-                  {["Flexible work hours", "Hybrid work model", "Open feedback culture", "Flat hierarchy", "Creative autonomy"].map((item, idx) => (
-                    <li key={idx} className="flex items-start gap-3">
-                      <span className="text-[#525252] mt-0.5">—</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <span className="font-dm-mono text-[14px] text-[#525252] pr-4 select-none">02</span>
-              </div>
-            </div>
-
-            {/* Column 3: REWARDS */}
-            <div className="flex flex-col gap-8 pt-8 md:pt-0 md:pl-12">
-              <span className="font-dm-mono text-[12px] font-medium tracking-[2.5px] text-[#A3A3A3] uppercase">
-                REWARDS
-              </span>
-              <div className="flex justify-between items-center w-full">
-                <ul className="flex flex-col gap-4 text-[#A3A3A3] font-dm-sans text-[15px] sm:text-[16px]">
-                  {["Competitive salary", "Health insurance", "Performance bonuses", "Stock options", "Wellness programs"].map((item, idx) => (
-                    <li key={idx} className="flex items-start gap-3">
-                      <span className="text-[#525252] mt-0.5">—</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <span className="font-dm-mono text-[14px] text-[#525252] pr-4 select-none">03</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
       </section>
 
       {/* ── Closing CTA Section ────────────────────────────── */}

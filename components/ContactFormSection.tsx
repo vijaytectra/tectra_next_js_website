@@ -137,7 +137,7 @@ export default function ContactFormSection() {
 
         {/* Right Column: Why Work With Tectra */}
         <div className="w-full lg:w-[446px] shrink-0">
-          <div className="w-full lg:w-[446px] lg:h-[446px] bg-[#171717] text-white py-8 px-10 flex flex-col items-start gap-12 rounded-[2px]">
+          <div className="w-full lg:w-[446px] lg:h-full bg-[#171717] text-white py-8 px-10 flex flex-col items-start gap-12 rounded-[2px]">
             <h3 className="font-dm-sans text-[28px] md:text-[32px] font-normal leading-[1.2]">
               Why Work with Tectra ?
             </h3>

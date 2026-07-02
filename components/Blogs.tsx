@@ -97,15 +97,16 @@ export default function Blogs({
         </motion.div>
 
         {/* 3 Cards Grid - Contiguous with no gaps, scrolling horizontally on mobile */}
-        <div className="flex overflow-x-auto md:grid md:grid-cols-3 gap-0 border border-[#E4E4E4] divide-x divide-[#E4E4E4] mb-12 bg-white snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          className="flex overflow-x-auto md:grid md:grid-cols-3 gap-0 border border-[#E4E4E4] divide-x divide-[#E4E4E4] mb-12 bg-white snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+        >
           {BLOGS.map((blog, idx) => (
-            <motion.div
+            <div
               key={blog.id}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.1 }}
-              variants={fadeInUp}
-              transition={{ delay: idx * 0.1, duration: 0.6, ease: easeOut }}
               className="bg-white flex flex-col justify-between overflow-hidden transition-all duration-300 w-[290px] shrink-0 snap-start md:w-full md:shrink"
             >
               <Link href={blog.link} className="flex flex-col h-full justify-between group cursor-pointer">
@@ -145,7 +146,7 @@ export default function Blogs({
                   <div className="relative z-10">
                     <div className="w-8 h-7 relative flex items-center justify-start">
                       <Image
-                        src="/images/Tectra Logo 2.png"
+                        src="/logo/tectra_logo_only.png"
                         alt="Tectra logo mark"
                         width={32}
                         height={26}
@@ -246,9 +247,9 @@ export default function Blogs({
 
                 </div>
               </Link>
-            </motion.div>
+            </div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Bottom Centered "View All Articles" Button */}
         <motion.div

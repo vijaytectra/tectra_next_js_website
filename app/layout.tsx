@@ -6,6 +6,7 @@ import {
   Geist_Mono,
   IBM_Plex_Sans,
   Urbanist,
+  Funnel_Display,
 } from "next/font/google";
 import "./globals.css";
 
@@ -43,6 +44,12 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const funnelDisplay = Funnel_Display({
+  variable: "--font-funnel-display",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+});
+
 export const metadata: Metadata = {
   title: "Tectra | Enterprise Technology Ecosystem",
   description:
@@ -63,7 +70,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${dmSans.variable} ${dmMono.variable} ${ibmPlexSans.variable} ${urbanist.variable} ${geistSans.variable} ${geistMono.variable} h-full`}
+      className={`${dmSans.variable} ${dmMono.variable} ${ibmPlexSans.variable} ${urbanist.variable} ${geistSans.variable} ${geistMono.variable} ${funnelDisplay.variable} h-full`}
     >
       <body className="min-h-full bg-color-primary-main text-color-neutral-50 antialiased">
         {children}

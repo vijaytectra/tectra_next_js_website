@@ -9,10 +9,18 @@ type CountUpProps = {
   duration?: number;
 };
 
-function parseStatValue(value: string): { end: number; suffix: string } | null {
-  const match = value.match(/^(\d+)(.*)$/);
+function parseStatValue(value: string): { prefix: string; end: number; suffix: string; decimals: number } | null {
+  const match = value.match(/^([+-]?)(\d+(?:\.\d+)?)(.*)$/);
   if (!match) return null;
-  return { end: Number.parseInt(match[1], 10), suffix: match[2] };
+  const numStr = match[2];
+  const decimalIndex = numStr.indexOf('.');
+  const decimals = decimalIndex === -1 ? 0 : numStr.length - decimalIndex - 1;
+  return {
+    prefix: match[1],
+    end: parseFloat(numStr),
+    suffix: match[3],
+    decimals,
+  };
 }
 
 export default function CountUp({
@@ -24,8 +32,10 @@ export default function CountUp({
   const isInView = useInView(ref, { once: true, amount: 0.4 });
   const parsed = useMemo(() => parseStatValue(value), [value]);
   const end = parsed?.end ?? 0;
+  const prefix = parsed?.prefix ?? "";
   const suffix = parsed?.suffix ?? "";
-  const [display, setDisplay] = useState(() => (parsed ? `0${suffix}` : value));
+  const decimals = parsed?.decimals ?? 0;
+  const [display, setDisplay] = useState(() => (parsed ? `${prefix}0${suffix}` : value));
 
   useEffect(() => {
     if (!isInView) return;
@@ -49,12 +59,12 @@ export default function CountUp({
       duration,
       ease: [0.22, 1, 0.36, 1],
       onUpdate: (latest) => {
-        setDisplay(`${Math.round(latest)}${suffix}`);
+        setDisplay(`${prefix}${latest.toFixed(decimals)}${suffix}`);
       },
     });
 
     return () => controls.stop();
-  }, [isInView, end, suffix, value, duration, parsed]);
+  }, [isInView, end, prefix, suffix, decimals, value, duration, parsed]);
 
   return (
     <span

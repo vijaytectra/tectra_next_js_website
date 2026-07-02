@@ -1,150 +1,134 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
-import SectionLabel from "./ui/SectionLabel";
-import { images } from "@/lib/images";
+import React from "react";
 
-const CLIENT_LOGO_COUNT = 11;
+const LOGOS = [
+  "MERIDIAN GROUP",
+  "AXIOM CAPITAL",
+  "VERTEX HOLDINGS",
+  "NORDANT CORP",
+  "STRATIQ PARTNERS",
+  "ELARA GLOBAL"
+];
+
+const BADGES = [
+  "ISO 27001",
+  "ISO 9001",
+  "CLUTCH TOP AGENCY",
+  "G2 LEADER"
+];
+
+const easeOut = [0.22, 1, 0.36, 1] as const;
+const fadeInUp = {
+  hidden: { opacity: 0, y: 15 },
+  visible: (delay: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, delay, ease: easeOut },
+  }),
+};
 
 export default function ClientLogos() {
   return (
-    <section
-      id="clients"
-      className="section-dark-surface w-full overflow-hidden py-16 sm:py-24"
-      aria-labelledby="clients-heading"
+    <section 
+      className="w-full bg-white pt-16 pb-16 md:pt-20 md:pb-20 relative z-10"
+      style={{ borderBottom: "0.8px solid #E4E4E4" }}
     >
-      <div className="section-shell flex flex-col gap-[56px]">
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-[120px] items-start w-full">
-          <div className="w-full lg:w-[45%] flex flex-col">
-            <div className="border-t-[1px] border-[#737373] pt-1 mb-6 w-fit pr-8">
-              <span className="font-dm-mono text-[14px] font-normal tracking-[3px] text-[#A3A3A3] uppercase">
-                Our clients
-              </span>
-            </div>
-            <h2
-              id="clients-heading"
-              className="font-dm-sans text-[36px] md:text-[48px] font-light leading-[1.2] text-White"
+      <div className="max-w-6xl mx-auto px-6 md:px-8 lg:px-0">
+        
+        {/* Top Header Row with Divider */}
+        <motion.div 
+          className="flex items-center gap-6 mb-10 w-full"
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          custom={0}
+        >
+          <span 
+            style={{
+              color: "#737373",
+              fontFamily: '"Funnel Display", system-ui, sans-serif',
+              fontSize: "11.52px",
+              fontWeight: 300,
+              letterSpacing: "2.995px",
+              textTransform: "uppercase",
+              whiteSpace: "nowrap",
+            }}
+          >
+            TRUSTED BY
+          </span>
+          <div className="flex-1 h-[0.8px] bg-[#E4E4E4]" />
+        </motion.div>
+
+        {/* Logos Row */}
+        <motion.div 
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-x-8 gap-y-10 items-center justify-between mb-10"
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          custom={0.1}
+        >
+          {LOGOS.map((logo, idx) => (
+            <div 
+              key={idx}
+              style={{
+                color: "#2B2B2B",
+                fontFamily: '"Funnel Display", system-ui, sans-serif',
+                fontSize: "14.08px",
+                fontStyle: "normal",
+                fontWeight: 300,
+                lineHeight: "21.12px",
+                letterSpacing: "0.845px",
+                textTransform: "uppercase",
+                textAlign: "center",
+                whiteSpace: "nowrap",
+              }}
+              className="opacity-70 hover:opacity-100 transition-opacity duration-300 select-none cursor-default"
             >
-              Businesses that<br />trust Tectra.
-            </h2>
-          </div>
+              {logo}
+            </div>
+          ))}
+        </motion.div>
 
-          <div className="w-full lg:w-[55%] flex flex-col lg:pt-[42px]">
-            <p className="font-dm-sans text-[16px] md:text-[18px] font-normal leading-[1.6] text-[#A3A3A3] max-w-[560px]">
-              From Funded Startups to Enterprise teams we build long term Partnerships with Business that value Craft, Accountability and results. Our Clients Stay because we stay Invested
-            </p>
-          </div>
-        </div>
+        {/* Middle Divider Line */}
+        <motion.div 
+          className="w-full h-[0.8px] bg-[#E4E4E4] mb-10"
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          custom={0.2}
+        />
 
-        <div className="flex flex-wrap items-center content-center self-stretch justify-start w-full">
-          {Array.from({ length: CLIENT_LOGO_COUNT }, (_, index) => {
-            const logoIndex = index + 1;
-            const isFirstBox = logoIndex === 1;
-            const isSecondBox = logoIndex === 2;
-            const isThirdBox = logoIndex === 3;
-            const isFourthBox = logoIndex === 4;
-            const isFifthBox = logoIndex === 5;
-            const isSixthBox = logoIndex === 6;
-            const isSeventhBox = logoIndex === 7;
-            const isEighthBox = logoIndex === 8;
-            const isNinthBox = logoIndex === 9;
-            const isTenthBox = logoIndex === 10;
-            const isEleventhBox = logoIndex === 11;
-            const isCustomBox = isFirstBox || isSecondBox || isThirdBox || isFourthBox || isFifthBox || isSixthBox || isSeventhBox || isEighthBox || isNinthBox || isTenthBox || isEleventhBox;
+        {/* Badges Row */}
+        <motion.div 
+          className="flex flex-wrap gap-4 items-center justify-start"
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          custom={0.3}
+        >
+          {BADGES.map((badge, idx) => (
+            <div 
+              key={idx}
+              className="border border-[#E4E4E4] px-4 py-2.5 text-neutral-800 transition-colors duration-300 hover:border-neutral-950 select-none cursor-default"
+              style={{
+                fontFamily: '"Funnel Display", system-ui, sans-serif',
+                fontSize: "10.56px",
+                fontWeight: 300,
+                letterSpacing: "1.2px",
+                textTransform: "uppercase",
+              }}
+            >
+              {badge}
+            </div>
+          ))}
+        </motion.div>
 
-            const imageClass = isCustomBox
-              ? "brightness-90 transition-all duration-300 hover:brightness-100 object-contain shrink-0 max-w-[85%] max-h-[70%]"
-              : "max-h-14 w-auto max-w-[85%] object-contain sm:max-h-16 brightness-90 transition-all duration-300 hover:brightness-100";
-
-            let width = 224;
-            let height = 80;
-            let inlineStyle: React.CSSProperties | undefined = undefined;
-
-            if (isFirstBox) {
-              width = 75;
-              height = 72;
-              inlineStyle = { width: "100%", maxWidth: "75px", height: "auto", aspectRatio: "25/24" };
-            } else if (isSecondBox) {
-              width = 51;
-              height = 80;
-              inlineStyle = { height: "100%", maxHeight: "80px", width: "auto", aspectRatio: "30/47" };
-            } else if (isThirdBox) {
-              width = 118;
-              height = 64;
-              inlineStyle = { width: "100%", maxWidth: "118.154px", height: "auto", aspectRatio: "24/13" };
-            } else if (isFourthBox) {
-              width = 77;
-              height = 64;
-              inlineStyle = { width: "100%", maxWidth: "76.8px", height: "auto", aspectRatio: "6/5" };
-            } else if (isFifthBox) {
-              width = 224;
-              height = 56;
-              inlineStyle = { width: "100%", maxWidth: "224px", height: "auto", aspectRatio: "4/1" };
-            } else if (isSixthBox) {
-              width = 224;
-              height = 56;
-              inlineStyle = { width: "100%", maxWidth: "224px", height: "auto", aspectRatio: "4/1" };
-            } else if (isSeventhBox) {
-              width = 99;
-              height = 64;
-              inlineStyle = { width: "100%", maxWidth: "99.097px", height: "auto", aspectRatio: "48/31" };
-            } else if (isEighthBox) {
-              width = 238;
-              height = 48;
-              inlineStyle = { width: "100%", maxWidth: "238px", height: "auto", aspectRatio: "119/24" };
-            } else if (isNinthBox) {
-              width = 175;
-              height = 64;
-              inlineStyle = { width: "100%", maxWidth: "174.711px", height: "auto", aspectRatio: "174.71/64.00" };
-            } else if (isTenthBox) {
-              width = 152;
-              height = 80;
-              inlineStyle = { width: "100%", maxWidth: "151.579px", height: "auto", aspectRatio: "36/19" };
-            } else if (isEleventhBox) {
-              width = 67;
-              height = 80;
-              inlineStyle = { height: "100%", maxHeight: "80px", width: "auto", aspectRatio: "66.51/80.00" };
-            }
-
-            const logoPath = (() => {
-              if (logoIndex === 1) return "/logo/image%2049.png";
-              if (logoIndex === 2) return "/logo/image%2050.png";
-              if (logoIndex === 3) return "/logo/image%2051.png";
-              if (logoIndex === 4) return "/logo/image%2053.png";
-              if (logoIndex === 5) return "/logo/image%2055.png";
-              if (logoIndex === 6) return "/logo/image%2056.png";
-              if (logoIndex === 7) return "/logo/image%2060.png";
-              if (logoIndex === 8) return "/logo/image%2077.png";
-              if (logoIndex === 9) return "/logo/image%2075.png";
-              if (logoIndex === 10) return "/logo/image%2078.png";
-              if (logoIndex === 11) return "/logo/image%2079.png";
-              return `/logo/clients/${logoIndex}.png`;
-            })();
-
-             return (
-              <motion.div
-                key={logoIndex}
-                className="group flex items-center justify-center p-4 transition-all duration-300 w-1/2 sm:w-1/3 lg:w-1/4 h-[192px] gap-[18px] bg-color-primary-main"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                whileHover={{ backgroundColor: "#080808" }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.03 }}
-              >
-                <Image
-                  src={logoPath}
-                  alt={`Client logo ${logoIndex}`}
-                  width={width}
-                  height={height}
-                  unoptimized
-                  className={`${imageClass} transition-transform duration-300 group-hover:scale-105`}
-                  style={inlineStyle}
-                />
-              </motion.div>
-            );
-          })}
-        </div>
       </div>
     </section>
   );

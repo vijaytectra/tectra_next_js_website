@@ -135,7 +135,7 @@ export default function Footer() {
                   <li key={label}>
                     <Link
                       href="/services"
-                      className="font-dm-sans text-xs font-normal leading-4 text-color-neutral-400 transition-colors hover:text-color-neutral-0 whitespace-nowrap"
+                      className="font-dm-sans text-xs font-normal leading-4 text-color-neutral-400 transition-colors hover:text-color-neutral-0"
                     >
                       {label}
                     </Link>

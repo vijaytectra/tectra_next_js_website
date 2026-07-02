@@ -1,213 +1,205 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import SectionImage from "./ui/SectionImage";
-import SectionLabel from "./ui/SectionLabel";
-import ArrowRight from "./ui/ArrowRight";
-import { images } from "@/lib/images";
 
 const PRODUCTS = [
   {
     name: "Motherly",
-    image: images.productMotherly,
-    tagline: (
-      <>
-        Trusted care and compassionate support{" "}
-        <br className="hidden lg:inline" />
-        for every stage of parenthood.
-      </>
-    ),
-    stat: "Trusted by Thousands of Growing Families",
-    quote:
-      "“Motherly delivers trusted care and compassionate support for every stage of parenthood.”",
-    titleClass: "font-dm-sans text-[32px] font-normal leading-[40px] text-White",
+    tags: ["Mobile", "Healthcare", "B2C"],
+    tagline: "CONNECTING EXPECTANT MOTHERS WITH TRUSTED PREGNANCY CARE PROFESSIONALS.",
+    desc: "Motherly is a healthcare platform designed to connect expectant mothers with doulas and gynecologists through a simple and convenient booking experience.",
+    image: "/images/image 115.png",
+    link: "#",
+    objectPosition: "center 70%",
+    objectFit: "object-cover",
+  },
+  {
+    name: "Lead101",
+    tags: ["Mobile", "Healthcare", "B2C"],
+    tagline: "PREGNANCY & PARENTING COMPANION APP",
+    desc: "A mobile health platform for expectant and new mothers — tracking, content, and community built by Tectra and run at scale.",
+    image: "/images/6c54c9c1fcc0d8053731b4c270ae835e6d7b2865.png",
+    link: "#",
+    objectPosition: "left center",
+    objectFit: "object-cover",
   },
   {
     name: "Elderly",
-    image: images.productElderly,
-    tagline: (
-      <>
-        Trusted care and compassionate support{" "}
-        <br className="hidden lg:inline" />
-        for every stage of senior wellness.
-      </>
-    ),
-    stat: "Trusted Support for Every Stage of Senior Care",
-    quote:
-      "“The app delivers trusted care and compassionate support designed to improve seniors’ comfort and quality of life.”",
-    titleClass: "font-dm-sans text-[32px] font-normal leading-[40px] text-White",
+    tags: ["Web", "Healthcare", "SaaS"],
+    tagline: "SENIOR CARE COORDINATION PLATFORM",
+    desc: "A family-centric care coordination SaaS connecting seniors, caregivers, and healthcare providers in one unified platform.",
+    image: "/images/ChatGPT Image May 30, 2026, 06_27_07 PM_upscayl_4x_ultrasharp-4x 1.png",
+    link: "#",
+    objectPosition: "center",
+    objectFit: "object-cover",
   },
 ];
 
+const easeOut = [0.22, 1, 0.36, 1] as const;
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: easeOut },
+  },
+};
+
 export default function OurProducts() {
-  const targetRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: targetRef,
-    offset: ["start start", "end end"]
-  });
-
-  // Map 0 -> 1 scroll progress to 0% -> -50% horizontal translation
-  // To ensure the cards NEVER get stuck in between, we snap the target to exactly 0 or -50 based on the scroll threshold.
-  const targetX = useTransform(scrollYProgress, (v) => (v < 0.5 ? 0 : -50) as number);
-  const springX = useSpring(targetX, { stiffness: 300, damping: 30, mass: 0.8 });
-  const x = useTransform(springX, (v) => `${v}%`);
-
   return (
     <section
       id="products"
-      ref={targetRef}
-      className="relative h-[150vh] lg:h-[180vh] w-full section-dark-surface"
-      aria-labelledby="products-heading"
+      className="w-full bg-white pt-16 pb-16 md:pt-20 md:pb-20 relative z-10"
+      style={{ borderBottom: "0.8px solid #E4E4E4" }}
     >
-      {/* Sticky Container */}
-      <div className="products-sticky-container sticky top-0 flex h-[100vh] md:h-[85vh] lg:h-[750px] xl:h-[100vh] w-full flex-col overflow-hidden pb-4 sm:pb-16 md:pb-6 lg:pb-6 xl:pb-12">
-
-        {/* Sticky Heading */}
-        <div className="products-heading-container section-shell pt-16 sm:pt-20 lg:pt-20 xl:pt-24 pb-0 shrink-0 flex flex-col gap-2 sm:gap-4 lg:gap-4 xl:gap-8">
-          <div className="flex max-w-[607px] flex-col gap-1 sm:gap-3">
-            <SectionLabel>OUR PRODUCTS</SectionLabel>
-            <h2
-              id="products-heading"
-              className="font-dm-sans text-2xl font-normal leading-tight text-color-neutral-50 sm:text-3xl sm:leading-10 lg:text-4xl"
-            >
-              We create digital solutions that drive growth.
-            </h2>
-          </div>
-        </div>
-
-        {/* Sliding Horizontal Track */}
-        <div className="products-track-container relative flex-1 w-full mt-2 lg:mt-4 xl:mt-6 overflow-hidden">
-          <motion.div
-            style={{ x }}
-            className="absolute left-0 top-0 flex h-full w-[200vw]"
+      <div className="max-w-6xl mx-auto px-6 md:px-8 lg:px-0">
+        
+        {/* Heading */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={fadeInUp}
+          className="mb-[50px]"
+        >
+          <span
+            className="mb-6 block"
+            style={{
+              color: "#2B2B2B",
+              fontFamily: '"Funnel Display", system-ui, sans-serif',
+              fontSize: "11.52px",
+              fontStyle: "normal",
+              fontWeight: 300,
+              lineHeight: "17.28px",
+              letterSpacing: "2.995px",
+              textTransform: "uppercase",
+            }}
           >
-            {PRODUCTS.map((product) => (
-              <div
-                key={product.name}
-                className="w-[100vw] h-full flex items-start md:items-center justify-center section-shell pb-2 md:pb-6 lg:pb-0"
-              >
-                <article className="product-article flex w-full max-w-[1200px] h-full flex-col gap-2 sm:gap-8 md:flex-row md:items-center md:gap-6 lg:gap-8 xl:gap-12 bg-transparent pb-2 md:pb-0">
-                  {/* Image */}
-                  <div className="product-image-wrapper relative w-full md:w-[62%] md:max-w-[500px] lg:w-[45%] h-[220px] sm:h-[300px] shrink-0 md:shrink md:h-full md:min-h-0 md:max-h-[520px] xl:max-h-[620px] flex items-center bg-white md:bg-transparent rounded-2xl md:rounded-none overflow-hidden md:mx-0">
-                    <Image
-                      src={product.image}
-                      alt={`${product.name} product preview`}
-                      fill
-                      className="object-contain object-left-bottom md:object-center md:shadow-xl md:shadow-black/30"
-                      sizes="(max-width: 768px) 85vw, 50vw"
-                    />
-                  </div>
+            13 &nbsp; OUR PRODUCTS
+          </span>
+          <h2
+            className="mt-6 text-3xl sm:text-4xl lg:text-[44px] leading-tight lg:leading-[66px]"
+            style={{
+              width: "100%",
+              maxWidth: "800px",
+              color: "#111113",
+              fontFamily: '"Funnel Display", system-ui, sans-serif',
+              fontStyle: "normal",
+              fontWeight: 300,
+              letterSpacing: "-1.1px",
+            }}
+          >
+            Products we build and run ourselves.
+          </h2>
+        </motion.div>
 
-                  {/* Content */}
-                  <div className="product-content flex min-h-0 flex-1 flex-col justify-center gap-2 sm:gap-6 md:gap-3 lg:gap-3 xl:gap-6">
-                    <div className="flex flex-col gap-1 sm:gap-3">
-                      <h3 className="product-title font-dm-sans text-[22px] font-medium leading-tight text-White sm:text-[28px] xl:text-[36px] sm:font-normal sm:leading-[40px]">{product.name}</h3>
-                      <p className="product-tagline font-dm-sans text-sm font-normal leading-snug text-color-neutral-400 self-stretch max-w-[500px] sm:text-[18px] sm:leading-[28px] lg:text-[16px] lg:leading-[26px] xl:text-[20px] xl:leading-[36px]">
-                        {product.tagline}
-                      </p>
-                    </div>
-                    <div className="product-info-block flex flex-col gap-3 sm:gap-6 lg:gap-4 xl:gap-6">
-                      <div className="product-quote-card flex flex-col items-start gap-1 sm:gap-3 self-stretch p-3 sm:p-6 lg:p-4 xl:p-6 rounded-xl sm:rounded-2xl bg-[#0a0a0a] border border-white/10 relative overflow-hidden max-w-[500px] shadow-lg">
-                        <div className="flex gap-[4px] items-center shrink-0 mb-0.5 sm:mb-2" aria-hidden>
-                          <svg width="14" height="22" viewBox="0 0 10 17" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0 h-3 w-auto sm:h-6">
-                            <path d="M9.20758 0.0960535V2.10497C5.72545 1.83708 4.68751 4.28132 4.60381 5.53692V6.9599H9.12387V16.0837H0.0837402V5.62063C0.0837402 5.62063 0.354907 4.01264 0.837085 3.10943C2.47325 0.0445671 7.08705 0.0402502 9.20758 0.0960535Z" fill="white" stroke="white" strokeWidth="0.167" />
-                          </svg>
-                          <svg width="14" height="22" viewBox="0 0 10 17" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0 h-3 w-auto sm:h-6">
-                            <path d="M9.20758 0.0960535V2.10497C5.72545 1.83708 4.68751 4.28132 4.60381 5.53692V6.9599H9.12387V16.0837H0.0837402V5.62063C0.0837402 5.62063 0.354907 4.01264 0.837085 3.10943C2.47325 0.0445671 7.08705 0.0402502 9.20758 0.0960535Z" fill="white" stroke="white" strokeWidth="0.167" />
-                          </svg>
-                        </div>
-                        <p className="product-stat font-dm-sans text-xs sm:text-lg font-medium leading-[1.4] text-White self-stretch sm:text-[18px] lg:text-[16px] xl:text-[22px]">
-                          {product.stat}
-                        </p>
-                        <p className="product-quote font-ibm-plex text-[11px] sm:text-base font-normal italic leading-relaxed text-color-neutral-400 self-stretch sm:text-[14px] lg:text-[13px] xl:text-[17px]">
-                          {product.quote}
-                        </p>
-                      </div>
-                      <Link
-                        href="#"
-                        className="product-cta group inline-flex w-fit items-center gap-1.5 sm:gap-4 text-White transition-opacity hover:opacity-70"
-                      >
-                        <span className="font-dm-sans text-[13px] sm:text-base font-medium leading-5">
-                          Visit Product
-                        </span>
-                        <ArrowRight tone="dark" size={24} className="h-3 w-3 sm:h-6 sm:w-6 transition-transform duration-300 group-hover:translate-x-2" />
-                      </Link>
-                    </div>
-                  </div>
-                </article>
+        {/* Vertical Product List */}
+        <div className="flex flex-col gap-[50px]">
+          {PRODUCTS.map((product) => (
+            <motion.div
+              key={product.name}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.1 }}
+              variants={fadeInUp}
+              className="flex flex-col lg:flex-row border border-[#E4E4E4] rounded-xl overflow-hidden bg-white w-full lg:h-[320px] hover:shadow-[0_8px_30px_rgba(0,0,0,0.03)] transition-all duration-300 group"
+            >
+              {/* Left Column - Grayscale image with hover effect */}
+              <div className="w-full lg:w-[587px] shrink-0 relative aspect-[587/320] lg:aspect-auto lg:h-full bg-[#F7F7F7] overflow-hidden">
+                <Image
+                  src={product.image}
+                  alt={`${product.name} screenshot`}
+                  fill
+                  style={{
+                    objectPosition: product.objectPosition || "center",
+                  }}
+                  className={`${product.objectFit || "object-cover"} grayscale contrast-125 brightness-95 group-hover:grayscale-0 group-hover:contrast-100 group-hover:scale-[1.02] transition-all duration-700 ease-out`}
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
               </div>
-            ))}
-          </motion.div>
+
+              {/* Right Column - Product details */}
+              <div className="flex-1 flex flex-col justify-center items-start gap-4 p-8 lg:p-[48px]">
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2">
+                  {product.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-3 py-1 rounded-full border border-[#D4D4D4] text-[11px] font-normal tracking-wide text-neutral-500 bg-transparent select-none"
+                      style={{ fontFamily: "Aspekta, system-ui, sans-serif" }}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Name */}
+                <h3
+                  style={{
+                    color: "#111113",
+                    fontFamily: '"Funnel Display", system-ui, sans-serif',
+                    fontSize: "32px",
+                    fontStyle: "normal",
+                    fontWeight: 300,
+                    lineHeight: "35.2px",
+                    letterSpacing: "-0.64px",
+                  }}
+                >
+                  {product.name}
+                </h3>
+
+                {/* Tagline */}
+                <span
+                  className="block w-full max-w-[364px]"
+                  style={{
+                    maxWidth: "100%",
+                    color: "var(--color-neutral-900, #171717)",
+                    fontFamily: '"Funnel Display", system-ui, sans-serif',
+                    fontSize: "13px",
+                    fontStyle: "normal",
+                    fontWeight: 300,
+                    lineHeight: "19.5px",
+                    letterSpacing: "0.52px",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  {product.tagline}
+                </span>
+
+                {/* Description */}
+                <p
+                  className="w-full max-w-[492px]"
+                  style={{
+                    maxWidth: "100%",
+                    color: "#6F6F76",
+                    fontFamily: "Aspekta, system-ui, sans-serif",
+                    fontSize: "15px",
+                    fontStyle: "normal",
+                    fontWeight: 400,
+                    lineHeight: "24.75px",
+                  }}
+                >
+                  {product.desc}
+                </p>
+
+                {/* Link */}
+                <Link
+                  href={product.link}
+                  className="mt-2 text-[14px] font-medium text-neutral-900 transition-all duration-200 hover:text-neutral-500 hover:translate-x-1 inline-flex items-center gap-1 group/link"
+                  style={{ fontFamily: "Aspekta, system-ui, sans-serif" }}
+                >
+                  Visit product
+                  <span className="inline-block transition-transform duration-200 group-hover/link:translate-x-1">→</span>
+                </Link>
+              </div>
+
+            </motion.div>
+          ))}
         </div>
 
-        {/* CSS to fully hide scrollbar for non-inline styles & handle short viewports */}
-        <style dangerouslySetInnerHTML={{
-          __html: `
-          .hide-scrollbar::-webkit-scrollbar {
-            display: none;
-          }
-          @media (min-width: 768px) and (max-height: 820px) {
-            .products-sticky-container {
-              padding-bottom: 16px !important;
-            }
-            .products-heading-container {
-              gap: 8px !important;
-            }
-            .products-heading-container h2 {
-              font-size: 1.5rem !important; /* text-2xl */
-              line-height: 2rem !important;
-            }
-            .products-track-container {
-              margin-top: 8px !important;
-            }
-            .product-image-wrapper {
-              max-height: 320px !important;
-            }
-            .product-content {
-              gap: 12px !important;
-            }
-            .product-content > div {
-              gap: 8px !important;
-            }
-            .product-title {
-              font-size: 24px !important;
-              line-height: 32px !important;
-            }
-            .product-tagline {
-              font-size: 15px !important;
-              line-height: 22px !important;
-            }
-            .product-info-block {
-              gap: 12px !important;
-            }
-            .product-quote-card {
-              padding: 12px 16px !important;
-              gap: 8px !important;
-            }
-            .product-quote-card svg {
-              height: 16px !important;
-              width: auto !important;
-            }
-            .product-stat {
-              font-size: 15px !important;
-              line-height: 20px !important;
-            }
-            .product-quote {
-              font-size: 13px !important;
-              line-height: 18px !important;
-            }
-            .product-cta span {
-              font-size: 14px !important;
-            }
-            .product-cta svg {
-              height: 18px !important;
-              width: 18px !important;
-            }
-          }
-        `}} />
       </div>
     </section>
   );

@@ -1,14 +1,15 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useRef } from "react";
 import Logo from "./Logo";
 import MobileMenu from "./MobileMenu";
+import ServicesMegaMenu from "./ServicesMegaMenu";
 
 const NAV_LINKS = [
-  { label: "Services", href: "/services" },
+  { label: "Services", href: "#" },
   { label: "Case Studies", href: "/case-studies" },
   { label: "Blogs", href: "/blogs" },
   { label: "Careers", href: "/careers" },
@@ -34,6 +35,19 @@ type NavbarProps = {
 
 export default function Navbar({ className = "", onMobileMenuChange, tone = "light" }: NavbarProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [servicesHovered, setServicesHovered] = useState(false);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const handleMouseEnter = () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    setServicesHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => {
+      setServicesHovered(false);
+    }, 150);
+  };
 
   const setOpen = useCallback(
     (open: boolean) => {
@@ -57,33 +71,78 @@ export default function Navbar({ className = "", onMobileMenuChange, tone = "lig
         initial={{ opacity: 0, y: -16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        onMouseLeave={handleMouseLeave}
       >
         <div className="relative flex w-full py-4 items-center justify-between gap-4">
           <Logo className="relative z-10 shrink-0 -ml-2 sm:-ml-3 lg:-ml-[14px]" tone={tone} />
 
           <nav
-             className="hidden flex-1 justify-center px-4 lg:flex"
-             aria-label="Primary"
+            className="hidden flex-1 justify-center px-4 lg:flex"
+            aria-label="Primary"
           >
             <ul className="flex items-center justify-center gap-3 lg:gap-4 xl:gap-9">
-              {NAV_LINKS.map((link, index) => (
-                <motion.li
-                  key={link.href}
-                  custom={index}
-                  variants={navItemVariants}
-                  initial="hidden"
-                  animate="visible"
-                >
-                  <Link
-                    href={link.href}
-                    className={`whitespace-nowrap text-[14px] xl:text-[15px] font-normal transition-opacity hover:opacity-70 ${
-                      tone === "dark" ? "text-color-neutral-900" : "text-White"
-                    }`}
+              {NAV_LINKS.map((link, index) => {
+                if (link.label === "Services") {
+                  return (
+                    <motion.li
+                      key={link.label}
+                      custom={index}
+                      variants={navItemVariants}
+                      initial="hidden"
+                      animate="visible"
+                      onMouseEnter={handleMouseEnter}
+                      className="py-2"
+                    >
+                      <button
+                        type="button"
+                        className={`whitespace-nowrap text-[14px] xl:text-[15px] font-normal transition-opacity hover:opacity-70 inline-flex items-center gap-1 cursor-pointer ${
+                          tone === "dark" ? "text-color-neutral-900" : "text-White"
+                        }`}
+                      >
+                        <span>Services</span>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="8"
+                          height="6"
+                          viewBox="0 0 8 6"
+                          fill="none"
+                          className={`inline-block transition-transform duration-200 ${
+                            servicesHovered ? "rotate-180" : ""
+                          }`}
+                        >
+                          <path
+                            d="M1 1.5L4 4.5L7 1.5"
+                            stroke="currentColor"
+                            strokeWidth="1.2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </button>
+                    </motion.li>
+                  );
+                }
+
+                return (
+                  <motion.li
+                    key={link.href}
+                    custom={index}
+                    variants={navItemVariants}
+                    initial="hidden"
+                    animate="visible"
+                    onMouseEnter={() => setServicesHovered(false)}
                   >
-                    {link.label}
-                  </Link>
-                </motion.li>
-              ))}
+                    <Link
+                      href={link.href}
+                      className={`whitespace-nowrap text-[14px] xl:text-[15px] font-normal transition-opacity hover:opacity-70 ${
+                        tone === "dark" ? "text-color-neutral-900" : "text-White"
+                      }`}
+                    >
+                      {link.label}
+                    </Link>
+                  </motion.li>
+                );
+              })}
             </ul>
           </nav>
 
@@ -132,6 +191,14 @@ export default function Navbar({ className = "", onMobileMenuChange, tone = "lig
             </button>
           </div>
         </div>
+
+        <AnimatePresence>
+          {servicesHovered && (
+            <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+              <ServicesMegaMenu />
+            </div>
+          )}
+        </AnimatePresence>
       </motion.header>
 
       <MobileMenu isOpen={mobileOpen} onClose={() => setOpen(false)} />
